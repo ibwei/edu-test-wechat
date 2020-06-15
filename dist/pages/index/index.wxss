@@ -1,0 +1,46 @@
+@import "../../common.wxss";
+.index {
+  background: #bae7ff;
+  padding: 30rpx 30rpx 150rpx 30rpx;
+  border-bottom-right-radius: 17em 5em;
+  border-bottom-left-radius: 17em 5em;
+}
+.icon {
+  width: 400rpx;
+  height: 400rpx;
+  background: #fff;
+  margin: 0 auto;
+  border-radius: 50%;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+.icon image {
+  width: 75%;
+  height: 50%;
+  line-height: 2em;
+  margin: 0 auto;
+}
+.introduce {
+  margin: 80rpx 20rpx 0 20rpx;
+}
+.title {
+  font-size: 1rem;
+  padding: 8rpx 8rpx 15rpx 8rpx;
+  border-bottom: 1rpx solid #fff;
+  margin-bottom: 15rpx;
+}
+.content {
+  font-size: 0.8rem;
+  padding: 8rpx;
+}
+.button {
+  padding: 60rpx 40rpx;
+}
+.at-button--primary {
+  background: #bae7ff !important;
+  border: 1rpx solid #bae7ff !important;
+  color: #555 !important;
+}
+

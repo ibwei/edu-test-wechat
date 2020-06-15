@@ -1,0 +1,18 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="">
+        <view class="question">
+            <view class="item-box">
+                <view class="{{item.$loopState__temp2}}" wx:for="{{loopArray361}}" wx:for-item="item" wx:for-index="_anonIdx2">{{item.$original}}</view>
+            </view>
+            <view class="question-box">
+                <view class="question-title">{{currentQuestion}}</view>
+                <view class="answer-box">
+                    <view class="{{chooesAnswer.value == item.value ? 'answer-item checked' : 'answer-item'}}" wx:key="index" bindtap="chooesAnswer" wx:for="{{currentAnswerList}}" wx:for-item="item" wx:for-index="index" data-e-tap-so="this" data-e-tap-a-a="{{item.value}}" data-e-tap-a-b="{{item.key}}">{{item.value}}.{{item.label}}</view>
+                </view>
+            </view>
+            <view>
+                <at-button compid="{{$compid__387}}">{{buttonTitle}}</at-button>
+            </view>
+        </view>
+    </view>
+</block>

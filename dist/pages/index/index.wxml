@@ -1,0 +1,26 @@
+<block wx:if="{{$taroCompReady}}">
+    <view>
+        <view class="index">
+            <view class="icon">
+                <image src="../../assets/images/shijiashi.jpg"></image>
+            </view>
+            <view class="introduce">
+                <view class="title"><text>拾加拾教育：学商测试</text>
+                </view>
+                <view class="content"><text>测试内容：考察学生各方面能力</text>
+                </view>
+                <view class="content"><text>测试时间：不限</text>
+                </view>
+                <view class="content"><text>提交条件：题目全部完成后方可提交</text>
+                </view>
+                <view class="content"><text>测试形式：自主测试</text>
+                </view>
+            </view>
+        </view>
+        <view class="button">
+            <at-button open-type="getUserInfo" compid="{{$compid__10}}">获取题库</at-button>
+            <at-button open-type="getUserInfo" compid="{{$compid__11}}">获取测试结果</at-button>
+            <button open-type="getUserInfo" bindtap="getUserInfo">开始测试</button>
+        </view>
+    </view>
+</block>

@@ -1,0 +1,26 @@
+<block wx:if="{{$taroCompReady}}">
+    <block wx:if="{{_isOpened}}">
+        <view class="{{anonymousState__temp}}">
+            <block wx:if="{{hasMask}}">
+                <view class="at-toast__overlay"></view>
+            </block>
+            <view class="{{bodyClass}}" style="{{anonymousState__temp2}}" bindtap="handleClick">
+                <view class="toast-body-content">
+                    <block wx:if="{{realImg}}">
+                        <view class="toast-body-content__img">
+                            <image class="toast-body-content__img-item" src="{{realImg}}" mode="scaleToFill"></image>
+                        </view>
+                    </block>
+                    <block wx:if="{{isRenderIcon}}">
+                        <view class="toast-body-content__icon"><text class="{{iconClass}}"></text>
+                        </view>
+                    </block>
+                    <block wx:if="{{text}}">
+                        <view class="toast-body-content__info"><text>{{text}}</text>
+                        </view>
+                    </block>
+                </view>
+            </view>
+        </view>
+    </block>
+</block>

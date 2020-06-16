@@ -134,7 +134,7 @@ export default class Index extends Component {
             <AtForm onSubmit={this.onSubmit.bind(this)}>
               <AtInput
                 name="value"
-                title="学生姓名"
+                title="学生姓名:"
                 type="text"
                 placeholder="请输入学生姓名"
                 value={this.studentInfo.name}
@@ -142,7 +142,7 @@ export default class Index extends Component {
               />
               <AtInput
                 name="value"
-                title="学校"
+                title="学　　校:"
                 type="text"
                 placeholder="请输入就读学校"
                 value={this.studentInfo.school}
@@ -150,7 +150,7 @@ export default class Index extends Component {
               />
               <AtInput
                 name="value"
-                title="年级"
+                title="年　　级:"
                 type="text"
                 placeholder="请输入就读年级"
                 value={this.studentInfo.grade}
@@ -158,7 +158,7 @@ export default class Index extends Component {
               />
               <AtInput
                 name="value"
-                title="家长电话"
+                title="家长电话:"
                 type="text"
                 placeholder="请输入家长电话"
                 value={this.studentInfo.grade}

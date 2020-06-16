@@ -1,5 +1,5 @@
-import Taro, { Component, Config } from "@tarojs/taro";
-import { View, Image, Text, Button } from "@tarojs/components";
+import Taro, { Component, Config } from '@tarojs/taro';
+import { View, Image, Text, Button } from '@tarojs/components';
 import {
   AtButton,
   AtModal,
@@ -7,18 +7,18 @@ import {
   AtModalAction,
   AtActivityIndicator,
   AtToast,
-} from "taro-ui";
+} from 'taro-ui';
 
-import "./index.less";
-import "taro-ui/dist/style/components/button.scss";
-import "taro-ui/dist/style/components/loading.scss";
-import "taro-ui/dist/style/components/checkbox.scss";
-import "taro-ui/dist/style/components/icon.scss";
-import "taro-ui/dist/style/components/modal.scss";
-import "taro-ui/dist/style/components/activity-indicator.scss";
-import "taro-ui/dist/style/components/toast.scss";
+import './index.less';
+import 'taro-ui/dist/style/components/button.scss';
+import 'taro-ui/dist/style/components/loading.scss';
+import 'taro-ui/dist/style/components/checkbox.scss';
+import 'taro-ui/dist/style/components/icon.scss';
+import 'taro-ui/dist/style/components/modal.scss';
+import 'taro-ui/dist/style/components/activity-indicator.scss';
+import 'taro-ui/dist/style/components/toast.scss';
 
-import { getList, pushAnwser } from "../../api/api";
+import { getList, pushAnwser } from '../../api/api';
 
 export default class Index extends Component {
   componentWillMount() {}
@@ -32,7 +32,7 @@ export default class Index extends Component {
       buttonDisabled: true,
     });
     this.setState({
-      buttonTitle: "下一题",
+      buttonTitle: '下一题',
     });
     this.setState({
       questionId: null,
@@ -47,14 +47,14 @@ export default class Index extends Component {
       },
     });
     this.setState({
-      currentQuestion: "",
+      currentQuestion: '',
     });
     getList()
       .then((res) => {
-        console.log("res :>> ", res);
+        console.log('res :>> ', res);
         let { err_code, data } = res.data;
-        if (err_code == "0") {
-          console.log("1 :>> ", 1);
+        if (err_code == '0') {
+          console.log('1 :>> ', 1);
           this.questionList = data.flat(1);
 
           this.setCurrentQuestion(true);
@@ -72,8 +72,8 @@ export default class Index extends Component {
     // 下一题
     let nextQuestion = null;
     // 判断是否为最后一题
-    console.log("length :>> ", length);
-    console.log("nowIndex :>> ", nowIndex);
+    console.log('length :>> ', length);
+    console.log('nowIndex :>> ', nowIndex);
     if (nowIndex < length - 1) {
       if (initialization) {
         nextQuestion = this.questionList[0];
@@ -136,7 +136,7 @@ export default class Index extends Component {
     super(props);
     this.state = {
       buttonDisabled: true, // 按钮是否禁用
-      buttonTitle: "下一题",
+      buttonTitle: '下一题',
       questionId: null, // 题目id
       nowIndex: 0, // 当前题目索引
       // 选择的答案
@@ -144,30 +144,30 @@ export default class Index extends Component {
         value: -1,
         key: 0,
       },
-      currentQuestion: "",
+      currentQuestion: '',
       currentAnswerList: [
         {
-          label: "",
+          label: '',
           value: 0,
           key: 1,
         },
         {
-          label: "",
+          label: '',
           value: 1,
           key: 2,
         },
         {
-          label: "",
+          label: '',
           value: 2,
           key: 3,
         },
         {
-          label: "",
+          label: '',
           value: 3,
           key: 4,
         },
         {
-          label: "",
+          label: '',
           value: 4,
           key: 5,
         },
@@ -185,8 +185,8 @@ export default class Index extends Component {
   scoreSum = 0;
   // 选择选项
   chooesAnswer(value, key) {
-    console.log("value :>> ", value);
-    console.log("key :>> ", key);
+    console.log('value :>> ', value);
+    console.log('key :>> ', key);
     this.setState({
       chooesAnswer: {
         value: value,
@@ -216,10 +216,10 @@ export default class Index extends Component {
     });
     if (this.state.nowIndex == this.questionList.length - 2) {
       this.setState({
-        buttonTitle: "交卷",
+        buttonTitle: '交卷',
       });
     }
-    if (this.state.buttonTitle == "交卷") {
+    if (this.state.buttonTitle == '交卷') {
       let scoreArray = [];
       let sum = 0;
       this.scoreArray.forEach((item, index) => {
@@ -230,20 +230,20 @@ export default class Index extends Component {
         }
       });
       let params = {
-        questionArray: this.questionArray.join("-"),
-        answerArray: this.answerArray.join("-"),
-        scoreArray: scoreArray.join("-"),
+        questionArray: this.questionArray.join('-'),
+        answerArray: this.answerArray.join('-'),
+        scoreArray: scoreArray.join('-'),
         allScore: this.scoreSum,
       };
       Taro.showLoading({
-        title: "答案提交中...",
+        title: '答案提交中...',
       });
       pushAnwser(params).then((res) => {
         let { err_code, data, resultCode } = res.data;
-        if (resultCode == "0") {
+        if (resultCode == '0') {
           Taro.hideLoading();
           Taro.showToast({
-            title: "提交成功!",
+            title: '提交成功!',
           });
           setTimeout(() => {
             Taro.hideToast();
@@ -260,7 +260,7 @@ export default class Index extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: "测试界面",
+    navigationBarTitleText: '测试界面',
   };
 
   render() {
@@ -270,8 +270,8 @@ export default class Index extends Component {
         <View
           className={
             this.state.chooesAnswer.value == item.value
-              ? "answer-item checked"
-              : "answer-item"
+              ? 'answer-item checked'
+              : 'answer-item'
           }
           key={index}
           onClick={this.chooesAnswer.bind(this, item.value, item.key)}
@@ -289,8 +289,8 @@ export default class Index extends Component {
                 <View
                   className={
                     Number(item - 1) < Number(nowIndex)
-                      ? "done question-item"
-                      : "question-item"
+                      ? 'done question-item'
+                      : 'question-item'
                   }
                 >
                   {item}

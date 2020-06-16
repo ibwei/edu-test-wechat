@@ -1,11 +1,14 @@
 import Taro, { Component, Config } from '@tarojs/taro';
 import { View, Image, Text, Button } from '@tarojs/components';
-import { AtButton, AtCurtain } from 'taro-ui';
+import { AtButton, AtCurtain, AtForm, AtInput } from 'taro-ui';
 import { login, getList, getResult } from '../../api/api';
 
 import './index.less';
 import 'taro-ui/dist/style/components/button.scss';
 import 'taro-ui/dist/style/components/loading.scss';
+import 'taro-ui/dist/style/components/curtain.scss';
+import 'taro-ui/dist/style/components/form.scss';
+import 'taro-ui/dist/style/components/input.scss';
 
 export default class Index extends Component {
   componentWillMount() {}
@@ -65,16 +68,19 @@ export default class Index extends Component {
       login();
     }
   }
-  getList() {
-    getList().then((res) => {
-      console.log('res :>> ', res);
-    });
+  onClose() {
+    console.log('1 :>> ', 1);
   }
-  getresult() {
-    getResult().then((res) => {
-      console.log('res :>> ', res);
-    });
+  onSubmit() {
+    console.log('1 :>> ', 1);
   }
+  studentInfo = {
+    name: '',
+    school: '',
+    grade: '',
+    tel: '',
+  };
+  onChange() {}
   render() {
     return (
       <View>
@@ -123,6 +129,45 @@ export default class Index extends Component {
             开始测试
           </Button>
         </View>
+        <AtCurtain isOpened={false} onClose={this.onClose.bind(this)}>
+          <View className="tishi">
+            <AtForm onSubmit={this.onSubmit.bind(this)}>
+              <AtInput
+                name="value"
+                title="学生姓名"
+                type="text"
+                placeholder="请输入学生姓名"
+                value={this.studentInfo.name}
+                onChange={this.onChange.bind(this)}
+              />
+              <AtInput
+                name="value"
+                title="学校"
+                type="text"
+                placeholder="请输入就读学校"
+                value={this.studentInfo.school}
+                onChange={this.onChange.bind(this)}
+              />
+              <AtInput
+                name="value"
+                title="年级"
+                type="text"
+                placeholder="请输入就读年级"
+                value={this.studentInfo.grade}
+                onChange={this.onChange.bind(this)}
+              />
+              <AtInput
+                name="value"
+                title="家长电话"
+                type="text"
+                placeholder="请输入家长电话"
+                value={this.studentInfo.grade}
+                onChange={this.onChange.bind(this)}
+              />
+              <AtButton formType="submit">提交</AtButton>
+            </AtForm>
+          </View>
+        </AtCurtain>
       </View>
     );
   }

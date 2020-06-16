@@ -30,6 +30,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
 var url = 'http://edu.pinxianhs.com/api/wechat/';
+// 拦截器
+var interceptor = function interceptor(chain) {
+  var requestParams = chain.requestParams;
+};
 var login = exports.login = function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
     var _ref2, code, userInfo;
@@ -45,33 +49,33 @@ var login = exports.login = function () {
             _ref2 = _context.sent;
             code = _ref2.code;
             userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
-
-            console.log('code :>> ', code);
-            _context.next = 8;
+            _context.next = 7;
             return _taroWeapp2.default.request({
               method: 'POST',
               url: "http://edu.pinxianhs.com/api/wechat/user/login",
-              params: {
-                token: _taroWeapp2.default.getStorageSync('token')
-              },
               data: _extends({
-                code: code
-              }, userInfo)
-            }).then(function (res) {
-              var data = res.data,
-                  err_code = res.err_code,
-                  err_msg = res.err_msg;
+                code: code,
+                token: _taroWeapp2.default.getStorageSync('token')
+              }, userInfo),
+              success: function success(res) {
+                var data = res.data,
+                    err_code = res.err_code,
+                    err_msg = res.err_msg;
 
-              if (err_code) {
-                console.log(err_msg);
-              } else {
-                console.log(res);
-                _taroWeapp2.default.setStorageSync('token', data.token);
-                _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(data.user));
+                console.log('res :>> ', res);
+                if (err_code) {
+                  console.log(err_msg);
+                } else {
+                  _taroWeapp2.default.setStorageSync('token', data.token);
+                  _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(data.user));
+                }
+              },
+              fail: function fail(e) {
+                console.log('e :>> ', e);
               }
             });
 
-          case 8:
+          case 7:
           case 'end':
             return _context.stop();
         }
@@ -91,23 +95,23 @@ var getList = exports.getList = function () {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            resData = '';
+            resData = void 0;
+            // await Taro.addInterceptor()
+
             _context2.next = 3;
             return _taroWeapp2.default.request({
               method: 'GET',
               url: "http://edu.pinxianhs.com/api/wechat/test/list",
-              data: { token: _taroWeapp2.default.getStorageSync('token') }
-            }).then(function (res) {
-              var data = res.data,
-                  err_code = res.err_code,
-                  err_msg = res.err_msg;
-
-              if (err_code == 401) {
-                console.log('err_msg :>> ', err_msg);
-                login();
-                getList();
-              } else {
+              data: { token: _taroWeapp2.default.getStorageSync('token') },
+              success: function success(res) {
+                console.log('success :>> ', res);
                 resData = res;
+              },
+              fail: function fail(res) {
+                console.log('fail :>> ', res);
+                // if (res.err_code == 401) {
+                //   console.log('1 :>> ', 1);
+                // }
               }
             });
 
@@ -134,7 +138,7 @@ var getResult = exports.getResult = function () {
       while (1) {
         switch (_context3.prev = _context3.next) {
           case 0:
-            resData = '';
+            resData = void 0;
             userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
             _context3.next = 4;
             return _taroWeapp2.default.request({
@@ -177,7 +181,7 @@ var pushAnwser = exports.pushAnwser = function () {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
-            resData = '';
+            resData = void 0;
             userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
             _context4.next = 4;
             return _taroWeapp2.default.request({

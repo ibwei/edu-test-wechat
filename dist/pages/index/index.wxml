@@ -20,5 +20,16 @@
         <view class="button">
             <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">开始测试</button>
         </view>
+        <at-curtain compid="{{$compid__129}}">
+            <view class="tishi">
+                <at-form compid="{{$compid__130}}">
+                    <at-input compid="{{$compid__131}}"></at-input>
+                    <at-input compid="{{$compid__132}}"></at-input>
+                    <at-input compid="{{$compid__133}}"></at-input>
+                    <at-input compid="{{$compid__134}}"></at-input>
+                    <at-button compid="{{$compid__135}}">提交</at-button>
+                </at-form>
+            </view>
+        </at-curtain>
     </view>
 </block>

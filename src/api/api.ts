@@ -1,52 +1,60 @@
 import Taro from '@tarojs/taro';
 const url = 'http://edu.pinxianhs.com/api/wechat/';
+
+// 拦截器
+const interceptor = function(chain) {
+  const requestParams = chain.requestParams;
+};
 export const login = async () => {
   const { code } = await Taro.login();
   const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
-  console.log('code :>> ', code);
   await Taro.request({
     method: 'POST',
     url: url + 'user/login',
-    params: {
-      token: Taro.getStorageSync('token'),
-    },
     data: {
       code: code,
+      token: Taro.getStorageSync('token'),
       ...userInfo,
     },
-  }).then((res) => {
-    const { data, err_code, err_msg } = res;
-    if (err_code) {
-      console.log(err_msg);
-    } else {
-      console.log(res);
-      Taro.setStorageSync('token', data.token);
-      Taro.setStorageSync('userInfo', JSON.stringify(data.user));
-    }
+    success: function(res) {
+      const { data, err_code, err_msg } = res;
+      console.log('res :>> ', res);
+      if (err_code) {
+        console.log(err_msg);
+      } else {
+        Taro.setStorageSync('token', data.token);
+        Taro.setStorageSync('userInfo', JSON.stringify(data.user));
+      }
+    },
+    fail: function(e) {
+      console.log('e :>> ', e);
+    },
   });
 };
 // 获取题目列表
-export const getList = async (): Promise => {
-  let resData = '';
+export const getList = async (): Promise<any> => {
+  let resData: any;
+  // await Taro.addInterceptor()
   await Taro.request({
     method: 'GET',
     url: url + 'test/list',
     data: { token: Taro.getStorageSync('token') },
-  }).then((res) => {
-    const { data, err_code, err_msg } = res;
-    if (err_code == 401) {
-      console.log('err_msg :>> ', err_msg);
-      login();
-      getList();
-    } else {
+    success: function(res) {
+      console.log('success :>> ', res);
       resData = res;
-    }
+    },
+    fail: function(res) {
+      console.log('fail :>> ', res);
+      // if (res.err_code == 401) {
+      //   console.log('1 :>> ', 1);
+      // }
+    },
   });
   return Promise.resolve(resData);
 };
 // 获取结果
-export const getResult = async (): Promise => {
-  let resData = '';
+export const getResult = async (): Promise<any> => {
+  let resData: any;
   const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
   await Taro.request({
     method: 'GET',
@@ -64,8 +72,8 @@ export const getResult = async (): Promise => {
   });
   return Promise.resolve(resData);
 };
-export const pushAnwser = async (params): Promise => {
-  let resData = '';
+export const pushAnwser = async (params): Promise<any> => {
+  let resData: any;
   const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
   await Taro.request({
     method: 'POST',

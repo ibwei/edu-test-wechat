@@ -14,6 +14,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
@@ -31,6 +33,12 @@ __webpack_require__(/*! ./index.less */ "./src/pages/index/index.less");
 __webpack_require__(/*! taro-ui/dist/style/components/button.scss */ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/button.scss");
 
 __webpack_require__(/*! taro-ui/dist/style/components/loading.scss */ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/loading.scss");
+
+__webpack_require__(/*! taro-ui/dist/style/components/curtain.scss */ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/curtain.scss");
+
+__webpack_require__(/*! taro-ui/dist/style/components/form.scss */ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/form.scss");
+
+__webpack_require__(/*! taro-ui/dist/style/components/input.scss */ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/input.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54,9 +62,9 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = [], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__129", "$compid__130", "$compid__131", "$compid__132", "$compid__133", "$compid__134", "$compid__135"], _this.config = {
       navigationBarTitleText: '学商系统'
-    }, _this.customComponents = [], _temp), _possibleConstructorReturn(_this, _ret);
+    }, _this.customComponents = ["AtCurtain", "AtForm", "AtInput", "AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Index, [{
@@ -85,6 +93,13 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
        * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
        * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
        */
+
+      this.studentInfo = {
+        name: '',
+        school: '',
+        grade: '',
+        tel: ''
+      };
       this.$$refs = new _taroWeapp2.default.RefsArray();
     }
   }, {
@@ -128,19 +143,18 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       }
     }
   }, {
-    key: 'getList',
-    value: function getList() {
-      (0, _api.getList)().then(function (res) {
-        console.log('res :>> ', res);
-      });
+    key: 'onClose',
+    value: function onClose() {
+      console.log('1 :>> ', 1);
     }
   }, {
-    key: 'getresult',
-    value: function getresult() {
-      (0, _api.getResult)().then(function (res) {
-        console.log('res :>> ', res);
-      });
+    key: 'onSubmit',
+    value: function onSubmit() {
+      console.log('1 :>> ', 1);
     }
+  }, {
+    key: 'onChange',
+    value: function onChange() {}
   }, {
     key: '_createData',
     value: function _createData() {
@@ -149,7 +163,93 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __isRunloopRef = arguments[2];
       var __prefix = this.$prefix;
       ;
-      Object.assign(this.__state, {});
+
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__129"),
+          _genCompid2 = _slicedToArray(_genCompid, 2),
+          $prevCompid__129 = _genCompid2[0],
+          $compid__129 = _genCompid2[1];
+
+      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__130"),
+          _genCompid4 = _slicedToArray(_genCompid3, 2),
+          $prevCompid__130 = _genCompid4[0],
+          $compid__130 = _genCompid4[1];
+
+      var _genCompid5 = (0, _taroWeapp.genCompid)(__prefix + "$compid__131"),
+          _genCompid6 = _slicedToArray(_genCompid5, 2),
+          $prevCompid__131 = _genCompid6[0],
+          $compid__131 = _genCompid6[1];
+
+      var _genCompid7 = (0, _taroWeapp.genCompid)(__prefix + "$compid__132"),
+          _genCompid8 = _slicedToArray(_genCompid7, 2),
+          $prevCompid__132 = _genCompid8[0],
+          $compid__132 = _genCompid8[1];
+
+      var _genCompid9 = (0, _taroWeapp.genCompid)(__prefix + "$compid__133"),
+          _genCompid10 = _slicedToArray(_genCompid9, 2),
+          $prevCompid__133 = _genCompid10[0],
+          $compid__133 = _genCompid10[1];
+
+      var _genCompid11 = (0, _taroWeapp.genCompid)(__prefix + "$compid__134"),
+          _genCompid12 = _slicedToArray(_genCompid11, 2),
+          $prevCompid__134 = _genCompid12[0],
+          $compid__134 = _genCompid12[1];
+
+      var _genCompid13 = (0, _taroWeapp.genCompid)(__prefix + "$compid__135"),
+          _genCompid14 = _slicedToArray(_genCompid13, 2),
+          $prevCompid__135 = _genCompid14[0],
+          $compid__135 = _genCompid14[1];
+
+      _taroWeapp.propsManager.set({
+        "isOpened": false,
+        "onClose": this.onClose.bind(this)
+      }, $compid__129, $prevCompid__129);
+      _taroWeapp.propsManager.set({
+        "onSubmit": this.onSubmit.bind(this)
+      }, $compid__130, $prevCompid__130);
+      _taroWeapp.propsManager.set({
+        "name": "value",
+        "title": '\u5B66\u751F\u59D3\u540D',
+        "type": "text",
+        "placeholder": '\u8BF7\u8F93\u5165\u5B66\u751F\u59D3\u540D',
+        "value": this.studentInfo.name,
+        "onChange": this.onChange.bind(this)
+      }, $compid__131, $prevCompid__131);
+      _taroWeapp.propsManager.set({
+        "name": "value",
+        "title": '\u5B66\u6821',
+        "type": "text",
+        "placeholder": '\u8BF7\u8F93\u5165\u5C31\u8BFB\u5B66\u6821',
+        "value": this.studentInfo.school,
+        "onChange": this.onChange.bind(this)
+      }, $compid__132, $prevCompid__132);
+      _taroWeapp.propsManager.set({
+        "name": "value",
+        "title": '\u5E74\u7EA7',
+        "type": "text",
+        "placeholder": '\u8BF7\u8F93\u5165\u5C31\u8BFB\u5E74\u7EA7',
+        "value": this.studentInfo.grade,
+        "onChange": this.onChange.bind(this)
+      }, $compid__133, $prevCompid__133);
+      _taroWeapp.propsManager.set({
+        "name": "value",
+        "title": '\u5BB6\u957F\u7535\u8BDD',
+        "type": "text",
+        "placeholder": '\u8BF7\u8F93\u5165\u5BB6\u957F\u7535\u8BDD',
+        "value": this.studentInfo.grade,
+        "onChange": this.onChange.bind(this)
+      }, $compid__134, $prevCompid__134);
+      _taroWeapp.propsManager.set({
+        "formType": "submit"
+      }, $compid__135, $prevCompid__135);
+      Object.assign(this.__state, {
+        $compid__129: $compid__129,
+        $compid__130: $compid__130,
+        $compid__131: $compid__131,
+        $compid__132: $compid__132,
+        $compid__133: $compid__133,
+        $compid__134: $compid__134,
+        $compid__135: $compid__135
+      });
       return this.__state;
     }
   }]);
@@ -170,6 +270,39 @@ Component(__webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/_@tarojs
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "pages/index/index.wxml";
+
+/***/ }),
+
+/***/ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/curtain.scss":
+/*!********************************************************************************!*\
+  !*** ./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/curtain.scss ***!
+  \********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/form.scss":
+/*!*****************************************************************************!*\
+  !*** ./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/form.scss ***!
+  \*****************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/input.scss":
+/*!******************************************************************************!*\
+  !*** ./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/input.scss ***!
+  \******************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 

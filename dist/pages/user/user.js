@@ -54,7 +54,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__15", "$compid__16", "$compid__17"], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__13", "$compid__14", "$compid__15"], _this.config = {
       navigationBarTitleText: '个人中心'
     }, _this.customComponents = ["AtAvatar", "AtIcon"], _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -96,41 +96,41 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __prefix = this.$prefix;
       ;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__15"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__13"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__15 = _genCompid2[0],
-          $compid__15 = _genCompid2[1];
+          $prevCompid__13 = _genCompid2[0],
+          $compid__13 = _genCompid2[1];
 
-      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__16"),
+      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__14"),
           _genCompid4 = _slicedToArray(_genCompid3, 2),
-          $prevCompid__16 = _genCompid4[0],
-          $compid__16 = _genCompid4[1];
+          $prevCompid__14 = _genCompid4[0],
+          $compid__14 = _genCompid4[1];
 
-      var _genCompid5 = (0, _taroWeapp.genCompid)(__prefix + "$compid__17"),
+      var _genCompid5 = (0, _taroWeapp.genCompid)(__prefix + "$compid__15"),
           _genCompid6 = _slicedToArray(_genCompid5, 2),
-          $prevCompid__17 = _genCompid6[0],
-          $compid__17 = _genCompid6[1];
+          $prevCompid__15 = _genCompid6[0],
+          $compid__15 = _genCompid6[1];
 
       _taroWeapp.propsManager.set({
         "circle": true,
         "size": "large",
         "image": "https://jdc.jd.com/img/200",
         "text": '\u65E0'
-      }, $compid__15, $prevCompid__15);
+      }, $compid__13, $prevCompid__13);
       _taroWeapp.propsManager.set({
         "value": "file-generic",
         "size": "19",
         "color": "#f5222d"
-      }, $compid__16, $prevCompid__16);
+      }, $compid__14, $prevCompid__14);
       _taroWeapp.propsManager.set({
         "value": "chevron-right",
         "size": "20",
         "color": "#555"
-      }, $compid__17, $prevCompid__17);
+      }, $compid__15, $prevCompid__15);
       Object.assign(this.__state, {
-        $compid__15: $compid__15,
-        $compid__16: $compid__16,
-        $compid__17: $compid__17
+        $compid__13: $compid__13,
+        $compid__14: $compid__14,
+        $compid__15: $compid__15
       });
       return this.__state;
     }

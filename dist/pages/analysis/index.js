@@ -110,7 +110,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["anonymousState__temp", "$compid__12", "$compid__13", "$compid__14", "ec", "open", "content"], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["anonymousState__temp", "$compid__10", "$compid__11", "$compid__12", "ec", "open", "content"], _this.config = {
       navigationBarTitleText: '测试结果',
       // 定义需要引入的第三方组件
       usingComponents: {
@@ -189,20 +189,20 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __prefix = this.$prefix;
       ;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__12"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__10"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__12 = _genCompid2[0],
-          $compid__12 = _genCompid2[1];
+          $prevCompid__10 = _genCompid2[0],
+          $compid__10 = _genCompid2[1];
 
-      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__13"),
+      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__11"),
           _genCompid4 = _slicedToArray(_genCompid3, 2),
-          $prevCompid__13 = _genCompid4[0],
-          $compid__13 = _genCompid4[1];
+          $prevCompid__11 = _genCompid4[0],
+          $compid__11 = _genCompid4[1];
 
-      var _genCompid5 = (0, _taroWeapp.genCompid)(__prefix + "$compid__14"),
+      var _genCompid5 = (0, _taroWeapp.genCompid)(__prefix + "$compid__12"),
           _genCompid6 = _slicedToArray(_genCompid5, 2),
-          $prevCompid__14 = _genCompid6[0],
-          $compid__14 = _genCompid6[1];
+          $prevCompid__12 = _genCompid6[0],
+          $compid__12 = _genCompid6[1];
 
       var anonymousState__temp = [{
         title: '刷牙洗脸',
@@ -221,21 +221,21 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "content": '\u6210\u7EE9\u5206\u5E03\u56FE',
         "fontColor": "#555",
         "lineColor": "#bebebe"
-      }, $compid__12, $prevCompid__12);
+      }, $compid__10, $prevCompid__10);
       _taroWeapp.propsManager.set({
         "content": '\u6210\u7EE9\u5206\u6790',
         "fontColor": "#555",
         "lineColor": "#bebebe"
-      }, $compid__13, $prevCompid__13);
+      }, $compid__11, $prevCompid__11);
       _taroWeapp.propsManager.set({
         "pending": true,
         "items": anonymousState__temp
-      }, $compid__14, $prevCompid__14);
+      }, $compid__12, $prevCompid__12);
       Object.assign(this.__state, {
         anonymousState__temp: anonymousState__temp,
-        $compid__12: $compid__12,
-        $compid__13: $compid__13,
-        $compid__14: $compid__14
+        $compid__10: $compid__10,
+        $compid__11: $compid__11,
+        $compid__12: $compid__12
       });
       return this.__state;
     }

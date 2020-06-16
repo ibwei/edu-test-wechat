@@ -1,9 +1,9 @@
 (wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["pages/question/index"],{
 
-/***/ "./node_modules/_@tarojs_mini-runner@2.2.6@@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/question/index.tsx?taro&type=script&parse=PAGE&":
-/*!*******************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/_@tarojs_mini-runner@2.2.6@@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./src/pages/question/index.tsx?taro&type=script&parse=PAGE& ***!
-  \*******************************************************************************************************************************************************************************/
+/***/ "./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/question/index.tsx?taro&type=script&parse=PAGE&":
+/*!****************************************************************************************************************************************************!*\
+  !*** ./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./src/pages/question/index.tsx?taro&type=script&parse=PAGE& ***!
+  \****************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -22,25 +22,25 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _class, _temp2;
 
-var _taroWeapp = __webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/_@tarojs_taro-weapp@2.2.6@@tarojs/taro-weapp/index.js");
+var _taroWeapp = __webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/@tarojs/taro-weapp/index.js");
 
 var _taroWeapp2 = _interopRequireDefault(_taroWeapp);
 
 __webpack_require__(/*! ./index.less */ "./src/pages/question/index.less");
 
-__webpack_require__(/*! taro-ui/dist/style/components/button.scss */ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/button.scss");
+__webpack_require__(/*! taro-ui/dist/style/components/button.scss */ "./node_modules/taro-ui/dist/style/components/button.scss");
 
-__webpack_require__(/*! taro-ui/dist/style/components/loading.scss */ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/loading.scss");
+__webpack_require__(/*! taro-ui/dist/style/components/loading.scss */ "./node_modules/taro-ui/dist/style/components/loading.scss");
 
-__webpack_require__(/*! taro-ui/dist/style/components/checkbox.scss */ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/checkbox.scss");
+__webpack_require__(/*! taro-ui/dist/style/components/checkbox.scss */ "./node_modules/taro-ui/dist/style/components/checkbox.scss");
 
-__webpack_require__(/*! taro-ui/dist/style/components/icon.scss */ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/icon.scss");
+__webpack_require__(/*! taro-ui/dist/style/components/icon.scss */ "./node_modules/taro-ui/dist/style/components/icon.scss");
 
-__webpack_require__(/*! taro-ui/dist/style/components/modal.scss */ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/modal.scss");
+__webpack_require__(/*! taro-ui/dist/style/components/modal.scss */ "./node_modules/taro-ui/dist/style/components/modal.scss");
 
-__webpack_require__(/*! taro-ui/dist/style/components/activity-indicator.scss */ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/activity-indicator.scss");
+__webpack_require__(/*! taro-ui/dist/style/components/activity-indicator.scss */ "./node_modules/taro-ui/dist/style/components/activity-indicator.scss");
 
-__webpack_require__(/*! taro-ui/dist/style/components/toast.scss */ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/toast.scss");
+__webpack_require__(/*! taro-ui/dist/style/components/toast.scss */ "./node_modules/taro-ui/dist/style/components/toast.scss");
 
 var _api = __webpack_require__(/*! ../../api/api */ "./src/api/api.ts");
 
@@ -66,16 +66,15 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray361", "$compid__387", "numberList", "buttonDisabled", "buttonTitle", "questionId", "nowIndex", "chooesAnswer", "currentQuestion", "currentAnswerList"], _this.config = {
-      navigationBarTitleText: '测试界面'
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray37", "$compid__35", "numberList", "buttonDisabled", "buttonTitle", "questionId", "nowIndex", "chooesAnswer", "currentQuestion", "currentAnswerList"], _this.config = {
+      navigationBarTitleText: "测试界面"
     }, _this.customComponents = ["AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Index, [{
-    key: '_constructor',
+    key: "_constructor",
     value: function _constructor(props) {
-      _get(Index.prototype.__proto__ || Object.getPrototypeOf(Index.prototype), '_constructor', this).call(this, props);
-      this.buttonText = '下一题';
+      _get(Index.prototype.__proto__ || Object.getPrototypeOf(Index.prototype), "_constructor", this).call(this, props);
       this.numberList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
       this.questionList = [];
       // 问题数组
@@ -95,74 +94,94 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
 
       this.state = {
         buttonDisabled: true,
-        buttonTitle: '下一题',
+        buttonTitle: "下一题",
         questionId: null,
         nowIndex: 0,
         // 选择的答案
         chooesAnswer: {
-          value: '',
+          value: -1,
           key: 0
         },
-        currentQuestion: '',
+        currentQuestion: "",
         currentAnswerList: [{
-          label: '',
-          value: 'A',
+          label: "",
+          value: 0,
           key: 1
         }, {
-          label: '',
-          value: 'B',
+          label: "",
+          value: 1,
           key: 2
         }, {
-          label: '',
-          value: 'C',
+          label: "",
+          value: 2,
           key: 3
         }, {
-          label: '',
-          value: 'D',
+          label: "",
+          value: 3,
           key: 4
         }, {
-          label: '',
-          value: 'E',
+          label: "",
+          value: 4,
           key: 5
         }]
       };
       this.$$refs = new _taroWeapp2.default.RefsArray();
     }
   }, {
-    key: 'componentWillMount',
+    key: "componentWillMount",
     value: function componentWillMount() {}
   }, {
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function componentDidMount() {}
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {}
   }, {
-    key: 'componentDidShow',
+    key: "componentDidShow",
     value: function componentDidShow() {
       var _this2 = this;
 
+      this.setState({
+        buttonDisabled: true
+      });
+      this.setState({
+        buttonTitle: "下一题"
+      });
+      this.setState({
+        questionId: null
+      });
+      this.setState({
+        nowIndex: 0
+      });
+      this.setState({
+        chooesAnswer: {
+          value: -1,
+          key: 0
+        }
+      });
+      this.setState({
+        currentQuestion: ""
+      });
       (0, _api.getList)().then(function (res) {
-        console.log('res :>> ', res);
+        console.log("res :>> ", res);
         var _res$data = res.data,
             err_code = _res$data.err_code,
             data = _res$data.data;
 
-        if (err_code == '0') {
-          console.log('1 :>> ', 1);
+        if (err_code == "0") {
+          console.log("1 :>> ", 1);
           _this2.questionList = data.flat(1);
-          console.log('this.questionList :>> ', _this2.questionList);
           _this2.setCurrentQuestion(true);
         }
       }).catch(function (err) {});
     }
   }, {
-    key: 'componentDidHide',
+    key: "componentDidHide",
     value: function componentDidHide() {}
     /** 设置当前题目 */
 
   }, {
-    key: 'setCurrentQuestion',
+    key: "setCurrentQuestion",
     value: function setCurrentQuestion() {
       var initialization = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
@@ -173,8 +192,8 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       // 下一题
       var nextQuestion = null;
       // 判断是否为最后一题
-      console.log('length :>> ', length);
-      console.log('nowIndex :>> ', nowIndex);
+      console.log("length :>> ", length);
+      console.log("nowIndex :>> ", nowIndex);
       if (nowIndex < length - 1) {
         if (initialization) {
           nextQuestion = this.questionList[0];
@@ -193,23 +212,23 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         this.setState({
           currentAnswerList: [{
             label: nextQuestion.a_answer,
-            value: 'A',
+            value: 0,
             key: nextQuestion.a_score
           }, {
             label: nextQuestion.b_answer,
-            value: 'B',
+            value: 1,
             key: nextQuestion.b_score
           }, {
             label: nextQuestion.c_answer,
-            value: 'C',
+            value: 2,
             key: nextQuestion.c_score
           }, {
             label: nextQuestion.d_answer,
-            value: 'D',
+            value: 3,
             key: nextQuestion.d_score
           }, {
             label: nextQuestion.e_answer,
-            value: 'E',
+            value: 4,
             key: nextQuestion.e_score
           }]
         });
@@ -230,10 +249,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
     // 选择选项
 
   }, {
-    key: 'chooesAnswer',
+    key: "chooesAnswer",
     value: function chooesAnswer(value, key) {
-      console.log('value :>> ', value);
-      console.log('key :>> ', key);
+      console.log("value :>> ", value);
+      console.log("key :>> ", key);
       this.setState({
         chooesAnswer: {
           value: value,
@@ -243,23 +262,11 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       this.setState({
         buttonDisabled: false
       });
-      _taroWeapp2.default.showLoading({
-        title: '答案提交中...'
-      });
-      setTimeout(function () {
-        _taroWeapp2.default.hideLoading();
-        _taroWeapp2.default.showToast({
-          title: '提交成功!'
-        });
-        setTimeout(function () {
-          _taroWeapp2.default.hideToast();
-        }, 2000);
-      }, 2000);
     }
     // 保存答案
 
   }, {
-    key: 'addAnswer',
+    key: "addAnswer",
     value: function addAnswer() {
       var state = this.state;
       this.questionArray.push(state.questionId);
@@ -272,36 +279,54 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       this.setCurrentQuestion();
       this.setState({
         chooesAnswer: {
-          value: '',
+          value: -1,
           key: -1
         }
       });
       if (this.state.nowIndex == this.questionList.length - 2) {
         this.setState({
-          buttonTitle: '交卷'
+          buttonTitle: "交卷"
         });
       }
-      if (this.state.buttonTitle == '交卷') {
+      if (this.state.buttonTitle == "交卷") {
+        var scoreArray = [];
+        var sum = 0;
+        this.scoreArray.forEach(function (item, index) {
+          sum += item;
+          if (index % 5 == 4) {
+            scoreArray.push(sum);
+            sum = 0;
+          }
+        });
         var params = {
-          questionArray: this.questionArray.join('-'),
-          answerArray: this.answerArray.join('-'),
-          scoreArray: this.scoreArray.join('-'),
+          questionArray: this.questionArray.join("-"),
+          answerArray: this.answerArray.join("-"),
+          scoreArray: scoreArray.join("-"),
           allScore: this.scoreSum
         };
-        console.log('params :>> ', params);
+        _taroWeapp2.default.showLoading({
+          title: "答案提交中..."
+        });
         (0, _api.pushAnwser)(params).then(function (res) {
-          console.log('res :>> ', res);
           var _res$data2 = res.data,
               err_code = _res$data2.err_code,
               data = _res$data2.data,
               resultCode = _res$data2.resultCode;
 
-          if (resultCode == '0') {}
+          if (resultCode == "0") {
+            _taroWeapp2.default.hideLoading();
+            _taroWeapp2.default.showToast({
+              title: "提交成功!"
+            });
+            setTimeout(function () {
+              _taroWeapp2.default.hideToast();
+            }, 2000);
+          }
         });
       }
     }
   }, {
-    key: '_createData',
+    key: "_createData",
     value: function _createData() {
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
@@ -309,17 +334,17 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __prefix = this.$prefix;
       var numberList = this.numberList;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__387"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__35"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__387 = _genCompid2[0],
-          $compid__387 = _genCompid2[1];
+          $prevCompid__35 = _genCompid2[0],
+          $compid__35 = _genCompid2[1];
 
       var nowIndex = this.__state.nowIndex;
-      var loopArray361 = this.numberList.map(function (item, _anonIdx) {
+      var loopArray37 = this.numberList.map(function (item, _anonIdx) {
         item = {
           $original: (0, _taroWeapp.internal_get_original)(item)
         };
-        var $loopState__temp2 = Number(item.$original - 1) < Number(nowIndex) ? 'done question-item' : 'question-item';
+        var $loopState__temp2 = Number(item.$original - 1) < Number(nowIndex) ? "done question-item" : "question-item";
         return {
           $loopState__temp2: $loopState__temp2,
           $original: item.$original
@@ -331,10 +356,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "onClick": this.addAnswer.bind(this),
         "circle": true,
         "type": "primary"
-      }, $compid__387, $prevCompid__387);
+      }, $compid__35, $prevCompid__35);
       Object.assign(this.__state, {
-        loopArray361: loopArray361,
-        $compid__387: $compid__387,
+        loopArray37: loopArray37,
+        $compid__35: $compid__35,
         numberList: numberList
       });
       return this.__state;
@@ -345,14 +370,14 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
 }(_taroWeapp.Component), _class.$$events = ["chooesAnswer"], _class.$$componentPath = "pages/question/index", _temp2);
 exports.default = Index;
 
-Component(__webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/_@tarojs_taro-weapp@2.2.6@@tarojs/taro-weapp/index.js").default.createComponent(Index, true));
+Component(__webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/@tarojs/taro-weapp/index.js").default.createComponent(Index, true));
 
 /***/ }),
 
-/***/ "./node_modules/_file-loader@4.3.0@file-loader/dist/cjs.js?name=[path][name].wxml&context=C:\\Users\\USER-PC\\Desktop\\code\\xueshang\\src!./node_modules/_@tarojs_mini-runner@2.2.6@@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/_@tarojs_mini-runner@2.2.6@@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/question/index.tsx?taro&type=template&parse=PAGE&":
-/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/_file-loader@4.3.0@file-loader/dist/cjs.js?name=[path][name].wxml&context=C:/Users/USER-PC/Desktop/code/xueshang/src!./node_modules/_@tarojs_mini-runner@2.2.6@@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/_@tarojs_mini-runner@2.2.6@@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./src/pages/question/index.tsx?taro&type=template&parse=PAGE& ***!
-  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:\\Users\\Administrator\\Desktop\\my-projects\\xueshang\\src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/question/index.tsx?taro&type=template&parse=PAGE&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:/Users/Administrator/Desktop/my-projects/xueshang/src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./src/pages/question/index.tsx?taro&type=template&parse=PAGE& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -360,10 +385,10 @@ module.exports = __webpack_require__.p + "pages/question/index.wxml";
 
 /***/ }),
 
-/***/ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/activity-indicator.scss":
-/*!*******************************************************************************************!*\
-  !*** ./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/activity-indicator.scss ***!
-  \*******************************************************************************************/
+/***/ "./node_modules/taro-ui/dist/style/components/activity-indicator.scss":
+/*!****************************************************************************!*\
+  !*** ./node_modules/taro-ui/dist/style/components/activity-indicator.scss ***!
+  \****************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -371,10 +396,10 @@ module.exports = __webpack_require__.p + "pages/question/index.wxml";
 
 /***/ }),
 
-/***/ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/checkbox.scss":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/checkbox.scss ***!
-  \*********************************************************************************/
+/***/ "./node_modules/taro-ui/dist/style/components/checkbox.scss":
+/*!******************************************************************!*\
+  !*** ./node_modules/taro-ui/dist/style/components/checkbox.scss ***!
+  \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -382,10 +407,10 @@ module.exports = __webpack_require__.p + "pages/question/index.wxml";
 
 /***/ }),
 
-/***/ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/modal.scss":
-/*!******************************************************************************!*\
-  !*** ./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/modal.scss ***!
-  \******************************************************************************/
+/***/ "./node_modules/taro-ui/dist/style/components/modal.scss":
+/*!***************************************************************!*\
+  !*** ./node_modules/taro-ui/dist/style/components/modal.scss ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -393,10 +418,10 @@ module.exports = __webpack_require__.p + "pages/question/index.wxml";
 
 /***/ }),
 
-/***/ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/toast.scss":
-/*!******************************************************************************!*\
-  !*** ./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/toast.scss ***!
-  \******************************************************************************/
+/***/ "./node_modules/taro-ui/dist/style/components/toast.scss":
+/*!***************************************************************!*\
+  !*** ./node_modules/taro-ui/dist/style/components/toast.scss ***!
+  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -442,10 +467,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_script_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/_@tarojs_mini-runner@2.2.6@@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./index.tsx?taro&type=script&parse=PAGE& */ "./node_modules/_@tarojs_mini-runner@2.2.6@@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/question/index.tsx?taro&type=script&parse=PAGE&");
-/* harmony import */ var _node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_script_parse_PAGE___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_script_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_script_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_script_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_script_parse_PAGE___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* harmony import */ var _node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_script_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./index.tsx?taro&type=script&parse=PAGE& */ "./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/question/index.tsx?taro&type=script&parse=PAGE&");
+/* harmony import */ var _node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_script_parse_PAGE___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_script_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_script_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_script_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_script_parse_PAGE___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
@@ -458,9 +483,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!file-loader?name=[path][name].wxml&context=C:/Users/USER-PC/Desktop/code/xueshang/src!../../../node_modules/_@tarojs_mini-runner@2.2.6@@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!../../../node_modules/_@tarojs_mini-runner@2.2.6@@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./index.tsx?taro&type=template&parse=PAGE& */ "./node_modules/_file-loader@4.3.0@file-loader/dist/cjs.js?name=[path][name].wxml&context=C:\\Users\\USER-PC\\Desktop\\code\\xueshang\\src!./node_modules/_@tarojs_mini-runner@2.2.6@@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/_@tarojs_mini-runner@2.2.6@@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/question/index.tsx?taro&type=template&parse=PAGE&");
-/* harmony import */ var _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_2_2_6_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!file-loader?name=[path][name].wxml&context=C:/Users/Administrator/Desktop/my-projects/xueshang/src!../../../node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!../../../node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./index.tsx?taro&type=template&parse=PAGE& */ "./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:\\Users\\Administrator\\Desktop\\my-projects\\xueshang\\src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/question/index.tsx?taro&type=template&parse=PAGE&");
+/* harmony import */ var _file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ })

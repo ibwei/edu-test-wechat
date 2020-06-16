@@ -1,16 +1,29 @@
-import Taro, { Component, Config } from '@tarojs/taro';
-import { View, Image, Text, Button } from '@tarojs/components';
-import { AtButton } from 'taro-ui';
-import { login, getList, getResult } from '../../api/api';
+import Taro, { Component, Config } from "@tarojs/taro";
+import { View, Image, Text, Button } from "@tarojs/components";
+import { AtButton, AtCurtain } from "taro-ui";
+import { login, getList, getResult } from "../../api/api";
 
-import './index.less';
-import 'taro-ui/dist/style/components/button.scss';
-import 'taro-ui/dist/style/components/loading.scss';
+import "./index.less";
+import "taro-ui/dist/style/components/button.scss";
+import "taro-ui/dist/style/components/loading.scss";
 
 export default class Index extends Component {
   componentWillMount() {}
 
-  componentDidMount() {}
+  componentDidMount() {
+    Taro.getUserInfo({
+      success(res) {
+        console.log("333");
+        console.log("res :>> ", res);
+        const { userInfo } = res;
+        Taro.setStorageSync("userInfo", JSON.stringify(userInfo));
+        login();
+      },
+      fail(res) {
+        console.log("res :>> ", res);
+      },
+    });
+  }
 
   componentWillUnmount() {}
 
@@ -41,31 +54,24 @@ export default class Index extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: '学商系统',
+    navigationBarTitleText: "学商系统",
   };
 
-  getUserInfo() {
-    Taro.getUserInfo({
-      success(res) {
-        console.log('333');
-        console.log('res :>> ', res);
-        const { userInfo } = res;
-        Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
-        login();
-      },
-      fail(res) {
-        console.log('res :>> ', res);
-      },
-    });
+  getUserInfo(res) {
+    if (res.detail.userInfo) {
+      const { userInfo } = res;
+      Taro.setStorageSync("userInfo", JSON.stringify(userInfo));
+      login();
+    }
   }
   getList() {
     getList().then((res) => {
-      console.log('res :>> ', res);
+      console.log("res :>> ", res);
     });
   }
   getresult() {
     getResult().then((res) => {
-      console.log('res :>> ', res);
+      console.log("res :>> ", res);
     });
   }
   render() {
@@ -108,7 +114,7 @@ export default class Index extends Component {
           >
             获取测试结果
           </AtButton>
-          <Button open-type="getUserInfo" onClick={this.getUserInfo}>
+          <Button openType="getUserInfo" onGetUserInfo={this.getUserInfo}>
             开始测试
           </Button>
         </View>

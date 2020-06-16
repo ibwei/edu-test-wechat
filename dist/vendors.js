@@ -1,9 +1,9 @@
 (wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["vendors"],{
 
-/***/ "./node_modules/_@tarojs_taro-weapp@2.2.6@@tarojs/taro-weapp/dist/index.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/_@tarojs_taro-weapp@2.2.6@@tarojs/taro-weapp/dist/index.js ***!
-  \*********************************************************************************/
+/***/ "./node_modules/@tarojs/taro-weapp/dist/index.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/@tarojs/taro-weapp/dist/index.js ***!
+  \*******************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -14,7 +14,7 @@ var _typeof2 = typeof Symbol === "function" && typeof Symbol.iterator === "symbo
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var taro = __webpack_require__(/*! @tarojs/taro */ "./node_modules/_@tarojs_taro@2.2.6@@tarojs/taro/dist/index.esm.js");
+var taro = __webpack_require__(/*! @tarojs/taro */ "./node_modules/@tarojs/taro/dist/index.esm.js");
 
 function _typeof(obj) {
   "@babel/helpers - typeof";
@@ -3668,29 +3668,29 @@ initNativeApi(Taro);
 exports.Taro = Taro;
 exports.default = Taro;
 //# sourceMappingURL=index.js.map
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../_webpack@4.41.6@webpack/buildin/global.js */ "./node_modules/_webpack@4.41.6@webpack/buildin/global.js"), __webpack_require__(/*! ./../../../_process@0.11.10@process/browser.js */ "./node_modules/_process@0.11.10@process/browser.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js"), __webpack_require__(/*! ./../../../process/browser.js */ "./node_modules/process/browser.js")))
 
 /***/ }),
 
-/***/ "./node_modules/_@tarojs_taro-weapp@2.2.6@@tarojs/taro-weapp/index.js":
-/*!****************************************************************************!*\
-  !*** ./node_modules/_@tarojs_taro-weapp@2.2.6@@tarojs/taro-weapp/index.js ***!
-  \****************************************************************************/
+/***/ "./node_modules/@tarojs/taro-weapp/index.js":
+/*!**************************************************!*\
+  !*** ./node_modules/@tarojs/taro-weapp/index.js ***!
+  \**************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = __webpack_require__(/*! ./dist/index */ "./node_modules/_@tarojs_taro-weapp@2.2.6@@tarojs/taro-weapp/dist/index.js").default;
+module.exports = __webpack_require__(/*! ./dist/index */ "./node_modules/@tarojs/taro-weapp/dist/index.js").default;
 module.exports.default = module.exports;
 
 /***/ }),
 
-/***/ "./node_modules/_@tarojs_taro@2.2.6@@tarojs/taro/dist/index.esm.js":
-/*!*************************************************************************!*\
-  !*** ./node_modules/_@tarojs_taro@2.2.6@@tarojs/taro/dist/index.esm.js ***!
-  \*************************************************************************/
+/***/ "./node_modules/@tarojs/taro/dist/index.esm.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/@tarojs/taro/dist/index.esm.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6451,28 +6451,28 @@ exports.memo = memo;
 exports.getIsUsingDiff = getIsUsingDiff;
 exports.setIsUsingDiff = setIsUsingDiff;
 //# sourceMappingURL=index.esm.js.map
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../_webpack@4.41.6@webpack/buildin/global.js */ "./node_modules/_webpack@4.41.6@webpack/buildin/global.js")))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
-/***/ "./node_modules/_babel-runtime@6.26.0@babel-runtime/regenerator/index.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/_babel-runtime@6.26.0@babel-runtime/regenerator/index.js ***!
-  \*******************************************************************************/
+/***/ "./node_modules/babel-runtime/regenerator/index.js":
+/*!*********************************************************!*\
+  !*** ./node_modules/babel-runtime/regenerator/index.js ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/_regenerator-runtime@0.11.1@regenerator-runtime/runtime-module.js");
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime-module.js");
 
 /***/ }),
 
-/***/ "./node_modules/_classnames@2.2.6@classnames/index.js":
-/*!************************************************************!*\
-  !*** ./node_modules/_classnames@2.2.6@classnames/index.js ***!
-  \************************************************************/
+/***/ "./node_modules/classnames/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/classnames/index.js ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6524,7 +6524,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
   if ( true && module.exports) {
     classNames.default = classNames;
     module.exports = classNames;
-  } else if ( true && _typeof(__webpack_require__(/*! !webpack amd options */ "./node_modules/_webpack@4.41.6@webpack/buildin/amd-options.js")) === 'object' && __webpack_require__(/*! !webpack amd options */ "./node_modules/_webpack@4.41.6@webpack/buildin/amd-options.js")) {
+  } else if ( true && _typeof(__webpack_require__(/*! !webpack amd options */ "./node_modules/webpack/buildin/amd-options.js")) === 'object' && __webpack_require__(/*! !webpack amd options */ "./node_modules/webpack/buildin/amd-options.js")) {
     // register as 'classnames', consistent with npm package name
     !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
       return classNames;
@@ -6537,10 +6537,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /***/ }),
 
-/***/ "./node_modules/_object-assign@4.1.1@object-assign/index.js":
-/*!******************************************************************!*\
-  !*** ./node_modules/_object-assign@4.1.1@object-assign/index.js ***!
-  \******************************************************************/
+/***/ "./node_modules/object-assign/index.js":
+/*!*********************************************!*\
+  !*** ./node_modules/object-assign/index.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6638,10 +6638,10 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 /***/ }),
 
-/***/ "./node_modules/_process@0.11.10@process/browser.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/_process@0.11.10@process/browser.js ***!
-  \**********************************************************/
+/***/ "./node_modules/process/browser.js":
+/*!*****************************************!*\
+  !*** ./node_modules/process/browser.js ***!
+  \*****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6836,10 +6836,10 @@ process.umask = function () {
 
 /***/ }),
 
-/***/ "./node_modules/_prop-types@15.7.2@prop-types/checkPropTypes.js":
-/*!**********************************************************************!*\
-  !*** ./node_modules/_prop-types@15.7.2@prop-types/checkPropTypes.js ***!
-  \**********************************************************************/
+/***/ "./node_modules/prop-types/checkPropTypes.js":
+/*!***************************************************!*\
+  !*** ./node_modules/prop-types/checkPropTypes.js ***!
+  \***************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6858,7 +6858,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 var printWarning = function printWarning() {};
 
 {
-  var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/_prop-types@15.7.2@prop-types/lib/ReactPropTypesSecret.js");
+  var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/prop-types/lib/ReactPropTypesSecret.js");
   var loggedTypeFailures = {};
   var has = Function.call.bind(Object.prototype.hasOwnProperty);
 
@@ -6939,10 +6939,10 @@ module.exports = checkPropTypes;
 
 /***/ }),
 
-/***/ "./node_modules/_prop-types@15.7.2@prop-types/factoryWithTypeCheckers.js":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/_prop-types@15.7.2@prop-types/factoryWithTypeCheckers.js ***!
-  \*******************************************************************************/
+/***/ "./node_modules/prop-types/factoryWithTypeCheckers.js":
+/*!************************************************************!*\
+  !*** ./node_modules/prop-types/factoryWithTypeCheckers.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6958,11 +6958,11 @@ module.exports = checkPropTypes;
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/_react-is@16.13.1@react-is/index.js");
-var assign = __webpack_require__(/*! object-assign */ "./node_modules/_object-assign@4.1.1@object-assign/index.js");
+var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
+var assign = __webpack_require__(/*! object-assign */ "./node_modules/object-assign/index.js");
 
-var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/_prop-types@15.7.2@prop-types/lib/ReactPropTypesSecret.js");
-var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ "./node_modules/_prop-types@15.7.2@prop-types/checkPropTypes.js");
+var ReactPropTypesSecret = __webpack_require__(/*! ./lib/ReactPropTypesSecret */ "./node_modules/prop-types/lib/ReactPropTypesSecret.js");
+var checkPropTypes = __webpack_require__(/*! ./checkPropTypes */ "./node_modules/prop-types/checkPropTypes.js");
 
 var has = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning = function printWarning() {};
@@ -7521,10 +7521,10 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
 
 /***/ }),
 
-/***/ "./node_modules/_prop-types@15.7.2@prop-types/index.js":
-/*!*************************************************************!*\
-  !*** ./node_modules/_prop-types@15.7.2@prop-types/index.js ***!
-  \*************************************************************/
+/***/ "./node_modules/prop-types/index.js":
+/*!******************************************!*\
+  !*** ./node_modules/prop-types/index.js ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7539,20 +7539,20 @@ module.exports = function (isValidElement, throwOnDirectAccess) {
  */
 
 {
-  var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/_react-is@16.13.1@react-is/index.js");
+  var ReactIs = __webpack_require__(/*! react-is */ "./node_modules/react-is/index.js");
 
   // By explicitly using `prop-types` you are opting into new development behavior.
   // http://fb.me/prop-types-in-prod
   var throwOnDirectAccess = true;
-  module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ "./node_modules/_prop-types@15.7.2@prop-types/factoryWithTypeCheckers.js")(ReactIs.isElement, throwOnDirectAccess);
+  module.exports = __webpack_require__(/*! ./factoryWithTypeCheckers */ "./node_modules/prop-types/factoryWithTypeCheckers.js")(ReactIs.isElement, throwOnDirectAccess);
 }
 
 /***/ }),
 
-/***/ "./node_modules/_prop-types@15.7.2@prop-types/lib/ReactPropTypesSecret.js":
-/*!********************************************************************************!*\
-  !*** ./node_modules/_prop-types@15.7.2@prop-types/lib/ReactPropTypesSecret.js ***!
-  \********************************************************************************/
+/***/ "./node_modules/prop-types/lib/ReactPropTypesSecret.js":
+/*!*************************************************************!*\
+  !*** ./node_modules/prop-types/lib/ReactPropTypesSecret.js ***!
+  \*************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7572,10 +7572,10 @@ module.exports = ReactPropTypesSecret;
 
 /***/ }),
 
-/***/ "./node_modules/_react-is@16.13.1@react-is/cjs/react-is.development.js":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/_react-is@16.13.1@react-is/cjs/react-is.development.js ***!
-  \*****************************************************************************/
+/***/ "./node_modules/react-is/cjs/react-is.development.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/react-is/cjs/react-is.development.js ***!
+  \***********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7765,10 +7765,10 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 /***/ }),
 
-/***/ "./node_modules/_react-is@16.13.1@react-is/index.js":
-/*!**********************************************************!*\
-  !*** ./node_modules/_react-is@16.13.1@react-is/index.js ***!
-  \**********************************************************/
+/***/ "./node_modules/react-is/index.js":
+/*!****************************************!*\
+  !*** ./node_modules/react-is/index.js ***!
+  \****************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7776,15 +7776,15 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 
 
 {
-  module.exports = __webpack_require__(/*! ./cjs/react-is.development */ "./node_modules/_react-is@16.13.1@react-is/cjs/react-is.development.js");
+  module.exports = __webpack_require__(/*! ./cjs/react-is.development */ "./node_modules/react-is/cjs/react-is.development.js");
 }
 
 /***/ }),
 
-/***/ "./node_modules/_regenerator-runtime@0.11.1@regenerator-runtime/runtime-module.js":
-/*!****************************************************************************************!*\
-  !*** ./node_modules/_regenerator-runtime@0.11.1@regenerator-runtime/runtime-module.js ***!
-  \****************************************************************************************/
+/***/ "./node_modules/regenerator-runtime/runtime-module.js":
+/*!************************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -7814,7 +7814,7 @@ var oldRuntime = hadRuntime && g.regeneratorRuntime;
 // Force reevalutation of runtime.js.
 g.regeneratorRuntime = undefined;
 
-module.exports = __webpack_require__(/*! ./runtime */ "./node_modules/_regenerator-runtime@0.11.1@regenerator-runtime/runtime.js");
+module.exports = __webpack_require__(/*! ./runtime */ "./node_modules/regenerator-runtime/runtime.js");
 
 if (hadRuntime) {
   // Restore the original runtime.
@@ -7830,10 +7830,10 @@ if (hadRuntime) {
 
 /***/ }),
 
-/***/ "./node_modules/_regenerator-runtime@0.11.1@regenerator-runtime/runtime.js":
-/*!*********************************************************************************!*\
-  !*** ./node_modules/_regenerator-runtime@0.11.1@regenerator-runtime/runtime.js ***!
-  \*********************************************************************************/
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8539,14 +8539,14 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 function () {
   return this;
 }() || {Function: Function,Boolean: Boolean,Object: Object,Number: Number,Array: Array,Date: Date,String: String,Symbol: Symbol,Error: Error,TypeError: TypeError,Map: Map,Set: Set,WeakMap: WeakMap,WeakSet: WeakSet,ArrayBuffer: ArrayBuffer,Math: Math,Promise: Promise,RegExp: RegExp,DataView: DataView,isFinite: isFinite,parseInt: parseInt,parseFloat: parseFloat,Float32Array: Float32Array,Float64Array: Float64Array,Int8Array: Int8Array,Int16Array: Int16Array,Int32Array: Int32Array,Uint8Array: Uint8Array,Uint16Array: Uint16Array,Uint32Array: Uint32Array,Uint8ClampedArray: Uint8ClampedArray,setTimeout: setTimeout,clearTimeout: clearTimeout,setInterval: setInterval,clearInterval: clearInterval});
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../_webpack@4.41.6@webpack/buildin/module.js */ "./node_modules/_webpack@4.41.6@webpack/buildin/module.js")(module)))
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../webpack/buildin/module.js */ "./node_modules/webpack/buildin/module.js")(module)))
 
 /***/ }),
 
-/***/ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/button.scss":
-/*!*******************************************************************************!*\
-  !*** ./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/button.scss ***!
-  \*******************************************************************************/
+/***/ "./node_modules/taro-ui/dist/style/components/button.scss":
+/*!****************************************************************!*\
+  !*** ./node_modules/taro-ui/dist/style/components/button.scss ***!
+  \****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8554,10 +8554,10 @@ function () {
 
 /***/ }),
 
-/***/ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/icon.scss":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/icon.scss ***!
-  \*****************************************************************************/
+/***/ "./node_modules/taro-ui/dist/style/components/icon.scss":
+/*!**************************************************************!*\
+  !*** ./node_modules/taro-ui/dist/style/components/icon.scss ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8565,10 +8565,10 @@ function () {
 
 /***/ }),
 
-/***/ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/loading.scss":
-/*!********************************************************************************!*\
-  !*** ./node_modules/_taro-ui@2.3.4@taro-ui/dist/style/components/loading.scss ***!
-  \********************************************************************************/
+/***/ "./node_modules/taro-ui/dist/style/components/loading.scss":
+/*!*****************************************************************!*\
+  !*** ./node_modules/taro-ui/dist/style/components/loading.scss ***!
+  \*****************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8576,10 +8576,10 @@ function () {
 
 /***/ }),
 
-/***/ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/weapp/common/component.tsx":
-/*!*****************************************************************************!*\
-  !*** ./node_modules/_taro-ui@2.3.4@taro-ui/dist/weapp/common/component.tsx ***!
-  \*****************************************************************************/
+/***/ "./node_modules/taro-ui/dist/weapp/common/component.tsx":
+/*!**************************************************************!*\
+  !*** ./node_modules/taro-ui/dist/weapp/common/component.tsx ***!
+  \**************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8589,12 +8589,13 @@ function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-var _taroWeapp = __webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/_@tarojs_taro-weapp@2.2.6@@tarojs/taro-weapp/index.js");
+var _taroWeapp = __webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/@tarojs/taro-weapp/index.js");
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -8615,49 +8616,48 @@ var objectToString = function objectToString(style) {
   }
   return '';
 };
-var AtComponent = /** @class */function () {
-  var AtComponent = function (_Component) {
-    _inherits(AtComponent, _Component);
 
-    function AtComponent() {
-      _classCallCheck(this, AtComponent);
+var AtComponent = function (_Component) {
+  _inherits(AtComponent, _Component);
 
-      return _possibleConstructorReturn(this, (AtComponent.__proto__ || Object.getPrototypeOf(AtComponent)).apply(this, arguments));
-    }
+  function AtComponent() {
+    _classCallCheck(this, AtComponent);
 
-    _createClass(AtComponent, [{
-      key: 'mergeStyle',
+    return _possibleConstructorReturn(this, (AtComponent.__proto__ || Object.getPrototypeOf(AtComponent)).apply(this, arguments));
+  }
 
-      /**
-       * 合并 style
-       * @param {Object|String} style1
-       * @param {Object|String} style2
-       * @returns {String}
-       */
-      value: function mergeStyle(style1, style2) {
-        if (style1 && (typeof style1 === 'undefined' ? 'undefined' : _typeof(style1)) === 'object' && style2 && (typeof style2 === 'undefined' ? 'undefined' : _typeof(style2)) === 'object') {
-          return Object.assign({}, style1, style2);
-        }
-        return objectToString(style1) + objectToString(style2);
+  _createClass(AtComponent, [{
+    key: 'mergeStyle',
+
+    /**
+     * 合并 style
+     * @param {Object|String} style1
+     * @param {Object|String} style2
+     * @returns {String}
+     */
+    value: function mergeStyle(style1, style2) {
+      if (style1 && (typeof style1 === 'undefined' ? 'undefined' : _typeof(style1)) === 'object' && style2 && (typeof style2 === 'undefined' ? 'undefined' : _typeof(style2)) === 'object') {
+        return Object.assign({}, style1, style2);
       }
-    }]);
+      return objectToString(style1) + objectToString(style2);
+    }
+  }]);
 
-    return AtComponent;
-  }(_taroWeapp.Component);
-
-  AtComponent.options = {
-    addGlobalClass: true
-  };
   return AtComponent;
-}();
+}(_taroWeapp.Component);
+
 exports.default = AtComponent;
+
+AtComponent.options = {
+  addGlobalClass: true
+};
 
 /***/ }),
 
-/***/ "./node_modules/_taro-ui@2.3.4@taro-ui/dist/weapp/common/utils.ts":
-/*!************************************************************************!*\
-  !*** ./node_modules/_taro-ui@2.3.4@taro-ui/dist/weapp/common/utils.ts ***!
-  \************************************************************************/
+/***/ "./node_modules/taro-ui/dist/weapp/common/utils.ts":
+/*!*********************************************************!*\
+  !*** ./node_modules/taro-ui/dist/weapp/common/utils.ts ***!
+  \*********************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -8669,7 +8669,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.delayGetScrollOffset = exports.delayGetClientRect = exports.handleTouchScroll = exports.pxTransform = exports.isTest = exports.initTestEnv = exports.getEventDetail = exports.uuid = exports.delayQuerySelector = exports.delay = undefined;
 
-var _taroWeapp = __webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/_@tarojs_taro-weapp@2.2.6@@tarojs/taro-weapp/index.js");
+var _taroWeapp = __webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/@tarojs/taro-weapp/index.js");
 
 var _taroWeapp2 = _interopRequireDefault(_taroWeapp);
 
@@ -8866,7 +8866,7 @@ exports.delayGetScrollOffset = delayGetScrollOffset;
 
 /***/ }),
 
-/***/ "./node_modules/_webpack@4.41.6@webpack/buildin/amd-options.js":
+/***/ "./node_modules/webpack/buildin/amd-options.js":
 /*!****************************************!*\
   !*** (webpack)/buildin/amd-options.js ***!
   \****************************************/
@@ -8880,7 +8880,7 @@ module.exports = __webpack_amd_options__;
 
 /***/ }),
 
-/***/ "./node_modules/_webpack@4.41.6@webpack/buildin/global.js":
+/***/ "./node_modules/webpack/buildin/global.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/global.js ***!
   \***********************************/
@@ -8915,7 +8915,7 @@ module.exports = g;
 
 /***/ }),
 
-/***/ "./node_modules/_webpack@4.41.6@webpack/buildin/module.js":
+/***/ "./node_modules/webpack/buildin/module.js":
 /*!***********************************!*\
   !*** (webpack)/buildin/module.js ***!
   \***********************************/

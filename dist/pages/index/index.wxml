@@ -18,9 +18,7 @@
             </view>
         </view>
         <view class="button">
-            <at-button open-type="getUserInfo" compid="{{$compid__102}}">获取题库</at-button>
-            <at-button open-type="getUserInfo" compid="{{$compid__103}}">获取测试结果</at-button>
-            <button open-type="getUserInfo" bindgetuserinfo="getUserInfo">开始测试</button>
+            <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">开始测试</button>
         </view>
     </view>
 </block>

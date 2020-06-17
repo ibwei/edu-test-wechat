@@ -185,8 +185,6 @@ export default class Index extends Component {
   scoreSum = 0;
   // 选择选项
   chooesAnswer(value, key) {
-    console.log('value :>> ', value);
-    console.log('key :>> ', key);
     this.setState({
       chooesAnswer: {
         value: value,

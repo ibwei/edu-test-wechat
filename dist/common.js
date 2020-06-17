@@ -15,13 +15,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.pushAnwser = exports.getResult = exports.getList = exports.login = undefined;
 
-var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/_babel-runtime@6.26.0@babel-runtime/regenerator/index.js");
+var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _taroWeapp = __webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/_@tarojs_taro-weapp@2.2.6@@tarojs/taro-weapp/index.js");
+var _taroWeapp = __webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/@tarojs/taro-weapp/index.js");
 
 var _taroWeapp2 = _interopRequireDefault(_taroWeapp);
 

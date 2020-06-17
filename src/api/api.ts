@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro';
+import Taro from '@tarojs/taro'
 const url = 'http://edu.pinxianhs.com/api/wechat/';
 export const login = async () => {
   const { code } = await Taro.login();
@@ -26,7 +26,7 @@ export const login = async () => {
   });
 };
 // 获取题目列表
-export const getList = async (): Promise => {
+export const getList = async (): Promise<any> => {
   let resData = '';
   await Taro.request({
     method: 'GET',
@@ -45,7 +45,7 @@ export const getList = async (): Promise => {
   return Promise.resolve(resData);
 };
 // 获取结果
-export const getResult = async (): Promise => {
+export const getResult = async (): Promise<any> => {
   let resData = '';
   const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
   await Taro.request({
@@ -64,7 +64,7 @@ export const getResult = async (): Promise => {
   });
   return Promise.resolve(resData);
 };
-export const pushAnwser = async (params): Promise => {
+export const pushAnwser = async (params): Promise<any> => {
   let resData = '';
   const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
   await Taro.request({

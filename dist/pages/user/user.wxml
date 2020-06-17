@@ -1,7 +1,7 @@
 <block wx:if="{{$taroCompReady}}">
     <view class="index">
         <view class="userInfo">
-            <at-avatar compid="{{$compid__15}}"></at-avatar>
+            <at-avatar compid="{{$compid__8}}"></at-avatar>
             <view class="introduce">
                 <view class="name"><text>张三</text>
                 </view>
@@ -12,10 +12,10 @@
         <view class="card">
             <view class="cardItem">
                 <view class="cardName">
-                    <at-icon compid="{{$compid__16}}"></at-icon><text class="iconLeft">测试结果</text>
+                    <at-icon compid="{{$compid__9}}"></at-icon><text class="iconLeft">测试结果</text>
                 </view>
                 <view class="cardArrow">
-                    <at-icon compid="{{$compid__17}}"></at-icon>
+                    <at-icon compid="{{$compid__10}}"></at-icon>
                 </view>
             </view>
         </view>

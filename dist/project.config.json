@@ -1,17 +1,15 @@
 {
 	"projectname": "xueshang",
 	"description": "一个测试学生学商的小程序",
-	"appid": "wxeb5d40ea927d8abc",
+	"appid": "wx2f79035936826093",
 	"setting": {
 		"urlCheck": false,
 		"es6": true,
-		"enhance": true,
-		"postcss": false,
+		"postcss": true,
 		"preloadBackgroundData": false,
-		"minified": false,
+		"minified": true,
 		"newFeature": true,
 		"coverView": true,
-		"nodeModules": false,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
@@ -19,15 +17,15 @@
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
 		"uploadWithSourceMap": true,
-		"compileHotReLoad": false,
 		"babelSetting": {
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useIsolateContext": true,
-		"useCompilerModule": true,
-		"userConfirmedUseCompilerModuleSwitch": false
+		"useCompilerModule": false,
+		"userConfirmedUseCompilerModuleSwitch": false,
+		"compileHotReLoad": false,
+		"useIsolateContext": true
 	},
 	"compileType": "miniprogram",
 	"simulatorType": "wechat",

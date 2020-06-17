@@ -4,10 +4,10 @@
 	"appid": "wx2f79035936826093",
 	"setting": {
 		"urlCheck": false,
-		"es6": true,
-		"postcss": true,
+		"es6": false,
+		"postcss": false,
 		"preloadBackgroundData": false,
-		"minified": true,
+		"minified": false,
 		"newFeature": true,
 		"coverView": true,
 		"autoAudits": false,
@@ -22,7 +22,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
-		"useCompilerModule": false,
+		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false,
 		"compileHotReLoad": false,
 		"useIsolateContext": true

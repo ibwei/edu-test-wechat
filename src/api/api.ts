@@ -1,52 +1,70 @@
 import Taro from '@tarojs/taro'
 const url = 'http://edu.pinxianhs.com/api/wechat/';
-export const login = async () => {
+
+// 登录
+export const login = async (): Promise<any> => {
+  Taro.showLoading({
+    title: '加载中...',
+  });
   const { code } = await Taro.login();
   const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
-  console.log('code :>> ', code);
+  let resData: any = '';
   await Taro.request({
     method: 'POST',
     url: url + 'user/login',
-    params: {
-      token: Taro.getStorageSync('token'),
-    },
     data: {
       code: code,
+      token: Taro.getStorageSync('token'),
       ...userInfo,
     },
-  }).then((res) => {
-    const { data, err_code, err_msg } = res;
-    if (err_code) {
-      console.log(err_msg);
-    } else {
-      console.log(res);
-      Taro.setStorageSync('token', data.token);
-      Taro.setStorageSync('userInfo', JSON.stringify(data.user));
-    }
+    success: function (res) {
+      const { data, err_code, err_msg } = res;
+      resData = res;
+      if (err_code) {
+        console.log(err_msg);
+      } else {
+        Taro.setStorageSync('token', data.token);
+        Taro.setStorageSync('userInfo', JSON.stringify(data.user));
+        console.log('data.user :>> ', data.user);
+      }
+      Taro.hideLoading();
+    },
+    fail: function (e) {
+      console.log('e :>> ', e);
+      Taro.hideLoading();
+    },
   });
+  return Promise.resolve(resData);
 };
 // 获取题目列表
 export const getList = async (): Promise<any> => {
-  let resData = '';
+  Taro.showLoading({
+    title: '获取题目中...',
+  });
+  let resData: any;
+  // await Taro.addInterceptor()
   await Taro.request({
     method: 'GET',
     url: url + 'test/list',
     data: { token: Taro.getStorageSync('token') },
-  }).then((res) => {
-    const { data, err_code, err_msg } = res;
-    if (err_code == 401) {
-      console.log('err_msg :>> ', err_msg);
-      login();
-      getList();
-    } else {
+    success: function (res) {
+      Taro.hideLoading();
+      console.log('success :>> ', res);
       resData = res;
-    }
+    },
+    fail: function (res) {
+      Taro.hideLoading();
+      console.log('fail :>> ', res);
+      // if (res.err_code == 401) {
+      //   console.log('1 :>> ', 1);
+      // }
+    },
   });
   return Promise.resolve(resData);
 };
 // 获取结果
 export const getResult = async (): Promise<any> => {
-  let resData = '';
+  let resData: any;
   const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
   await Taro.request({
     method: 'GET',
@@ -64,8 +82,9 @@ export const getResult = async (): Promise<any> => {
   });
   return Promise.resolve(resData);
 };
+// 提交答案
 export const pushAnwser = async (params): Promise<any> => {
-  let resData = '';
+  let resData: any;
   const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
   await Taro.request({
     method: 'POST',
@@ -77,6 +96,34 @@ export const pushAnwser = async (params): Promise<any> => {
     if (err_code == 401) {
       login();
     }
+  });
+  return Promise.resolve(resData);
+};
+
+// 提交答案
+export const editStudet = async (params): Promise<any> => {
+  Taro.showLoading({
+    title: '保存中...',
+  });
+  let resData: any;
+  const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
+  await Taro.request({
+    method: 'POST',
+    url: url + 'user/completedInfo',
+    data: { token: Taro.getStorageSync('token'), ...params },
+    success: function (res) {
+      console.log('res :>> ', res);
+      const { data, err_code, err_msg } = res;
+      Taro.hideLoading();
+      if (err_code == 0) {
+        Taro.setStorageSync('userInfo', data);
+        resData = res;
+      }
+    },
+    fail: function (res) {
+      Taro.hideLoading();
+      console.log('res :>> ', res);
+    },
   });
   return Promise.resolve(resData);
 };

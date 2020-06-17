@@ -14,6 +14,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
@@ -31,6 +33,14 @@ __webpack_require__(/*! ./index.less */ "./src/pages/index/index.less");
 __webpack_require__(/*! taro-ui/dist/style/components/button.scss */ "./node_modules/taro-ui/dist/style/components/button.scss");
 
 __webpack_require__(/*! taro-ui/dist/style/components/loading.scss */ "./node_modules/taro-ui/dist/style/components/loading.scss");
+
+__webpack_require__(/*! taro-ui/dist/style/components/curtain.scss */ "./node_modules/taro-ui/dist/style/components/curtain.scss");
+
+__webpack_require__(/*! taro-ui/dist/style/components/form.scss */ "./node_modules/taro-ui/dist/style/components/form.scss");
+
+__webpack_require__(/*! taro-ui/dist/style/components/input.scss */ "./node_modules/taro-ui/dist/style/components/input.scss");
+
+__webpack_require__(/*! taro-ui/dist/style/components/modal.scss */ "./node_modules/taro-ui/dist/style/components/modal.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -54,30 +64,33 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = [], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__17", "$compid__18", "$compid__19", "$compid__20", "$compid__21", "$compid__22", "$compid__23", "$compid__24", "shouquanBox", "infoShow"], _this.config = {
       navigationBarTitleText: '学商系统'
-    }, _this.customComponents = [], _temp), _possibleConstructorReturn(_this, _ret);
+    }, _this.customComponents = ["AtModal", "AtModalContent", "AtModalAction", "AtCurtain", "AtForm", "AtInput", "AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Index, [{
     key: '_constructor',
-    value: function _constructor() {
-      _get(Index.prototype.__proto__ || Object.getPrototypeOf(Index.prototype), '_constructor', this).apply(this, arguments);
-      /* getUserInfo() {
-        Taro.authorize({
-          scope: 'scope.userInfo',
-          success() {
-            Taro.getUserInfo({
-              success(res) {
-                console.log('res :>> ', res);
-              },
-            });
-          },
-          fail(res) {
-            console.log('res :>> ', res);
-          },
-        });
-      } */
+
+
+    /* getUserInfo() {
+      Taro.authorize({
+        scope: 'scope.userInfo',
+        success() {
+          Taro.getUserInfo({
+            success(res) {
+              console.log('res :>> ', res);
+            },
+          });
+        },
+        fail(res) {
+          console.log('res :>> ', res);
+        },
+      });
+    } */
+    value: function _constructor(props) {
+      _get(Index.prototype.__proto__ || Object.getPrototypeOf(Index.prototype), '_constructor', this).call(this, props);
+      this.isLogin = false;
       /**
        * 指定config的类型声明为: Taro.Config
        *
@@ -85,6 +98,17 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
        * 对于像 navigationBarTextStyle: 'black' 这样的推导出的类型是 string
        * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
        */
+
+      this.studentInfo = {
+        name: '',
+        school: '',
+        grade: '',
+        tel: ''
+      };
+      this.state = {
+        shouquanBox: false,
+        infoShow: false
+      };
       this.$$refs = new _taroWeapp2.default.RefsArray();
     }
   }, {
@@ -92,26 +116,35 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
     value: function componentWillMount() {}
   }, {
     key: 'componentDidMount',
-    value: function componentDidMount() {
-      _taroWeapp2.default.getUserInfo({
-        success: function success(res) {
-          console.log('res :>> ', res);
-          var userInfo = res.userInfo;
-
-          _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(userInfo));
-          (0, _api.login)();
-        },
-        fail: function fail(res) {
-          console.log('res :>> ', res);
-        }
-      });
-    }
+    value: function componentDidMount() {}
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {}
   }, {
     key: 'componentDidShow',
-    value: function componentDidShow() {}
+    value: function componentDidShow() {
+      _taroWeapp2.default.getUserInfo({
+        success: function success(res) {
+          var userInfo = res.userInfo;
+
+          console.log('userInfo :>> ', userInfo);
+          _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(userInfo));
+          _taroWeapp2.default.setStorageSync('shouquan', JSON.stringify(true));
+          (0, _api.login)().then(function (res) {
+            if (res.err_code) {
+              console.log('res :>> ', res);
+            } else {
+              _taroWeapp2.default.setStorageSync('isLogin', JSON.stringify(true));
+            }
+          });
+        },
+        fail: function fail(res) {
+          console.log('res :>> ', res);
+          _taroWeapp2.default.setStorageSync('shouquan', JSON.stringify(false));
+          _taroWeapp2.default.setStorageSync('isLogin', JSON.stringify(false));
+        }
+      });
+    }
   }, {
     key: 'componentDidHide',
     value: function componentDidHide() {}
@@ -119,27 +152,134 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
     key: 'getUserInfo',
     value: function getUserInfo(res) {
       if (res.detail.userInfo) {
+        _taroWeapp2.default.setStorageSync('shouquan', JSON.stringify(true));
+        this.setState({
+          shouquanBox: false
+        });
         console.log('res :>> ', res);
         var userInfo = res.detail.userInfo;
 
         console.log('userInfo :>> ', userInfo);
         _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(userInfo));
-        (0, _api.login)();
+        (0, _api.login)().then(function (res) {
+          _taroWeapp2.default.setStorageSync('isLogin', JSON.stringify(true));
+          console.log('res :>> ', res);
+          // const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
+        });
+      }
+    }
+    // 跳转测试页面
+
+  }, {
+    key: 'goTest',
+    value: function goTest() {
+      var _this2 = this;
+
+      var shouquan = JSON.parse(_taroWeapp2.default.getStorageSync('shouquan'));
+      var isLogin = JSON.parse(_taroWeapp2.default.getStorageSync('isLogin'));
+      if (shouquan == false) {
+        this.setState({
+          shouquanBox: true
+        });
+        return false;
+      }
+      if (isLogin == true) {
+        var userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
+        console.log('userInfo :>> ', userInfo);
+        if (userInfo.student_name == '') {
+          this.setState({
+            infoShow: true
+          });
+        } else {
+          _taroWeapp2.default.navigateTo({
+            url: '/pages/question/index'
+          });
+        }
+      } else {
+        (0, _api.login)().then(function (res) {
+          _taroWeapp2.default.setStorageSync('isLogin', JSON.stringify(true));
+          var userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
+          console.log('userInfo :>> ', userInfo);
+          if (userInfo.student_name == '') {
+            _this2.setState({
+              infoShow: true
+            });
+          }
+          // if(userInfo.student)
+        });
       }
     }
   }, {
-    key: 'getList',
-    value: function getList() {
-      (0, _api.getList)().then(function (res) {
-        console.log('res :>> ', res);
+    key: 'onClose',
+    value: function onClose() {
+      this.setState({
+        infoShow: false
       });
     }
   }, {
-    key: 'getresult',
-    value: function getresult() {
-      (0, _api.getResult)().then(function (res) {
-        console.log('res :>> ', res);
+    key: 'onSubmit',
+    value: function onSubmit() {
+      var _this3 = this;
+
+      console.log('this.studentInfo :>> ', this.studentInfo);
+      if (this.studentInfo.name.trim() == '') {
+        _taroWeapp2.default.showToast({
+          title: '学生姓名不能为空',
+          icon: 'none',
+          duration: 1000
+        });
+        return false;
+      }
+      if (this.studentInfo.school.trim() == '') {
+        _taroWeapp2.default.showToast({
+          title: '学校不能为空',
+          icon: 'none',
+          duration: 1000
+        });
+        return false;
+      }
+      if (this.studentInfo.grade.trim() == '') {
+        _taroWeapp2.default.showToast({
+          title: '年级不能为空',
+          icon: 'none',
+          duration: 1000
+        });
+        return false;
+      }
+      if (this.studentInfo.tel.trim() == '') {
+        _taroWeapp2.default.showToast({
+          title: '家长电话不能为空',
+          icon: 'none',
+          duration: 1000
+        });
+        return false;
+      }
+      var params = {
+        parent_phone: this.studentInfo.tel,
+        school_name: this.studentInfo.school,
+        student_name: this.studentInfo.name,
+        grade: this.studentInfo.grade
+      };
+      console.log('params :>> ', params);
+      (0, _api.editStudet)(params).then(function (res) {
+        if (res.data.err_code == 0) {
+          _this3.onClose();
+        }
       });
+    }
+  }, {
+    key: 'onChange',
+    value: function onChange(field, val) {
+      console.log('field :>> ', field);
+      console.log('val :>> ', val);
+      this.studentInfo[field] = val;
+      return val;
+    }
+  }, {
+    key: 'onChangeName',
+    value: function onChangeName(val) {
+      console.log('this.studentInfo.name :>> ', this.studentInfo.name);
+      return val;
     }
   }, {
     key: '_createData',
@@ -149,13 +289,109 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __isRunloopRef = arguments[2];
       var __prefix = this.$prefix;
       ;
-      Object.assign(this.__state, {});
+
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__17"),
+          _genCompid2 = _slicedToArray(_genCompid, 2),
+          $prevCompid__17 = _genCompid2[0],
+          $compid__17 = _genCompid2[1];
+
+      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__18"),
+          _genCompid4 = _slicedToArray(_genCompid3, 2),
+          $prevCompid__18 = _genCompid4[0],
+          $compid__18 = _genCompid4[1];
+
+      var _genCompid5 = (0, _taroWeapp.genCompid)(__prefix + "$compid__19"),
+          _genCompid6 = _slicedToArray(_genCompid5, 2),
+          $prevCompid__19 = _genCompid6[0],
+          $compid__19 = _genCompid6[1];
+
+      var _genCompid7 = (0, _taroWeapp.genCompid)(__prefix + "$compid__20"),
+          _genCompid8 = _slicedToArray(_genCompid7, 2),
+          $prevCompid__20 = _genCompid8[0],
+          $compid__20 = _genCompid8[1];
+
+      var _genCompid9 = (0, _taroWeapp.genCompid)(__prefix + "$compid__21"),
+          _genCompid10 = _slicedToArray(_genCompid9, 2),
+          $prevCompid__21 = _genCompid10[0],
+          $compid__21 = _genCompid10[1];
+
+      var _genCompid11 = (0, _taroWeapp.genCompid)(__prefix + "$compid__22"),
+          _genCompid12 = _slicedToArray(_genCompid11, 2),
+          $prevCompid__22 = _genCompid12[0],
+          $compid__22 = _genCompid12[1];
+
+      var _genCompid13 = (0, _taroWeapp.genCompid)(__prefix + "$compid__23"),
+          _genCompid14 = _slicedToArray(_genCompid13, 2),
+          $prevCompid__23 = _genCompid14[0],
+          $compid__23 = _genCompid14[1];
+
+      var _genCompid15 = (0, _taroWeapp.genCompid)(__prefix + "$compid__24"),
+          _genCompid16 = _slicedToArray(_genCompid15, 2),
+          $prevCompid__24 = _genCompid16[0],
+          $compid__24 = _genCompid16[1];
+
+      _taroWeapp.propsManager.set({
+        "isOpened": this.__state.shouquanBox
+      }, $compid__17, $prevCompid__17);
+      _taroWeapp.propsManager.set({
+        "isOpened": this.__state.infoShow,
+        "onClose": this.onClose.bind(this)
+      }, $compid__18, $prevCompid__18);
+      _taroWeapp.propsManager.set({
+        "onSubmit": this.onSubmit.bind(this)
+      }, $compid__19, $prevCompid__19);
+      _taroWeapp.propsManager.set({
+        "name": "value",
+        "title": '\u5B66\u751F\u59D3\u540D:',
+        "type": "text",
+        "placeholder": '\u8BF7\u8F93\u5165\u5B66\u751F\u59D3\u540D',
+        "value": this.studentInfo.name,
+        "onChange": this.onChange.bind(this, 'name')
+      }, $compid__20, $prevCompid__20);
+      _taroWeapp.propsManager.set({
+        "name": "value",
+        "title": '\u5B66\u3000\u3000\u6821:',
+        "type": "text",
+        "placeholder": '\u8BF7\u8F93\u5165\u5C31\u8BFB\u5B66\u6821',
+        "value": this.studentInfo.school,
+        "onChange": this.onChange.bind(this, 'school')
+      }, $compid__21, $prevCompid__21);
+      _taroWeapp.propsManager.set({
+        "name": "value",
+        "title": '\u5E74\u3000\u3000\u7EA7:',
+        "type": "text",
+        "placeholder": '\u8BF7\u8F93\u5165\u5C31\u8BFB\u5E74\u7EA7',
+        "value": this.studentInfo.grade,
+        "onChange": this.onChange.bind(this, 'grade')
+      }, $compid__22, $prevCompid__22);
+      _taroWeapp.propsManager.set({
+        "name": "value",
+        "title": '\u5BB6\u957F\u7535\u8BDD:',
+        "type": "phone",
+        "placeholder": '\u8BF7\u8F93\u5165\u5BB6\u957F\u7535\u8BDD',
+        "value": this.studentInfo.tel,
+        "onChange": this.onChange.bind(this, 'tel')
+      }, $compid__23, $prevCompid__23);
+      _taroWeapp.propsManager.set({
+        "formType": "submit",
+        "className": "btn"
+      }, $compid__24, $prevCompid__24);
+      Object.assign(this.__state, {
+        $compid__17: $compid__17,
+        $compid__18: $compid__18,
+        $compid__19: $compid__19,
+        $compid__20: $compid__20,
+        $compid__21: $compid__21,
+        $compid__22: $compid__22,
+        $compid__23: $compid__23,
+        $compid__24: $compid__24
+      });
       return this.__state;
     }
   }]);
 
   return Index;
-}(_taroWeapp.Component), _class.$$events = ["getUserInfo"], _class.$$componentPath = "pages/index/index", _temp2);
+}(_taroWeapp.Component), _class.$$events = ["goTest", "getUserInfo"], _class.$$componentPath = "pages/index/index", _temp2);
 exports.default = Index;
 
 Component(__webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/@tarojs/taro-weapp/index.js").default.createComponent(Index, true));
@@ -170,6 +406,39 @@ Component(__webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/@tarojs/
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__.p + "pages/index/index.wxml";
+
+/***/ }),
+
+/***/ "./node_modules/taro-ui/dist/style/components/curtain.scss":
+/*!*****************************************************************!*\
+  !*** ./node_modules/taro-ui/dist/style/components/curtain.scss ***!
+  \*****************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/taro-ui/dist/style/components/form.scss":
+/*!**************************************************************!*\
+  !*** ./node_modules/taro-ui/dist/style/components/form.scss ***!
+  \**************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/taro-ui/dist/style/components/input.scss":
+/*!***************************************************************!*\
+  !*** ./node_modules/taro-ui/dist/style/components/input.scss ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
 
 /***/ }),
 

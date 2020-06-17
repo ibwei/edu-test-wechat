@@ -18,7 +18,32 @@
             </view>
         </view>
         <view class="button">
-            <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">开始测试</button>
+            <button class="btn" bindtap="goTest" data-e-tap-so="this">开始测试</button>
         </view>
+        <at-modal compid="{{$compid__17}}">
+            <at-modal-content>
+                <view class="tishi-img">
+                    <image src="../../assets/images/shijiashi.jpg"></image>
+                </view>
+                <view class="quanxian-content">学商测试申请获得以下权限：</view>
+                <view class="quanxian">获得你的公开信息(昵称、头像等)</view>
+            </at-modal-content>
+            <at-modal-action>
+                <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信授权</button>
+            </at-modal-action>
+        </at-modal>
+        <at-curtain compid="{{$compid__18}}">
+            <view class="tishi">
+                <at-form compid="{{$compid__19}}">
+                    <at-input compid="{{$compid__20}}"></at-input>
+                    <at-input compid="{{$compid__21}}"></at-input>
+                    <at-input compid="{{$compid__22}}"></at-input>
+                    <at-input compid="{{$compid__23}}"></at-input>
+                    <view class="btn-sub">
+                        <at-button compid="{{$compid__24}}">保存</at-button>
+                    </view>
+                </at-form>
+            </view>
+        </at-curtain>
     </view>
 </block>

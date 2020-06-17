@@ -888,3 +888,313 @@
   content: "\e964";
 }
 
+@charset "UTF-8";
+/**
+ * Default variables
+ */
+/**
+ * Mixes a color with white. It's different from lighten()
+ *
+ * @param {color} $color
+ * @param {number (percentage)} $percent [The amout of white to be mixed in]
+ * @return {color}
+ *
+ * @example
+ *   .element {
+ *     background-color: tint(#6ecaa6 , 40%);
+ *   }
+ *
+ *   // CSS Output
+ *   .element {
+ *     background-color: #a8dfc9;
+ *   }
+ */
+/* The Color of O2Team Brand */
+/* Color */
+/* Color Palette */
+/* Text Color */
+/* Link */
+/* 背景色 */
+/* 边框颜色 */
+/* 图标颜色 */
+/* Border Radius */
+/* 透明度 */
+/* Font */
+/* Line Height */
+/* 水平间距 */
+/* 垂直间距 */
+/* 图标尺寸 */
+/* z-index */
+/* timing function */
+/**
+* CSS cubic-bezier timing functions
+* http://bourbon.io/docs/#timing-functions
+*/
+/**
+ * 组件变量
+ */
+/* Accordion */
+/* Activity Indicator */
+/* Avatar */
+/* Badge */
+/* Button */
+/* Float Button */
+/* Calendar */
+/* Card */
+/* Checkbox */
+/* Countdown */
+/* Curtain */
+/* Divider */
+/* Drawer */
+/* FloatLayout */
+/* Grid */
+/* ImagePicker */
+/* Indexes */
+/* InputNumber */
+/* Input */
+/* List */
+/* LoadMore */
+/* Loading */
+/* Message */
+/* Modal */
+/* NavBar */
+/* NoticeBar */
+/* Pagination */
+/* Progress */
+/* Radio */
+/* Range */
+/* Rate */
+/* SearchBar */
+/* SegmentedControl */
+/* Slider */
+/* Steps */
+/* SwipeAction */
+/* Switch */
+/* TabBar */
+/* Tabs */
+/* Tag */
+/* Textarea */
+/* Timeline */
+/**
+ * Mixins
+ */
+/* library */
+/**
+ * 元素居中定位
+ */
+/**
+ * @example scss
+ *
+ * .element {
+ *   @include clearfix;
+ * }
+ *
+ * // CSS Output
+ * .element::after {
+ *   clear: both;
+ *   content: '';
+ *   display: block;
+ * }
+ */
+/**
+ * 通用的遮罩
+ */
+/**
+ * Mixes a color with black. It's different from darken()
+ *
+ * @param {color} $color
+ * @param {number (percentage)} $percent [The amount of black to be mixed in]
+ * @return {color}
+ *
+ * @example
+ *   .element {
+ *     background-color: shade(#ffbb52, 60%);
+ *   }
+ *
+ *   // CSS Output
+ *   .element {
+ *     background-color: #664a20;
+ *   }
+ */
+/**
+ * Mixes a color with white. It's different from lighten()
+ *
+ * @param {color} $color
+ * @param {number (percentage)} $percent [The amout of white to be mixed in]
+ * @return {color}
+ *
+ * @example
+ *   .element {
+ *     background-color: tint(#6ecaa6 , 40%);
+ *   }
+ *
+ *   // CSS Output
+ *   .element {
+ *     background-color: #a8dfc9;
+ *   }
+ */
+/* Flex Item */
+/**
+ * 默认主题下 $color-border-light
+ */
+/**
+ * 点击态
+ */
+/**
+ * 禁止态
+ */
+/**
+ * 设置placeholder 颜色
+ */
+/**
+ * 默认主题下 $color-border-light
+ */
+.at-modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  visibility: hidden;
+  transition: visibility 200ms ease-in;
+  z-index: 1000;
+  /* elements */
+  /* modifiers */
+}
+.at-modal__overlay, .at-modal__container {
+  opacity: 0;
+  transition: opacity 200ms ease-in;
+}
+.at-modal__overlay {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.at-modal__container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 540rpx;
+  border-radius: 12rpx;
+  background-color: #FFF;
+  overflow: hidden;
+}
+.at-modal__header {
+  position: relative;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 18rpx 24rpx;
+  color: #333;
+  font-size: 32rpx;
+  text-align: center;
+}
+.at-modal__header::after {
+  content: '';
+  position: absolute;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  box-sizing: border-box;
+  pointer-events: none;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+  border-bottom: 1PX solid #E5E5E5;
+}
+.at-modal__content {
+  padding: 32rpx 24rpx;
+  min-height: 180rpx;
+  max-height: 840rpx;
+  color: #333;
+  font-size: 28rpx;
+  box-sizing: content-box;
+  width: auto;
+}
+.at-modal__footer {
+  position: relative;
+}
+.at-modal__footer::before {
+  content: '';
+  position: absolute;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  box-sizing: border-box;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: auto;
+  -webkit-transform: scaleY(0.5);
+          transform: scaleY(0.5);
+  border-top: 1PX solid #E5E5E5;
+}
+.at-modal__footer .at-modal__action {
+  display: flex;
+}
+.at-modal__footer .at-modal__action > button {
+  flex: auto;
+  -webkit-box-flex: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: background-color 0.3s;
+  margin-top: 0;
+  min-width: 160rpx;
+  height: 88rpx;
+  color: #333;
+  font-size: 28rpx;
+  line-height: 86rpx;
+  outline: 0;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+}
+.at-modal__footer .at-modal__action > button:active {
+  background-color: #F0F0F0;
+}
+.at-modal__footer .at-modal__action > button::after {
+  border: 0;
+  border-radius: 0;
+  width: initial;
+  height: initial;
+}
+.at-modal__footer .at-modal__action > button:not(:first-child) {
+  position: relative;
+}
+.at-modal__footer .at-modal__action > button:not(:first-child)::after {
+  content: '';
+  position: absolute;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  box-sizing: border-box;
+  pointer-events: none;
+  top: 0;
+  left: 0;
+  right: auto;
+  bottom: 0;
+  -webkit-transform: scaleX(0.5);
+          transform: scaleX(0.5);
+  border-left: 1PX solid #E5E5E5;
+}
+.at-modal__footer .at-modal__action > button:last-child {
+  color: #6190E8;
+}
+.at-modal__footer--simple .at-modal__action > button:last-child:nth-child(2) {
+  color: #6190E8;
+}
+.at-modal--active {
+  visibility: visible;
+}
+.at-modal--active .at-modal__overlay,
+.at-modal--active .at-modal__container {
+  opacity: 1;
+}
+

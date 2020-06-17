@@ -11,7 +11,7 @@
                 </view>
             </view>
             <view>
-                <at-button compid="{{$compid__14}}">{{buttonTitle}}</at-button>
+                <at-button compid="{{$compid__25}}">{{buttonTitle}}</at-button>
             </view>
         </view>
     </view>

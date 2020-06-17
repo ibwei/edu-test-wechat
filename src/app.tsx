@@ -50,8 +50,8 @@ class App extends Component {
           selectedIconPath: './assets/images/icon/home-active.png',
         },
         {
-          pagePath: 'pages/question/index',
-          text: '首页',
+          pagePath: 'pages/analysis/index',
+          text: '查看结果',
           iconPath: './assets/images/icon/home.png',
           selectedIconPath: './assets/images/icon/home-active.png',
         },

@@ -2121,6 +2121,17 @@ function () {
 
 /***/ }),
 
+/***/ "./node_modules/taro-ui/dist/style/components/modal.scss":
+/*!***************************************************************!*\
+  !*** ./node_modules/taro-ui/dist/style/components/modal.scss ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
 /***/ "./node_modules/taro-ui/dist/weapp/common/component.tsx":
 /*!**************************************************************!*\
   !*** ./node_modules/taro-ui/dist/weapp/common/component.tsx ***!

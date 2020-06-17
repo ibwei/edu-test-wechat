@@ -66,15 +66,15 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray4", "$compid__14", "numberList", "buttonDisabled", "buttonTitle", "questionId", "nowIndex", "chooesAnswer", "currentQuestion", "currentAnswerList"], _this.config = {
-      navigationBarTitleText: "测试界面"
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray4", "$compid__25", "numberList", "buttonDisabled", "buttonTitle", "questionId", "nowIndex", "chooesAnswer", "currentQuestion", "currentAnswerList"], _this.config = {
+      navigationBarTitleText: '测试界面'
     }, _this.customComponents = ["AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Index, [{
-    key: "_constructor",
+    key: '_constructor',
     value: function _constructor(props) {
-      _get(Index.prototype.__proto__ || Object.getPrototypeOf(Index.prototype), "_constructor", this).call(this, props);
+      _get(Index.prototype.__proto__ || Object.getPrototypeOf(Index.prototype), '_constructor', this).call(this, props);
       this.numberList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
       this.questionList = [];
       // 问题数组
@@ -94,7 +94,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
 
       this.state = {
         buttonDisabled: true,
-        buttonTitle: "下一题",
+        buttonTitle: '下一题',
         questionId: null,
         nowIndex: 0,
         // 选择的答案
@@ -102,25 +102,25 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
           value: -1,
           key: 0
         },
-        currentQuestion: "",
+        currentQuestion: '',
         currentAnswerList: [{
-          label: "",
+          label: '',
           value: 0,
           key: 1
         }, {
-          label: "",
+          label: '',
           value: 1,
           key: 2
         }, {
-          label: "",
+          label: '',
           value: 2,
           key: 3
         }, {
-          label: "",
+          label: '',
           value: 3,
           key: 4
         }, {
-          label: "",
+          label: '',
           value: 4,
           key: 5
         }]
@@ -128,16 +128,16 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       this.$$refs = new _taroWeapp2.default.RefsArray();
     }
   }, {
-    key: "componentWillMount",
+    key: 'componentWillMount',
     value: function componentWillMount() {}
   }, {
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {}
   }, {
-    key: "componentWillUnmount",
+    key: 'componentWillUnmount',
     value: function componentWillUnmount() {}
   }, {
-    key: "componentDidShow",
+    key: 'componentDidShow',
     value: function componentDidShow() {
       var _this2 = this;
 
@@ -145,7 +145,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         buttonDisabled: true
       });
       this.setState({
-        buttonTitle: "下一题"
+        buttonTitle: '下一题'
       });
       this.setState({
         questionId: null
@@ -160,28 +160,28 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         }
       });
       this.setState({
-        currentQuestion: ""
+        currentQuestion: ''
       });
       (0, _api.getList)().then(function (res) {
-        console.log("res :>> ", res);
+        console.log('res :>> ', res);
         var _res$data = res.data,
             err_code = _res$data.err_code,
             data = _res$data.data;
 
-        if (err_code == "0") {
-          console.log("1 :>> ", 1);
+        if (err_code == '0') {
+          console.log('1 :>> ', 1);
           _this2.questionList = data.flat(1);
           _this2.setCurrentQuestion(true);
         }
       }).catch(function (err) {});
     }
   }, {
-    key: "componentDidHide",
+    key: 'componentDidHide',
     value: function componentDidHide() {}
     /** 设置当前题目 */
 
   }, {
-    key: "setCurrentQuestion",
+    key: 'setCurrentQuestion',
     value: function setCurrentQuestion() {
       var initialization = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
 
@@ -192,8 +192,8 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       // 下一题
       var nextQuestion = null;
       // 判断是否为最后一题
-      console.log("length :>> ", length);
-      console.log("nowIndex :>> ", nowIndex);
+      console.log('length :>> ', length);
+      console.log('nowIndex :>> ', nowIndex);
       if (nowIndex < length - 1) {
         if (initialization) {
           nextQuestion = this.questionList[0];
@@ -249,10 +249,8 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
     // 选择选项
 
   }, {
-    key: "chooesAnswer",
+    key: 'chooesAnswer',
     value: function chooesAnswer(value, key) {
-      console.log("value :>> ", value);
-      console.log("key :>> ", key);
       this.setState({
         chooesAnswer: {
           value: value,
@@ -266,7 +264,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
     // 保存答案
 
   }, {
-    key: "addAnswer",
+    key: 'addAnswer',
     value: function addAnswer() {
       var state = this.state;
       this.questionArray.push(state.questionId);
@@ -285,10 +283,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       });
       if (this.state.nowIndex == this.questionList.length - 2) {
         this.setState({
-          buttonTitle: "交卷"
+          buttonTitle: '交卷'
         });
       }
-      if (this.state.buttonTitle == "交卷") {
+      if (this.state.buttonTitle == '交卷') {
         var scoreArray = [];
         var sum = 0;
         this.scoreArray.forEach(function (item, index) {
@@ -299,13 +297,13 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
           }
         });
         var params = {
-          questionArray: this.questionArray.join("-"),
-          answerArray: this.answerArray.join("-"),
-          scoreArray: scoreArray.join("-"),
+          questionArray: this.questionArray.join('-'),
+          answerArray: this.answerArray.join('-'),
+          scoreArray: scoreArray.join('-'),
           allScore: this.scoreSum
         };
         _taroWeapp2.default.showLoading({
-          title: "答案提交中..."
+          title: '答案提交中...'
         });
         (0, _api.pushAnwser)(params).then(function (res) {
           var _res$data2 = res.data,
@@ -313,10 +311,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
               data = _res$data2.data,
               resultCode = _res$data2.resultCode;
 
-          if (resultCode == "0") {
+          if (resultCode == '0') {
             _taroWeapp2.default.hideLoading();
             _taroWeapp2.default.showToast({
-              title: "提交成功!"
+              title: '提交成功!'
             });
             setTimeout(function () {
               _taroWeapp2.default.hideToast();
@@ -326,7 +324,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       }
     }
   }, {
-    key: "_createData",
+    key: '_createData',
     value: function _createData() {
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
@@ -334,17 +332,17 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __prefix = this.$prefix;
       var numberList = this.numberList;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__14"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__25"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__14 = _genCompid2[0],
-          $compid__14 = _genCompid2[1];
+          $prevCompid__25 = _genCompid2[0],
+          $compid__25 = _genCompid2[1];
 
       var nowIndex = this.__state.nowIndex;
       var loopArray4 = this.numberList.map(function (item, _anonIdx) {
         item = {
           $original: (0, _taroWeapp.internal_get_original)(item)
         };
-        var $loopState__temp2 = Number(item.$original - 1) < Number(nowIndex) ? "done question-item" : "question-item";
+        var $loopState__temp2 = Number(item.$original - 1) < Number(nowIndex) ? 'done question-item' : 'question-item';
         return {
           $loopState__temp2: $loopState__temp2,
           $original: item.$original
@@ -356,10 +354,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "onClick": this.addAnswer.bind(this),
         "circle": true,
         "type": "primary"
-      }, $compid__14, $prevCompid__14);
+      }, $compid__25, $prevCompid__25);
       Object.assign(this.__state, {
         loopArray4: loopArray4,
-        $compid__14: $compid__14,
+        $compid__25: $compid__25,
         numberList: numberList
       });
       return this.__state;
@@ -400,17 +398,6 @@ module.exports = __webpack_require__.p + "pages/question/index.wxml";
 /*!******************************************************************!*\
   !*** ./node_modules/taro-ui/dist/style/components/checkbox.scss ***!
   \******************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-// extracted by mini-css-extract-plugin
-
-/***/ }),
-
-/***/ "./node_modules/taro-ui/dist/style/components/modal.scss":
-/*!***************************************************************!*\
-  !*** ./node_modules/taro-ui/dist/style/components/modal.scss ***!
-  \***************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 

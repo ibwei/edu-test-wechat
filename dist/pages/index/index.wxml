@@ -18,16 +18,30 @@
             </view>
         </view>
         <view class="button">
-            <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">开始测试</button>
+            <button class="btn" bindtap="goTest" data-e-tap-so="this">开始测试</button>
         </view>
-        <at-curtain compid="{{$compid__185}}">
+        <at-modal compid="{{$compid__698}}">
+            <at-modal-content>
+                <view class="tishi-img">
+                    <image src="../../assets/images/shijiashi.jpg"></image>
+                </view>
+                <view class="quanxian-content">学商测试申请获得以下权限：</view>
+                <view class="quanxian">获得你的公开信息(昵称、头像等)</view>
+            </at-modal-content>
+            <at-modal-action>
+                <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信授权</button>
+            </at-modal-action>
+        </at-modal>
+        <at-curtain compid="{{$compid__699}}">
             <view class="tishi">
-                <at-form compid="{{$compid__186}}">
-                    <at-input compid="{{$compid__187}}"></at-input>
-                    <at-input compid="{{$compid__188}}"></at-input>
-                    <at-input compid="{{$compid__189}}"></at-input>
-                    <at-input compid="{{$compid__190}}"></at-input>
-                    <at-button compid="{{$compid__191}}">提交</at-button>
+                <at-form compid="{{$compid__700}}">
+                    <at-input compid="{{$compid__701}}"></at-input>
+                    <at-input compid="{{$compid__702}}"></at-input>
+                    <at-input compid="{{$compid__703}}"></at-input>
+                    <at-input compid="{{$compid__704}}"></at-input>
+                    <view class="btn-sub">
+                        <at-button compid="{{$compid__705}}">提交</at-button>
+                    </view>
                 </at-form>
             </view>
         </at-curtain>

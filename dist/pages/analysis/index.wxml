@@ -7,13 +7,13 @@
             </view>
             <view class="score">得分：<text>80</text> 分</view>
         </view>
-        <at-divider compid="{{$compid__10}}"></at-divider>
+        <at-divider compid="{{$compid__25}}"></at-divider>
         <view class="echarts">
             <ec-canvas id="mychart-dom-area" canvas-id="mychart-area" ec="{{ec}}"></ec-canvas>
         </view>
-        <at-divider compid="{{$compid__11}}"></at-divider>
+        <at-divider compid="{{$compid__26}}"></at-divider>
         <view class="result">
-            <at-timeline compid="{{$compid__12}}"></at-timeline>
+            <at-timeline compid="{{$compid__27}}"></at-timeline>
         </view>
     </view>
 </block>

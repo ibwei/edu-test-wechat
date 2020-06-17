@@ -34,6 +34,9 @@
   border-bottom: 1rpx solid #fff;
   margin-bottom: 15rpx;
 }
+.btn-sub {
+  margin: 1.5rem 0rem 0rem;
+}
 .content {
   font-size: 0.8rem;
   padding: 8rpx;
@@ -49,6 +52,24 @@
 .tishi {
   background: #fff;
   padding: 1rem;
+}
+.tishi-img {
+  text-align: center;
+}
+.tishi-img Image {
+  width: 50%;
+  height: 4rem;
+}
+.quanxian-content {
+  text-align: center;
+  padding: 1rem 0.5rem 0.5rem;
+}
+.quanxian {
+  text-align: center;
+  font-size: 0.8rem;
+  color: #909399;
+  padding: 0.5rem 0rem 0rem;
+  border-top: 1rpx solid #DCDFE6;
 }
 
 @charset "UTF-8";

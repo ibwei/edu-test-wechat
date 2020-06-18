@@ -10,15 +10,22 @@ Page {
   padding: 1rem .5rem .5rem .5rem;
 }
 
+.scrollview {
+  display: flex;
+  flex-flow: row nowrap;
+  white-space: nowrap;
+}
 
 
-.question-item {
+.scrollview .question-item {
+  display: inline-block;
   width: 1.6rem;
   height: 1.6rem;
   border: 1px solid #000;
   border-radius: 50%;
   text-align: center;
   background: #bde8ff;
+  margin-right: .4rem;
 }
 
 .done {

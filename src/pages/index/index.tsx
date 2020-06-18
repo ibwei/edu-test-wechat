@@ -1,5 +1,5 @@
-import Taro, { Component, Config, base64ToArrayBuffer } from '@tarojs/taro';
-import { View, Image, Text, Button } from '@tarojs/components';
+import Taro, { Component, Config, base64ToArrayBuffer } from "@tarojs/taro";
+import { View, Image, Text, Button } from "@tarojs/components";
 import {
   AtButton,
   AtCurtain,
@@ -9,16 +9,16 @@ import {
   AtModalHeader,
   AtModalContent,
   AtModalAction,
-} from 'taro-ui';
-import { login, getList, getResult, editStudet } from '../../api/api';
+} from "taro-ui";
+import { login, getList, getResult, editStudet } from "../../api/api";
 
-import './index.less';
-import 'taro-ui/dist/style/components/button.scss';
-import 'taro-ui/dist/style/components/loading.scss';
-import 'taro-ui/dist/style/components/curtain.scss';
-import 'taro-ui/dist/style/components/form.scss';
-import 'taro-ui/dist/style/components/input.scss';
-import 'taro-ui/dist/style/components/modal.scss';
+import "./index.less";
+import "taro-ui/dist/style/components/button.scss";
+import "taro-ui/dist/style/components/loading.scss";
+import "taro-ui/dist/style/components/curtain.scss";
+import "taro-ui/dist/style/components/form.scss";
+import "taro-ui/dist/style/components/input.scss";
+import "taro-ui/dist/style/components/modal.scss";
 
 export default class Index extends Component {
   isLogin = false;
@@ -32,21 +32,21 @@ export default class Index extends Component {
     Taro.getUserInfo({
       success(res) {
         const { userInfo } = res;
-        console.log('userInfo :>> ', userInfo);
-        Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
-        Taro.setStorageSync('shouquan', JSON.stringify(true));
+        console.log("userInfo :>> ", userInfo);
+        Taro.setStorageSync("userInfo", JSON.stringify(userInfo));
+        Taro.setStorageSync("shouquan", JSON.stringify(true));
         login().then((res) => {
           if (res.err_code) {
-            console.log('res :>> ', res);
+            console.log("res :>> ", res);
           } else {
-            Taro.setStorageSync('isLogin', JSON.stringify(true));
+            Taro.setStorageSync("isLogin", JSON.stringify(true));
           }
         });
       },
       fail(res) {
-        console.log('res :>> ', res);
-        Taro.setStorageSync('shouquan', JSON.stringify(false));
-        Taro.setStorageSync('isLogin', JSON.stringify(false));
+        console.log("res :>> ", res);
+        Taro.setStorageSync("shouquan", JSON.stringify(false));
+        Taro.setStorageSync("isLogin", JSON.stringify(false));
       },
     });
   }
@@ -83,29 +83,29 @@ export default class Index extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: '学商系统',
+    navigationBarTitleText: "学商系统",
   };
   getUserInfo(res) {
     if (res.detail.userInfo) {
-      Taro.setStorageSync('shouquan', JSON.stringify(true));
+      Taro.setStorageSync("shouquan", JSON.stringify(true));
       this.setState({
         shouquanBox: false,
       });
-      console.log('res :>> ', res);
+      console.log("res :>> ", res);
       const { userInfo } = res.detail;
-      console.log('userInfo :>> ', userInfo);
-      Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
+      console.log("userInfo :>> ", userInfo);
+      Taro.setStorageSync("userInfo", JSON.stringify(userInfo));
       login().then((res) => {
-        Taro.setStorageSync('isLogin', JSON.stringify(true));
-        console.log('res :>> ', res);
+        Taro.setStorageSync("isLogin", JSON.stringify(true));
+        console.log("res :>> ", res);
         // const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
       });
     }
   }
   // 跳转测试页面
   goTest() {
-    const shouquan = JSON.parse(Taro.getStorageSync('shouquan'));
-    const isLogin = JSON.parse(Taro.getStorageSync('isLogin'));
+    const shouquan = JSON.parse(Taro.getStorageSync("shouquan"));
+    const isLogin = JSON.parse(Taro.getStorageSync("isLogin"));
     if (shouquan == false) {
       this.setState({
         shouquanBox: true,
@@ -113,23 +113,24 @@ export default class Index extends Component {
       return false;
     }
     if (isLogin == true) {
-      const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
-      console.log('userInfo :>> ', userInfo);
-      if (userInfo.student_name == '') {
+      const userInfo = JSON.parse(Taro.getStorageSync("userInfo"));
+      console.log("userInfo :>> ", userInfo);
+      console.log("userInfo.student_name :>> ", userInfo.student_name);
+      if (userInfo.student_name == undefined || userInfo.student_name == "") {
         this.setState({
           infoShow: true,
         });
       } else {
         Taro.navigateTo({
-          url: '/pages/question/index',
+          url: "/pages/question/index",
         });
       }
     } else {
       login().then((res) => {
-        Taro.setStorageSync('isLogin', JSON.stringify(true));
-        const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
-        console.log('userInfo :>> ', userInfo);
-        if (userInfo.student_name == '') {
+        Taro.setStorageSync("isLogin", JSON.stringify(true));
+        const userInfo = JSON.parse(Taro.getStorageSync("userInfo"));
+        console.log("userInfo :>> ", userInfo);
+        if (userInfo.student_name == "") {
           this.setState({
             infoShow: true,
           });
@@ -144,68 +145,80 @@ export default class Index extends Component {
     });
   }
   onSubmit() {
-    console.log('this.studentInfo :>> ', this.studentInfo);
-    if (this.studentInfo.name.trim() == '') {
+    if (this.studentInfo.name.trim() == "") {
       Taro.showToast({
-        title: '学生姓名不能为空',
-        icon: 'none',
+        title: "学生姓名不能为空",
+        icon: "none",
         duration: 1000,
       });
       return false;
     }
-    if (this.studentInfo.school.trim() == '') {
+    if (this.studentInfo.school.trim() == "") {
       Taro.showToast({
-        title: '学校不能为空',
-        icon: 'none',
+        title: "学校不能为空",
+        icon: "none",
         duration: 1000,
       });
       return false;
     }
 
-    if (this.studentInfo.grade.trim() == '') {
+    if (this.studentInfo.grade.trim() == "") {
       Taro.showToast({
-        title: '年级不能为空',
-        icon: 'none',
+        title: "年级不能为空",
+        icon: "none",
         duration: 1000,
       });
       return false;
     }
-    if (this.studentInfo.tel.trim() == '') {
+    if (this.studentInfo.tel == "") {
       Taro.showToast({
-        title: '家长电话不能为空',
-        icon: 'none',
+        title: "家长电话不能为空",
+        icon: "none",
         duration: 1000,
       });
       return false;
+    } else {
+      var regPhones = /^(\d{3,4}\-\d{3,8}$)|(\d{3}\-\d{4}\-\d{3}$)|(^\d{7}$)|(^\d{8}$)|(^\d{11}$)|(^\d{12}$)|(^1\d{10}$)/; //手机号和座机正则
+      if (!regPhones.test(this.studentInfo.tel)) {
+        Taro.showToast({
+          title: "请输入正确的家长联系方式",
+          icon: "none",
+          duration: 1000,
+        });
+        return false;
+      }
     }
 
     let params = {
-      parent_phone: this.studentInfo.tel,
-      school_name: this.studentInfo.school,
-      student_name: this.studentInfo.name,
-      grade: this.studentInfo.grade,
+      parent_phone: this.studentInfo.tel.trim(),
+      school_name: this.studentInfo.school.trim(),
+      student_name: this.studentInfo.name.trim(),
+      grade: this.studentInfo.grade.trim(),
     };
-    console.log('params :>> ', params);
+    console.log("params :>> ", params);
     editStudet(params).then((res) => {
+      console.log("res :>> ", res);
       if (res.data.err_code == 0) {
         this.onClose();
       }
     });
   }
   studentInfo = {
-    name: '',
-    school: '',
-    grade: '',
-    tel: '',
+    name: "",
+    school: "",
+    grade: "",
+    tel: "",
   };
   onChange(field, val) {
-    console.log('field :>> ', field);
-    console.log('val :>> ', val);
     this.studentInfo[field] = val;
+    if (field == "tel") {
+      this.studentInfo[field] = val.replace(/\D/g, "");
+      return val.replace(/\D/g, "");
+    }
     return val;
   }
   onChangeName(val) {
-    console.log('this.studentInfo.name :>> ', this.studentInfo.name);
+    console.log("this.studentInfo.name :>> ", this.studentInfo.name);
     return val;
   }
 
@@ -269,7 +282,7 @@ export default class Index extends Component {
                 type="text"
                 placeholder="请输入学生姓名"
                 value={this.studentInfo.name}
-                onChange={this.onChange.bind(this, 'name')}
+                onChange={this.onChange.bind(this, "name")}
               />
               <AtInput
                 name="value"
@@ -277,7 +290,7 @@ export default class Index extends Component {
                 type="text"
                 placeholder="请输入就读学校"
                 value={this.studentInfo.school}
-                onChange={this.onChange.bind(this, 'school')}
+                onChange={this.onChange.bind(this, "school")}
               />
               <AtInput
                 name="value"
@@ -285,7 +298,7 @@ export default class Index extends Component {
                 type="text"
                 placeholder="请输入就读年级"
                 value={this.studentInfo.grade}
-                onChange={this.onChange.bind(this, 'grade')}
+                onChange={this.onChange.bind(this, "grade")}
               />
               <AtInput
                 name="value"
@@ -293,7 +306,7 @@ export default class Index extends Component {
                 type="phone"
                 placeholder="请输入家长电话"
                 value={this.studentInfo.tel}
-                onChange={this.onChange.bind(this, 'tel')}
+                onChange={this.onChange.bind(this, "tel")}
               />
               <View className="btn-sub">
                 <AtButton formType="submit" className="btn">

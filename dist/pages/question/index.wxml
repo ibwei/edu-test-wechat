@@ -2,7 +2,9 @@
     <view class="">
         <view class="question">
             <view class="item-box">
-                <view class="{{item.$loopState__temp2}}" wx:for="{{loopArray4}}" wx:for-item="item" wx:for-index="_anonIdx2">{{item.$original}}</view>
+                <scroll-view class="scrollview" scroll-x="{{true}}" scroll-with-animation="{{true}}" scroll-left="{{scrollLeft}}" lower-threshold="{{Threshold}}" bindscroll="onScroll">
+                    <view class="{{item.$loopState__temp2}}" bindtap="setCurrentQuestion" wx:for="{{loopArray65}}" wx:for-item="item" wx:for-index="_anonIdx2" data-e-tap-so="this" data-e-tap-a-a="{{item.$original - 1}}">{{item.$original}}</view>
+                </scroll-view>
             </view>
             <view class="question-box">
                 <view class="question-title">{{currentQuestion}}</view>
@@ -11,7 +13,9 @@
                 </view>
             </view>
             <view>
-                <at-button compid="{{$compid__25}}">{{buttonTitle}}</at-button>
+                <block wx:if="{{buttonShow}}">
+                    <at-button compid="{{$compid__63}}">提交</at-button>
+                </block>
             </view>
         </view>
     </view>

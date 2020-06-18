@@ -1,0 +1,5 @@
+<block wx:if="{{$taroCompReady}}">
+    <form class="{{rootCls}}" style="{{anonymousState__temp}}" bindsubmit="onSubmit" report-submit="{{reportSubmit}}" bindreset="onReset" data-e-submit-so="this" data-e-reset-so="this">
+        <slot></slot>
+    </form>
+</block>

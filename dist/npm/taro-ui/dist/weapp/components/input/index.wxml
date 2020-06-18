@@ -1,0 +1,22 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="{{rootCls}}" style="{{anonymousState__temp}}">
+        <view class="{{containerCls}}">
+            <view class="{{overlayCls}}" bindtap="handleClick"></view>
+            <block wx:if="{{title}}">
+                <label class="{{'at-input__title ' + (required && 'at-input__title--required')}}" for="{{name}}">{{title}}</label>
+            </block>
+            <input class="at-input__input" id="{{name}}" name="{{name}}" type="{{type}}" password="{{password}}" placeholder-style="{{placeholderStyle}}" placeholder-class="{{placeholderCls}}" placeholder="{{placeholder}}" cursor-spacing="{{cursorSpacing}}" maxlength="{{maxLength}}" auto-focus="{{autoFocus}}" focus="{{focus}}" value="{{value}}" confirm-type="{{confirmType}}" cursor="{{cursor}}" selection-start="{{selectionStart}}" selection-end="{{selectionEnd}}" adjust-position="{{adjustPosition}}" bindinput="handleInput" bindfocus="handleFocus" bindblur="handleBlur" bindconfirm="handleConfirm" bindkeyboardheightchange="handleKeyboardHeightChange" />
+            <block wx:if="{{clear && value}}">
+                <view class="at-input__icon" bindtouchend="handleClearValue"><text class="at-icon at-icon-close-circle at-input__icon-close"></text>
+                </view>
+            </block>
+            <block wx:if="{{error}}">
+                <view class="at-input__icon" bindtouchstart="handleErrorClick"><text class="at-icon at-icon-alert-circle at-input__icon-alert"></text>
+                </view>
+            </block>
+            <view class="at-input__children">
+                <slot></slot>
+            </view>
+        </view>
+    </view>
+</block>

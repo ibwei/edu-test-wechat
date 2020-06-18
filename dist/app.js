@@ -24,6 +24,8 @@ var _taroWeapp = __webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/@
 
 var _taroWeapp2 = _interopRequireDefault(_taroWeapp);
 
+var _api = __webpack_require__(/*! ./api/api */ "./src/api/api.ts");
+
 __webpack_require__(/*! ./app.less */ "./src/app.less");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -92,7 +94,31 @@ var _App = function (_BaseComponent) {
     value: function componentDidMount() {}
   }, {
     key: 'componentDidShow',
-    value: function componentDidShow() {}
+    value: function componentDidShow() {
+      _taroWeapp2.default.getUserInfo({
+        success: function success(res) {
+          var userInfo = res.userInfo;
+
+          console.log('userInfo :>> ', userInfo);
+          _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(userInfo));
+          _taroWeapp2.default.setStorageSync('shouquan', JSON.stringify(true));
+          (0, _api.login)().then(function (res) {
+            console.log('res :>> ', res);
+            if (res.err_code) {
+              console.log('res :>> ', res);
+            } else {
+              _taroWeapp2.default.setStorageSync('isLogin', JSON.stringify(true));
+            }
+            (0, _api.getPartList)();
+          });
+        },
+        fail: function fail(res) {
+          console.log('res :>> ', res);
+          _taroWeapp2.default.setStorageSync('shouquan', JSON.stringify(false));
+          _taroWeapp2.default.setStorageSync('isLogin', JSON.stringify(false));
+        }
+      });
+    }
   }, {
     key: 'componentDidHide',
     value: function componentDidHide() {}
@@ -167,4 +193,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ })
 
-},[["./src/app.tsx","runtime","vendors"]]]);;
+},[["./src/app.tsx","runtime","vendors","common"]]]);;

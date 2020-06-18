@@ -34,7 +34,8 @@ const config = {
       ],
     ],
   },
-  plugins: ['@tarojs/plugin-less', '@tarojs/plugin-uglify'],
+  plugins: [],
+  // plugins: ['@tarojs/plugin-less', '@tarojs/plugin-uglify'],
   defineConstants: {},
   mini: {
     postcss: {
@@ -78,7 +79,7 @@ const config = {
   },
 };
 
-module.exports = function(merge) {
+module.exports = function (merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'));
   }

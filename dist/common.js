@@ -13,7 +13,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.editStudet = exports.pushAnwser = exports.getResult = exports.getList = exports.login = undefined;
+exports.getPartList = exports.editStudet = exports.pushAnwser = exports.getResult = exports.getList = exports.login = undefined;
 
 var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
 
@@ -29,7 +29,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var url = "http://edu.pinxianhs.com/api/wechat/";
+var url = 'http://edu.pinxianhs.com/api/wechat/';
 // 登录
 var login = exports.login = function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
@@ -40,7 +40,7 @@ var login = exports.login = function () {
         switch (_context.prev = _context.next) {
           case 0:
             _taroWeapp2.default.showLoading({
-              title: "加载中..."
+              title: '加载中...'
             });
             _context.next = 3;
             return _taroWeapp2.default.login();
@@ -48,15 +48,15 @@ var login = exports.login = function () {
           case 3:
             _ref2 = _context.sent;
             code = _ref2.code;
-            userInfo = JSON.parse(_taroWeapp2.default.getStorageSync("userInfo"));
-            resData = "";
+            userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
+            resData = '';
             _context.next = 9;
             return _taroWeapp2.default.request({
-              method: "POST",
+              method: 'POST',
               url: "http://edu.pinxianhs.com/api/wechat/user/login",
               data: _extends({
                 code: code,
-                token: _taroWeapp2.default.getStorageSync("token")
+                token: _taroWeapp2.default.getStorageSync('token')
               }, userInfo),
               success: function success(res) {
                 var data = res.data,
@@ -68,23 +68,23 @@ var login = exports.login = function () {
                   console.log(err_msg);
                   _taroWeapp2.default.hideLoading();
                 } else {
-                  _taroWeapp2.default.setStorageSync("token", data.token);
-                  _taroWeapp2.default.setStorageSync("userInfo", JSON.stringify(data.user));
-                  console.log("data.user :>> ", data.user);
+                  _taroWeapp2.default.setStorageSync('token', data.token);
+                  _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(data.user));
+                  console.log('data.user :>> ', data.user);
                   _taroWeapp2.default.hideLoading();
                 }
               },
               fail: function fail(e) {
-                console.log("e :>> ", e);
+                console.log('e :>> ', e);
                 _taroWeapp2.default.hideLoading();
               }
             });
 
           case 9:
-            return _context.abrupt("return", Promise.resolve(resData));
+            return _context.abrupt('return', Promise.resolve(resData));
 
           case 10:
-          case "end":
+          case 'end':
             return _context.stop();
         }
       }
@@ -103,25 +103,31 @@ var getList = exports.getList = function () {
       while (1) {
         switch (_context2.prev = _context2.next) {
           case 0:
-            _taroWeapp2.default.showLoading({
-              title: "获取题目中..."
-            });
             resData = void 0;
-            // await Taro.addInterceptor()
 
+            _taroWeapp2.default.showLoading({
+              title: '获取题目加载中...'
+            });
             _context2.next = 4;
             return _taroWeapp2.default.request({
-              method: "GET",
+              method: 'GET',
               url: "http://edu.pinxianhs.com/api/wechat/test/list",
-              data: { token: _taroWeapp2.default.getStorageSync("token") },
+              data: { token: _taroWeapp2.default.getStorageSync('token') },
               success: function success(res) {
-                _taroWeapp2.default.hideLoading();
-                console.log("success :>> ", res);
-                resData = res;
+                console.log('list :>> ', res);
+                var _res$data = res.data,
+                    data = _res$data.data,
+                    err_msg = _res$data.err_msg,
+                    err_code = _res$data.err_code;
+
+                if (err_code == 0) {
+                  _taroWeapp2.default.hideLoading();
+                  resData = res;
+                }
               },
               fail: function fail(res) {
                 _taroWeapp2.default.hideLoading();
-                console.log("fail :>> ", res);
+                console.log('list :>> ', res);
                 // if (res.err_code == 401) {
                 //   console.log('1 :>> ', 1);
                 // }
@@ -129,10 +135,10 @@ var getList = exports.getList = function () {
             });
 
           case 4:
-            return _context2.abrupt("return", Promise.resolve(resData));
+            return _context2.abrupt('return', Promise.resolve(resData));
 
           case 5:
-          case "end":
+          case 'end':
             return _context2.stop();
         }
       }
@@ -152,20 +158,20 @@ var getResult = exports.getResult = function () {
         switch (_context3.prev = _context3.next) {
           case 0:
             resData = void 0;
-            userInfo = JSON.parse(_taroWeapp2.default.getStorageSync("userInfo"));
+            userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
             _context3.next = 4;
             return _taroWeapp2.default.request({
-              method: "GET",
+              method: 'GET',
               url: "http://edu.pinxianhs.com/api/wechat/test/result",
-              data: { token: _taroWeapp2.default.getStorageSync("token"), id: userInfo.id }
+              data: { token: _taroWeapp2.default.getStorageSync('token'), id: userInfo.id }
             }).then(function (res) {
               var data = res.data,
                   err_code = res.err_code,
                   err_msg = res.err_msg;
 
-              console.log("res :>> ", res);
+              console.log('res :>> ', res);
               if (err_code == 401) {
-                console.log("err_msg :>> ", err_msg);
+                console.log('err_msg :>> ', err_msg);
                 login();
                 getList();
               } else {
@@ -174,10 +180,10 @@ var getResult = exports.getResult = function () {
             });
 
           case 4:
-            return _context3.abrupt("return", Promise.resolve(resData));
+            return _context3.abrupt('return', Promise.resolve(resData));
 
           case 5:
-          case "end":
+          case 'end':
             return _context3.stop();
         }
       }
@@ -197,12 +203,12 @@ var pushAnwser = exports.pushAnwser = function () {
         switch (_context4.prev = _context4.next) {
           case 0:
             resData = void 0;
-            userInfo = JSON.parse(_taroWeapp2.default.getStorageSync("userInfo"));
+            userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
             _context4.next = 4;
             return _taroWeapp2.default.request({
-              method: "POST",
+              method: 'POST',
               url: "http://edu.pinxianhs.com/api/wechat/test/add",
-              data: _extends({ token: _taroWeapp2.default.getStorageSync("token") }, params)
+              data: _extends({ token: _taroWeapp2.default.getStorageSync('token') }, params)
             }).then(function (res) {
               var data = res.data,
                   err_code = res.err_code,
@@ -215,10 +221,10 @@ var pushAnwser = exports.pushAnwser = function () {
             });
 
           case 4:
-            return _context4.abrupt("return", Promise.resolve(resData));
+            return _context4.abrupt('return', Promise.resolve(resData));
 
           case 5:
-          case "end":
+          case 'end':
             return _context4.stop();
         }
       }
@@ -238,27 +244,27 @@ var editStudet = exports.editStudet = function () {
         switch (_context5.prev = _context5.next) {
           case 0:
             _taroWeapp2.default.showLoading({
-              title: "保存中..."
+              title: '保存中...'
             });
             resData = void 0;
-            userInfo = JSON.parse(_taroWeapp2.default.getStorageSync("userInfo"));
+            userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
             _context5.next = 5;
             return _taroWeapp2.default.request({
-              method: "POST",
+              method: 'POST',
               url: "http://edu.pinxianhs.com/api/wechat/user/completedInfo",
-              data: _extends({ token: _taroWeapp2.default.getStorageSync("token") }, params),
+              data: _extends({ token: _taroWeapp2.default.getStorageSync('token') }, params),
               success: function success(res) {
-                console.log("res :>> ", res);
+                console.log('res :>> ', res);
                 resData = res;
-                var _res$data = res.data,
-                    data = _res$data.data,
-                    err_code = _res$data.err_code,
-                    err_msg = _res$data.err_msg;
+                var _res$data2 = res.data,
+                    data = _res$data2.data,
+                    err_code = _res$data2.err_code,
+                    err_msg = _res$data2.err_msg;
 
                 if (err_code == 0) {
                   _taroWeapp2.default.hideLoading();
-                  console.log("data :>> ", data);
-                  _taroWeapp2.default.setStorageSync("userInfo", JSON.stringify(data));
+                  console.log('data :>> ', data);
+                  _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(data));
                 } else {
                   _taroWeapp2.default.showToast({
                     title: err_msg
@@ -267,15 +273,15 @@ var editStudet = exports.editStudet = function () {
               },
               fail: function fail(res) {
                 _taroWeapp2.default.hideLoading();
-                console.log("res :>> ", res);
+                console.log('res :>> ', res);
               }
             });
 
           case 5:
-            return _context5.abrupt("return", Promise.resolve(resData));
+            return _context5.abrupt('return', Promise.resolve(resData));
 
           case 6:
-          case "end":
+          case 'end':
             return _context5.stop();
         }
       }
@@ -284,6 +290,58 @@ var editStudet = exports.editStudet = function () {
 
   return function editStudet(_x2) {
     return _ref6.apply(this, arguments);
+  };
+}();
+// 获取模板列表
+var getPartList = exports.getPartList = function () {
+  var _ref7 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee6() {
+    var resData;
+    return _regenerator2.default.wrap(function _callee6$(_context6) {
+      while (1) {
+        switch (_context6.prev = _context6.next) {
+          case 0:
+            resData = void 0;
+            // await Taro.addInterceptor()
+
+            _context6.next = 3;
+            return _taroWeapp2.default.request({
+              method: 'GET',
+              url: "http://edu.pinxianhs.com/api/wechat/part/list",
+              data: { token: _taroWeapp2.default.getStorageSync('token') },
+              success: function success(res) {
+                console.log('list :>> ', res);
+                var _res$data3 = res.data,
+                    data = _res$data3.data,
+                    err_msg = _res$data3.err_msg,
+                    err_code = _res$data3.err_code;
+
+                if (err_code == 0) {
+                  console.log('data :>> ', data);
+                  _taroWeapp2.default.setStorageSync('forumList', JSON.stringify(data));
+                }
+              },
+              fail: function fail(res) {
+                _taroWeapp2.default.hideLoading();
+                console.log('list :>> ', res);
+                // if (res.err_code == 401) {
+                //   console.log('1 :>> ', 1);
+                // }
+              }
+            });
+
+          case 3:
+            return _context6.abrupt('return', Promise.resolve(resData));
+
+          case 4:
+          case 'end':
+            return _context6.stop();
+        }
+      }
+    }, _callee6, undefined);
+  }));
+
+  return function getPartList() {
+    return _ref7.apply(this, arguments);
   };
 }();
 

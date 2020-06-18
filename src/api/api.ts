@@ -1,20 +1,20 @@
-import Taro from "@tarojs/taro";
-const url = "http://edu.pinxianhs.com/api/wechat/";
+import Taro from '@tarojs/taro';
+const url = 'http://edu.pinxianhs.com/api/wechat/';
 
 // 登录
 export const login = async (): Promise<any> => {
   Taro.showLoading({
-    title: "加载中...",
+    title: '加载中...',
   });
   const { code } = await Taro.login();
-  const userInfo = JSON.parse(Taro.getStorageSync("userInfo"));
-  let resData: any = "";
+  const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
+  let resData: any = '';
   await Taro.request({
-    method: "POST",
-    url: url + "user/login",
+    method: 'POST',
+    url: url + 'user/login',
     data: {
       code: code,
-      token: Taro.getStorageSync("token"),
+      token: Taro.getStorageSync('token'),
       ...userInfo,
     },
     success: function(res) {
@@ -24,14 +24,14 @@ export const login = async (): Promise<any> => {
         console.log(err_msg);
         Taro.hideLoading();
       } else {
-        Taro.setStorageSync("token", data.token);
-        Taro.setStorageSync("userInfo", JSON.stringify(data.user));
-        console.log("data.user :>> ", data.user);
+        Taro.setStorageSync('token', data.token);
+        Taro.setStorageSync('userInfo', JSON.stringify(data.user));
+        console.log('data.user :>> ', data.user);
         Taro.hideLoading();
       }
     },
     fail: function(e) {
-      console.log("e :>> ", e);
+      console.log('e :>> ', e);
       Taro.hideLoading();
     },
   });
@@ -39,23 +39,25 @@ export const login = async (): Promise<any> => {
 };
 // 获取题目列表
 export const getList = async (): Promise<any> => {
-  Taro.showLoading({
-    title: "获取题目中...",
-  });
   let resData: any;
-  // await Taro.addInterceptor()
+  Taro.showLoading({
+    title: '获取题目加载中...',
+  });
   await Taro.request({
-    method: "GET",
-    url: url + "test/list",
-    data: { token: Taro.getStorageSync("token") },
+    method: 'GET',
+    url: url + 'test/list',
+    data: { token: Taro.getStorageSync('token') },
     success: function(res) {
-      Taro.hideLoading();
-      console.log("success :>> ", res);
-      resData = res;
+      console.log('list :>> ', res);
+      const { data, err_msg, err_code } = res.data;
+      if (err_code == 0) {
+        Taro.hideLoading();
+        resData = res;
+      }
     },
     fail: function(res) {
       Taro.hideLoading();
-      console.log("fail :>> ", res);
+      console.log('list :>> ', res);
       // if (res.err_code == 401) {
       //   console.log('1 :>> ', 1);
       // }
@@ -66,16 +68,16 @@ export const getList = async (): Promise<any> => {
 // 获取结果
 export const getResult = async (): Promise<any> => {
   let resData: any;
-  const userInfo = JSON.parse(Taro.getStorageSync("userInfo"));
+  const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
   await Taro.request({
-    method: "GET",
-    url: url + "test/result",
-    data: { token: Taro.getStorageSync("token"), id: userInfo.id },
+    method: 'GET',
+    url: url + 'test/result',
+    data: { token: Taro.getStorageSync('token'), id: userInfo.id },
   }).then((res) => {
     const { data, err_code, err_msg } = res;
-    console.log("res :>> ", res);
+    console.log('res :>> ', res);
     if (err_code == 401) {
-      console.log("err_msg :>> ", err_msg);
+      console.log('err_msg :>> ', err_msg);
       login();
       getList();
     } else {
@@ -87,11 +89,11 @@ export const getResult = async (): Promise<any> => {
 // 提交答案
 export const pushAnwser = async (params): Promise<any> => {
   let resData: any;
-  const userInfo = JSON.parse(Taro.getStorageSync("userInfo"));
+  const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
   await Taro.request({
-    method: "POST",
-    url: url + "test/add",
-    data: { token: Taro.getStorageSync("token"), ...params },
+    method: 'POST',
+    url: url + 'test/add',
+    data: { token: Taro.getStorageSync('token'), ...params },
   }).then((res) => {
     const { data, err_code, err_msg } = res;
     resData = res;
@@ -105,22 +107,22 @@ export const pushAnwser = async (params): Promise<any> => {
 // 提交答案
 export const editStudet = async (params): Promise<any> => {
   Taro.showLoading({
-    title: "保存中...",
+    title: '保存中...',
   });
   let resData: any;
-  const userInfo = JSON.parse(Taro.getStorageSync("userInfo"));
+  const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
   await Taro.request({
-    method: "POST",
-    url: url + "user/completedInfo",
-    data: { token: Taro.getStorageSync("token"), ...params },
+    method: 'POST',
+    url: url + 'user/completedInfo',
+    data: { token: Taro.getStorageSync('token'), ...params },
     success: function(res) {
-      console.log("res :>> ", res);
+      console.log('res :>> ', res);
       resData = res;
       const { data, err_code, err_msg } = res.data;
       if (err_code == 0) {
         Taro.hideLoading();
-        console.log("data :>> ", data);
-        Taro.setStorageSync("userInfo", JSON.stringify(data));
+        console.log('data :>> ', data);
+        Taro.setStorageSync('userInfo', JSON.stringify(data));
       } else {
         Taro.showToast({
           title: err_msg,
@@ -129,7 +131,34 @@ export const editStudet = async (params): Promise<any> => {
     },
     fail: function(res) {
       Taro.hideLoading();
-      console.log("res :>> ", res);
+      console.log('res :>> ', res);
+    },
+  });
+  return Promise.resolve(resData);
+};
+
+// 获取模板列表
+export const getPartList = async (): Promise<any> => {
+  let resData: any;
+  // await Taro.addInterceptor()
+  await Taro.request({
+    method: 'GET',
+    url: url + 'part/list',
+    data: { token: Taro.getStorageSync('token') },
+    success: function(res) {
+      console.log('list :>> ', res);
+      const { data, err_msg, err_code } = res.data;
+      if (err_code == 0) {
+        console.log('data :>> ', data);
+        Taro.setStorageSync('forumList', JSON.stringify(data));
+      }
+    },
+    fail: function(res) {
+      Taro.hideLoading();
+      console.log('list :>> ', res);
+      // if (res.err_code == 401) {
+      //   console.log('1 :>> ', 1);
+      // }
     },
   });
   return Promise.resolve(resData);

@@ -1,5 +1,6 @@
 import Taro, { Component, Config } from '@tarojs/taro';
 import Index from './pages/index';
+import { login, getPartList } from './api/api';
 
 import './app.less';
 
@@ -12,7 +13,31 @@ import './app.less';
 class App extends Component {
   componentDidMount() {}
 
-  componentDidShow() {}
+  componentDidShow() {
+    Taro.getUserInfo({
+      success(res) {
+        const { userInfo } = res;
+        console.log('userInfo :>> ', userInfo);
+        Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
+        Taro.setStorageSync('shouquan', JSON.stringify(true));
+        login().then((res) => {
+          console.log('res :>> ', res);
+          if (res.err_code) {
+            console.log('res :>> ', res);
+          } else {
+            Taro.setStorageSync('isLogin', JSON.stringify(true));
+          }
+
+          getPartList();
+        });
+      },
+      fail(res) {
+        console.log('res :>> ', res);
+        Taro.setStorageSync('shouquan', JSON.stringify(false));
+        Taro.setStorageSync('isLogin', JSON.stringify(false));
+      },
+    });
+  }
 
   componentDidHide() {}
 

@@ -24,7 +24,7 @@ Page {
   background: #bde8ff;
   margin-right: 0.4rem;
 }
-.done {
+.scrollview .done {
   background: #92c6ef;
 }
 .question-box {
@@ -36,6 +36,7 @@ Page {
 }
 .question-title {
   padding: 0.5rem;
+  line-height: 1.5em;
 }
 .answer-box {
   padding: 0.8rem 0.5rem 0.5rem 0.5rem;

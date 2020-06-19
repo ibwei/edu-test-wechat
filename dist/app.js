@@ -58,31 +58,31 @@ var _App = function (_BaseComponent) {
     var _this = _possibleConstructorReturn(this, (_App.__proto__ || Object.getPrototypeOf(_App)).apply(this, arguments));
 
     _this.config = {
-      pages: ['pages/index/index', 'pages/analysis/index', 'pages/user/user', 'pages/bar/index', 'pages/question/index'],
+      pages: ["pages/index/index", "pages/analysis/index", "pages/user/user", "pages/bar/index", "pages/question/index"],
       window: {
-        backgroundTextStyle: 'light',
-        navigationBarBackgroundColor: '#fff',
-        navigationBarTitleText: 'WeChat',
-        navigationBarTextStyle: 'black'
+        backgroundTextStyle: "light",
+        navigationBarBackgroundColor: "#fff",
+        navigationBarTitleText: "WeChat",
+        navigationBarTextStyle: "black"
       },
       tabBar: {
-        color: '#bfbfbf',
-        selectedColor: '#4889f7',
+        color: "#bfbfbf",
+        selectedColor: "#4889f7",
         list: [{
-          pagePath: 'pages/index/index',
-          text: '首页',
-          iconPath: './assets/images/icon/home.png',
-          selectedIconPath: './assets/images/icon/home-active.png'
+          pagePath: "pages/index/index",
+          text: "首页",
+          iconPath: "./assets/images/icon/home.png",
+          selectedIconPath: "./assets/images/icon/home-active.png"
         }, {
-          pagePath: 'pages/analysis/index',
-          text: '查看结果',
-          iconPath: './assets/images/icon/home.png',
-          selectedIconPath: './assets/images/icon/home-active.png'
+          pagePath: "pages/analysis/index",
+          text: "查看结果",
+          iconPath: "./assets/images/icon/home.png",
+          selectedIconPath: "./assets/images/icon/home-active.png"
         }, {
-          pagePath: 'pages/user/user',
-          text: '个人中心',
-          iconPath: './assets/images/icon/me.png',
-          selectedIconPath: './assets/images/icon/me-active.png'
+          pagePath: "pages/user/user",
+          text: "个人中心",
+          iconPath: "./assets/images/icon/me.png",
+          selectedIconPath: "./assets/images/icon/me-active.png"
         }]
       }
     };
@@ -90,46 +90,46 @@ var _App = function (_BaseComponent) {
   }
 
   _createClass(_App, [{
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function componentDidMount() {}
   }, {
-    key: 'componentDidShow',
+    key: "componentDidShow",
     value: function componentDidShow() {
       _taroWeapp2.default.getUserInfo({
         success: function success(res) {
           var userInfo = res.userInfo;
 
-          console.log('userInfo :>> ', userInfo);
-          _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(userInfo));
-          _taroWeapp2.default.setStorageSync('shouquan', JSON.stringify(true));
+          console.log("userInfo :>> ", userInfo);
+          _taroWeapp2.default.setStorageSync("userInfo", JSON.stringify(userInfo));
+          _taroWeapp2.default.setStorageSync("shouquan", true);
           (0, _api.login)().then(function (res) {
-            console.log('res :>> ', res);
+            console.log("res :>> ", res);
             if (res.err_code) {
-              console.log('res :>> ', res);
+              console.log("res :>> ", res);
             } else {
-              _taroWeapp2.default.setStorageSync('isLogin', JSON.stringify(true));
+              _taroWeapp2.default.setStorageSync("isLogin", true);
             }
             (0, _api.getPartList)();
           });
         },
         fail: function fail(res) {
-          console.log('res :>> ', res);
-          _taroWeapp2.default.setStorageSync('shouquan', JSON.stringify(false));
-          _taroWeapp2.default.setStorageSync('isLogin', JSON.stringify(false));
+          console.log("res :>> ", res);
+          _taroWeapp2.default.setStorageSync("shouquan", false);
+          _taroWeapp2.default.setStorageSync("isLogin", false);
         }
       });
     }
   }, {
-    key: 'componentDidHide',
+    key: "componentDidHide",
     value: function componentDidHide() {}
   }, {
-    key: 'componentDidCatchError',
+    key: "componentDidCatchError",
     value: function componentDidCatchError() {}
     // 在 App 类中的 render() 函数没有实际作用
     // 请勿修改此函数
 
   }, {
-    key: '_createData',
+    key: "_createData",
     value: function _createData() {}
   }]);
 

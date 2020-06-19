@@ -50,15 +50,11 @@ var _api = __webpack_require__(/*! ../../api/api */ "./src/api/api.ts");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Question = function Question() {
-  _classCallCheck(this, Question);
-};
 
 var Index = (_temp2 = _class = function (_BaseComponent) {
   _inherits(Index, _BaseComponent);
@@ -74,15 +70,15 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray310", "$compid__372", "scrollLeft", "Threshold", "numberList", "buttonShow", "buttonTitle", "answerArray", "doneQuestion", "nowIndex", "chooesAnswer", "currentQuestionPartName", "currentQuestion", "currentAnswerList"], _this.config = {
-      navigationBarTitleText: '测试界面'
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray25", "$compid__43", "scrollLeft", "Threshold", "numberList", "nowIndex", "buttonShow", "answerArray", "doneQuestion", "chooesAnswer", "currentQuestionPartName", "currentQuestion", "currentAnswerList"], _this.config = {
+      navigationBarTitleText: "测试界面"
     }, _this.customComponents = ["AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Index, [{
-    key: '_constructor',
+    key: "_constructor",
     value: function _constructor(props) {
-      _get(Index.prototype.__proto__ || Object.getPrototypeOf(Index.prototype), '_constructor', this).call(this, props);
+      _get(Index.prototype.__proto__ || Object.getPrototypeOf(Index.prototype), "_constructor", this).call(this, props);
       this.numberList = new Array(50).fill(0).map(function (item, index) {
         return index + 1;
       });
@@ -106,7 +102,6 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
 
       this.state = {
         buttonShow: false,
-        buttonTitle: '下一题',
         answerArray: [],
         doneQuestion: [],
         nowIndex: 0,
@@ -115,26 +110,26 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
           value: -1,
           key: 0
         },
-        currentQuestionPartName: '',
-        currentQuestion: '',
+        currentQuestionPartName: "",
+        currentQuestion: "",
         currentAnswerList: [{
-          label: '',
+          label: "",
           value: 0,
           key: 1
         }, {
-          label: '',
+          label: "",
           value: 1,
           key: 2
         }, {
-          label: '',
+          label: "",
           value: 2,
           key: 3
         }, {
-          label: '',
+          label: "",
           value: 3,
           key: 4
         }, {
-          label: '',
+          label: "",
           value: 4,
           key: 5
         }]
@@ -142,23 +137,23 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       this.$$refs = new _taroWeapp2.default.RefsArray();
     }
   }, {
-    key: 'componentWillMount',
+    key: "componentWillMount",
     value: function componentWillMount() {}
   }, {
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function componentDidMount() {}
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {}
   }, {
-    key: 'componentDidShow',
+    key: "componentDidShow",
     value: function componentDidShow() {
       this.initList();
     }
     // 初始化获取数组
 
   }, {
-    key: 'initList',
+    key: "initList",
     value: function initList() {
       var _this2 = this;
 
@@ -172,18 +167,18 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         }
       });
       this.setState({
-        currentQuestion: ''
+        currentQuestion: ""
       });
       this.setState({
         doneQuestion: new Array(50).fill(false)
       });
       (0, _api.getList)().then(function (res) {
-        console.log('res :>> ', res);
+        console.log("res :>> ", res);
         var _res$data = res.data,
             err_code = _res$data.err_code,
             data = _res$data.data;
 
-        if (err_code == '0') {
+        if (err_code == "0") {
           _this2.questionList = data.flat(1);
           _this2.questionArray = _this2.questionList.map(function (item) {
             return item.id;
@@ -195,20 +190,20 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
           });
           // 分数数组
           _this2.scoreArray = _this2.scoreArray.fill(-1);
-          console.log('this.questionArray :>> ', _this2.questionArray);
+          console.log("this.questionArray :>> ", _this2.questionArray);
           _this2.setCurrentQuestion(0);
         }
       }).catch(function (err) {});
-      this.forumList = JSON.parse(_taroWeapp2.default.getStorageSync('forumList'));
-      console.log('this.forumList :>> ', this.forumList);
+      this.forumList = JSON.parse(_taroWeapp2.default.getStorageSync("forumList"));
+      console.log("this.forumList :>> ", this.forumList);
     }
   }, {
-    key: 'componentDidHide',
+    key: "componentDidHide",
     value: function componentDidHide() {}
     /** 设置当前题目 */
 
   }, {
-    key: 'setCurrentQuestion',
+    key: "setCurrentQuestion",
     value: function setCurrentQuestion(index) {
       // 获取题数
       var length = this.questionList.length;
@@ -219,18 +214,18 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       // 判断是否为最后一题
       if (nowIndex < length) {
         nextQuestion = this.questionList[nowIndex];
-        console.log('nextQuestion :>> ', nextQuestion);
+        console.log("nextQuestion :>> ", nextQuestion);
         // 设置题目
         this.setState({
           currentQuestion: nextQuestion.title
         });
-        var partName = '';
+        var partName = "";
         this.forumList.forEach(function (item) {
           if (item.id == nextQuestion.part_id) {
             partName = item.name;
           }
         });
-        console.log('partName :>> ', partName);
+        console.log("partName :>> ", partName);
         this.setState({
           currentQuestionPartName: partName
         });
@@ -275,7 +270,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
     // 选择选项
 
   }, {
-    key: 'chooesAnswer',
+    key: "chooesAnswer",
     value: function chooesAnswer(value, key) {
       var index = this.state.nowIndex;
       this.setState({
@@ -294,15 +289,15 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       this.setState({
         doneQuestion: doneQ
       });
-      console.log('this.state.doneQuestion :>> ', this.state.doneQuestion);
-      console.log('this.state.answerArray :>> ', this.state.answerArray);
-      console.log('this.answerArray.includes(-1) :>> ', this.answerArray);
+      console.log("this.state.doneQuestion :>> ", this.state.doneQuestion);
+      console.log("this.state.answerArray :>> ", this.state.answerArray);
+      console.log("this.answerArray.includes(-1) :>> ", this.answerArray);
       if (!this.answerArray.includes(-1) && !this.scoreArray.includes(-1)) {
         this.setState({
           buttonShow: true
         });
         _taroWeapp2.default.showToast({
-          title: '恭喜你已经做完全部的题目了，快去提交试卷吧！'
+          title: "恭喜你已经做完全部的题目了，快去提交试卷吧！"
         });
         return false;
       }
@@ -310,8 +305,8 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         this.setCurrentQuestion(index + 1);
       } else {
         _taroWeapp2.default.showToast({
-          title: '前面是不是还有题目忘记做了呢？快回去做吧！',
-          icon: 'none',
+          title: "前面是不是还有题目忘记做了呢？快回去做吧！",
+          icon: "none",
           duration: 2000
         });
       }
@@ -319,7 +314,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
     // 保存答案
 
   }, {
-    key: 'addAnswer',
+    key: "addAnswer",
     value: function addAnswer() {
       var state = this.state;
       var scoreArray = [];
@@ -334,25 +329,25 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         }
       });
       var params = {
-        questionArray: this.questionArray.join('-'),
-        answerArray: this.answerArray.join('-'),
-        scoreArray: scoreArray.join('-'),
+        questionArray: this.questionArray.join("-"),
+        answerArray: this.answerArray.join("-"),
+        scoreArray: scoreArray.join("-"),
         allScore: scoreSum
       };
       _taroWeapp2.default.showLoading({
-        title: '答案提交中...'
+        title: "答案提交中..."
       });
       (0, _api.pushAnwser)(params).then(function (res) {
-        console.log('res :>> ', res);
+        console.log("res :>> ", res);
         var _res$data2 = res.data,
             err_code = _res$data2.err_code,
             data = _res$data2.data,
             resultCode = _res$data2.resultCode;
 
-        if (resultCode == '0') {
+        if (resultCode == "0") {
           _taroWeapp2.default.hideLoading();
           _taroWeapp2.default.showToast({
-            title: '提交成功!'
+            title: "提交成功!"
           });
           setTimeout(function () {
             _taroWeapp2.default.hideToast();
@@ -361,12 +356,12 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       });
     }
   }, {
-    key: 'onScroll',
+    key: "onScroll",
     value: function onScroll(e) {
-      console.log('e :>> ', e);
+      console.log("e :>> ", e);
     }
   }, {
-    key: '_createData',
+    key: "_createData",
     value: function _createData() {
       var _this3 = this;
 
@@ -377,19 +372,19 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var scrollLeft = this.scrollLeft,
           numberList = this.numberList;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__372"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__43"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__372 = _genCompid2[0],
-          $compid__372 = _genCompid2[1];
+          $prevCompid__43 = _genCompid2[0],
+          $compid__43 = _genCompid2[1];
 
       var nowIndex = this.__state.nowIndex;
 
       var Threshold = 20;
-      var loopArray310 = this.numberList.map(function (item, _anonIdx) {
+      var loopArray25 = this.numberList.map(function (item, _anonIdx) {
         item = {
           $original: (0, _taroWeapp.internal_get_original)(item)
         };
-        var $loopState__temp2 = (0, _classnames2.default)('question-item', {
+        var $loopState__temp2 = (0, _classnames2.default)("question-item", {
           done: _this3.__state.doneQuestion[item.$original - 1]
         });
         return {
@@ -402,10 +397,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "onClick": this.addAnswer.bind(this),
         "circle": true,
         "type": "primary"
-      }, $compid__372, $prevCompid__372);
+      }, $compid__43, $prevCompid__43);
       Object.assign(this.__state, {
-        loopArray310: loopArray310,
-        $compid__372: $compid__372,
+        loopArray25: loopArray25,
+        $compid__43: $compid__43,
         scrollLeft: scrollLeft,
         Threshold: Threshold,
         numberList: numberList
@@ -422,10 +417,10 @@ Component(__webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/@tarojs/
 
 /***/ }),
 
-/***/ "./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:\\Users\\USER-PC\\Desktop\\code\\xueshang\\src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/question/index.tsx?taro&type=template&parse=PAGE&":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:/Users/USER-PC/Desktop/code/xueshang/src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./src/pages/question/index.tsx?taro&type=template&parse=PAGE& ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:\\Users\\Administrator\\Desktop\\my-projects\\xueshang\\src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/question/index.tsx?taro&type=template&parse=PAGE&":
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:/Users/Administrator/Desktop/my-projects/xueshang/src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./src/pages/question/index.tsx?taro&type=template&parse=PAGE& ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -520,9 +515,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!file-loader?name=[path][name].wxml&context=C:/Users/USER-PC/Desktop/code/xueshang/src!../../../node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!../../../node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./index.tsx?taro&type=template&parse=PAGE& */ "./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:\\Users\\USER-PC\\Desktop\\code\\xueshang\\src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/question/index.tsx?taro&type=template&parse=PAGE&");
-/* harmony import */ var _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!file-loader?name=[path][name].wxml&context=C:/Users/Administrator/Desktop/my-projects/xueshang/src!../../../node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!../../../node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./index.tsx?taro&type=template&parse=PAGE& */ "./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:\\Users\\Administrator\\Desktop\\my-projects\\xueshang\\src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/question/index.tsx?taro&type=template&parse=PAGE&");
+/* harmony import */ var _file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ })

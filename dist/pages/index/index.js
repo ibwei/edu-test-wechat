@@ -64,32 +64,15 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__76", "$compid__77", "$compid__78", "$compid__79", "$compid__80", "$compid__81", "$compid__82", "$compid__83", "shouquanBox", "infoShow"], _this.config = {
-      navigationBarTitleText: '学商系统'
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__69", "$compid__70", "$compid__71", "$compid__72", "$compid__73", "$compid__74", "$compid__75", "$compid__76", "shouquanBox", "infoShow"], _this.config = {
+      navigationBarTitleText: "学商系统"
     }, _this.customComponents = ["AtModal", "AtModalContent", "AtModalAction", "AtCurtain", "AtForm", "AtInput", "AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Index, [{
-    key: '_constructor',
-
-
-    /* getUserInfo() {
-      Taro.authorize({
-        scope: 'scope.userInfo',
-        success() {
-          Taro.getUserInfo({
-            success(res) {
-              console.log('res :>> ', res);
-            },
-          });
-        },
-        fail(res) {
-          console.log('res :>> ', res);
-        },
-      });
-    } */
+    key: "_constructor",
     value: function _constructor(props) {
-      _get(Index.prototype.__proto__ || Object.getPrototypeOf(Index.prototype), '_constructor', this).call(this, props);
+      _get(Index.prototype.__proto__ || Object.getPrototypeOf(Index.prototype), "_constructor", this).call(this, props);
       this.isLogin = false;
       /**
        * 指定config的类型声明为: Taro.Config
@@ -100,10 +83,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
        */
 
       this.studentInfo = {
-        name: '',
-        school: '',
-        grade: '',
-        tel: ''
+        name: "",
+        school: "",
+        grade: "",
+        tel: ""
       };
       this.state = {
         shouquanBox: false,
@@ -112,36 +95,36 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       this.$$refs = new _taroWeapp2.default.RefsArray();
     }
   }, {
-    key: 'componentWillMount',
+    key: "componentWillMount",
     value: function componentWillMount() {}
   }, {
-    key: 'componentDidMount',
+    key: "componentDidMount",
     value: function componentDidMount() {}
   }, {
-    key: 'componentWillUnmount',
+    key: "componentWillUnmount",
     value: function componentWillUnmount() {}
   }, {
-    key: 'componentDidShow',
+    key: "componentDidShow",
     value: function componentDidShow() {}
   }, {
-    key: 'componentDidHide',
+    key: "componentDidHide",
     value: function componentDidHide() {}
   }, {
-    key: 'getUserInfo',
+    key: "getUserInfo",
     value: function getUserInfo(res) {
       if (res.detail.userInfo) {
-        _taroWeapp2.default.setStorageSync('shouquan', JSON.stringify(true));
+        _taroWeapp2.default.setStorageSync("shouquan", JSON.stringify(true));
         this.setState({
           shouquanBox: false
         });
-        console.log('res :>> ', res);
+        console.log("res :>> ", res);
         var userInfo = res.detail.userInfo;
 
-        console.log('userInfo :>> ', userInfo);
-        _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(userInfo));
+        console.log("userInfo :>> ", userInfo);
+        _taroWeapp2.default.setStorageSync("userInfo", JSON.stringify(userInfo));
         (0, _api.login)().then(function (res) {
-          _taroWeapp2.default.setStorageSync('isLogin', JSON.stringify(true));
-          console.log('res :>> ', res);
+          _taroWeapp2.default.setStorageSync("isLogin", JSON.stringify(true));
+          console.log("res :>> ", res);
           // const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
         });
       }
@@ -149,12 +132,12 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
     // 跳转测试页面
 
   }, {
-    key: 'goTest',
+    key: "goTest",
     value: function goTest() {
       var _this2 = this;
 
-      var shouquan = JSON.parse(_taroWeapp2.default.getStorageSync('shouquan'));
-      var isLogin = JSON.parse(_taroWeapp2.default.getStorageSync('isLogin'));
+      var shouquan = JSON.parse(_taroWeapp2.default.getStorageSync("shouquan"));
+      var isLogin = JSON.parse(_taroWeapp2.default.getStorageSync("isLogin"));
       if (shouquan == false) {
         this.setState({
           shouquanBox: true
@@ -162,24 +145,24 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         return false;
       }
       if (isLogin == true) {
-        var userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
-        console.log('userInfo :>> ', userInfo);
-        console.log('userInfo.student_name :>> ', userInfo.student_name);
-        if (userInfo.student_name == undefined || userInfo.student_name == '') {
+        var userInfo = JSON.parse(_taroWeapp2.default.getStorageSync("userInfo"));
+        console.log("userInfo :>> ", userInfo);
+        console.log("userInfo.student_name :>> ", userInfo.student_name);
+        if (userInfo.student_name == undefined || userInfo.student_name == "") {
           this.setState({
             infoShow: true
           });
         } else {
           _taroWeapp2.default.navigateTo({
-            url: '/pages/question/index'
+            url: "/pages/question/index"
           });
         }
       } else {
         (0, _api.login)().then(function (res) {
-          _taroWeapp2.default.setStorageSync('isLogin', JSON.stringify(true));
-          var userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
-          console.log('userInfo :>> ', userInfo);
-          if (userInfo.student_name == '') {
+          _taroWeapp2.default.setStorageSync("isLogin", JSON.stringify(true));
+          var userInfo = JSON.parse(_taroWeapp2.default.getStorageSync("userInfo"));
+          console.log("userInfo :>> ", userInfo);
+          if (userInfo.student_name == "") {
             _this2.setState({
               infoShow: true
             });
@@ -189,45 +172,45 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       }
     }
   }, {
-    key: 'onClose',
+    key: "onClose",
     value: function onClose() {
       this.setState({
         infoShow: false
       });
     }
   }, {
-    key: 'onSubmit',
+    key: "onSubmit",
     value: function onSubmit() {
       var _this3 = this;
 
-      if (this.studentInfo.name.trim() == '') {
+      if (this.studentInfo.name.trim() == "") {
         _taroWeapp2.default.showToast({
-          title: '学生姓名不能为空',
-          icon: 'none',
+          title: "学生姓名不能为空",
+          icon: "none",
           duration: 1000
         });
         return false;
       }
-      if (this.studentInfo.school.trim() == '') {
+      if (this.studentInfo.school.trim() == "") {
         _taroWeapp2.default.showToast({
-          title: '学校不能为空',
-          icon: 'none',
+          title: "学校不能为空",
+          icon: "none",
           duration: 1000
         });
         return false;
       }
-      if (this.studentInfo.grade.trim() == '') {
+      if (this.studentInfo.grade.trim() == "") {
         _taroWeapp2.default.showToast({
-          title: '年级不能为空',
-          icon: 'none',
+          title: "年级不能为空",
+          icon: "none",
           duration: 1000
         });
         return false;
       }
-      if (this.studentInfo.tel == '') {
+      if (this.studentInfo.tel == "") {
         _taroWeapp2.default.showToast({
-          title: '家长电话不能为空',
-          icon: 'none',
+          title: "家长电话不能为空",
+          icon: "none",
           duration: 1000
         });
         return false;
@@ -235,8 +218,8 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         var regPhones = /^(\d{3,4}\-\d{3,8}$)|(\d{3}\-\d{4}\-\d{3}$)|(^\d{7}$)|(^\d{8}$)|(^\d{11}$)|(^\d{12}$)|(^1\d{10}$)/; //手机号和座机正则
         if (!regPhones.test(this.studentInfo.tel)) {
           _taroWeapp2.default.showToast({
-            title: '请输入正确的家长联系方式',
-            icon: 'none',
+            title: "请输入正确的家长联系方式",
+            icon: "none",
             duration: 1000
           });
           return false;
@@ -248,32 +231,32 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         student_name: this.studentInfo.name.trim(),
         grade: this.studentInfo.grade.trim()
       };
-      console.log('params :>> ', params);
+      console.log("params :>> ", params);
       (0, _api.editStudet)(params).then(function (res) {
-        console.log('res :>> ', res);
+        console.log("res :>> ", res);
         if (res.data.err_code == 0) {
           _this3.onClose();
         }
       });
     }
   }, {
-    key: 'onChange',
+    key: "onChange",
     value: function onChange(field, val) {
       this.studentInfo[field] = val;
-      if (field == 'tel') {
-        this.studentInfo[field] = val.replace(/\D/g, '');
-        return val.replace(/\D/g, '');
+      if (field == "tel") {
+        this.studentInfo[field] = val.replace(/\D/g, "");
+        return val.replace(/\D/g, "");
       }
       return val;
     }
   }, {
-    key: 'onChangeName',
+    key: "onChangeName",
     value: function onChangeName(val) {
-      console.log('this.studentInfo.name :>> ', this.studentInfo.name);
+      console.log("this.studentInfo.name :>> ", this.studentInfo.name);
       return val;
     }
   }, {
-    key: '_createData',
+    key: "_createData",
     value: function _createData() {
       this.__state = arguments[0] || this.state || {};
       this.__props = arguments[1] || this.props || {};
@@ -281,101 +264,101 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __prefix = this.$prefix;
       ;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__76"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__69"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__76 = _genCompid2[0],
-          $compid__76 = _genCompid2[1];
+          $prevCompid__69 = _genCompid2[0],
+          $compid__69 = _genCompid2[1];
 
-      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__77"),
+      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__70"),
           _genCompid4 = _slicedToArray(_genCompid3, 2),
-          $prevCompid__77 = _genCompid4[0],
-          $compid__77 = _genCompid4[1];
+          $prevCompid__70 = _genCompid4[0],
+          $compid__70 = _genCompid4[1];
 
-      var _genCompid5 = (0, _taroWeapp.genCompid)(__prefix + "$compid__78"),
+      var _genCompid5 = (0, _taroWeapp.genCompid)(__prefix + "$compid__71"),
           _genCompid6 = _slicedToArray(_genCompid5, 2),
-          $prevCompid__78 = _genCompid6[0],
-          $compid__78 = _genCompid6[1];
+          $prevCompid__71 = _genCompid6[0],
+          $compid__71 = _genCompid6[1];
 
-      var _genCompid7 = (0, _taroWeapp.genCompid)(__prefix + "$compid__79"),
+      var _genCompid7 = (0, _taroWeapp.genCompid)(__prefix + "$compid__72"),
           _genCompid8 = _slicedToArray(_genCompid7, 2),
-          $prevCompid__79 = _genCompid8[0],
-          $compid__79 = _genCompid8[1];
+          $prevCompid__72 = _genCompid8[0],
+          $compid__72 = _genCompid8[1];
 
-      var _genCompid9 = (0, _taroWeapp.genCompid)(__prefix + "$compid__80"),
+      var _genCompid9 = (0, _taroWeapp.genCompid)(__prefix + "$compid__73"),
           _genCompid10 = _slicedToArray(_genCompid9, 2),
-          $prevCompid__80 = _genCompid10[0],
-          $compid__80 = _genCompid10[1];
+          $prevCompid__73 = _genCompid10[0],
+          $compid__73 = _genCompid10[1];
 
-      var _genCompid11 = (0, _taroWeapp.genCompid)(__prefix + "$compid__81"),
+      var _genCompid11 = (0, _taroWeapp.genCompid)(__prefix + "$compid__74"),
           _genCompid12 = _slicedToArray(_genCompid11, 2),
-          $prevCompid__81 = _genCompid12[0],
-          $compid__81 = _genCompid12[1];
+          $prevCompid__74 = _genCompid12[0],
+          $compid__74 = _genCompid12[1];
 
-      var _genCompid13 = (0, _taroWeapp.genCompid)(__prefix + "$compid__82"),
+      var _genCompid13 = (0, _taroWeapp.genCompid)(__prefix + "$compid__75"),
           _genCompid14 = _slicedToArray(_genCompid13, 2),
-          $prevCompid__82 = _genCompid14[0],
-          $compid__82 = _genCompid14[1];
+          $prevCompid__75 = _genCompid14[0],
+          $compid__75 = _genCompid14[1];
 
-      var _genCompid15 = (0, _taroWeapp.genCompid)(__prefix + "$compid__83"),
+      var _genCompid15 = (0, _taroWeapp.genCompid)(__prefix + "$compid__76"),
           _genCompid16 = _slicedToArray(_genCompid15, 2),
-          $prevCompid__83 = _genCompid16[0],
-          $compid__83 = _genCompid16[1];
+          $prevCompid__76 = _genCompid16[0],
+          $compid__76 = _genCompid16[1];
 
       _taroWeapp.propsManager.set({
         "isOpened": this.__state.shouquanBox
-      }, $compid__76, $prevCompid__76);
+      }, $compid__69, $prevCompid__69);
       _taroWeapp.propsManager.set({
         "isOpened": this.__state.infoShow,
         "onClose": this.onClose.bind(this)
-      }, $compid__77, $prevCompid__77);
+      }, $compid__70, $prevCompid__70);
       _taroWeapp.propsManager.set({
         "onSubmit": this.onSubmit.bind(this)
-      }, $compid__78, $prevCompid__78);
+      }, $compid__71, $prevCompid__71);
       _taroWeapp.propsManager.set({
         "name": "value",
-        "title": '\u5B66\u751F\u59D3\u540D:',
+        "title": "\u5B66\u751F\u59D3\u540D:",
         "type": "text",
-        "placeholder": '\u8BF7\u8F93\u5165\u5B66\u751F\u59D3\u540D',
+        "placeholder": "\u8BF7\u8F93\u5165\u5B66\u751F\u59D3\u540D",
         "value": this.studentInfo.name,
-        "onChange": this.onChange.bind(this, 'name')
-      }, $compid__79, $prevCompid__79);
+        "onChange": this.onChange.bind(this, "name")
+      }, $compid__72, $prevCompid__72);
       _taroWeapp.propsManager.set({
         "name": "value",
-        "title": '\u5B66\u3000\u3000\u6821:',
+        "title": "\u5B66\u3000\u3000\u6821:",
         "type": "text",
-        "placeholder": '\u8BF7\u8F93\u5165\u5C31\u8BFB\u5B66\u6821',
+        "placeholder": "\u8BF7\u8F93\u5165\u5C31\u8BFB\u5B66\u6821",
         "value": this.studentInfo.school,
-        "onChange": this.onChange.bind(this, 'school')
-      }, $compid__80, $prevCompid__80);
+        "onChange": this.onChange.bind(this, "school")
+      }, $compid__73, $prevCompid__73);
       _taroWeapp.propsManager.set({
         "name": "value",
-        "title": '\u5E74\u3000\u3000\u7EA7:',
+        "title": "\u5E74\u3000\u3000\u7EA7:",
         "type": "text",
-        "placeholder": '\u8BF7\u8F93\u5165\u5C31\u8BFB\u5E74\u7EA7',
+        "placeholder": "\u8BF7\u8F93\u5165\u5C31\u8BFB\u5E74\u7EA7",
         "value": this.studentInfo.grade,
-        "onChange": this.onChange.bind(this, 'grade')
-      }, $compid__81, $prevCompid__81);
+        "onChange": this.onChange.bind(this, "grade")
+      }, $compid__74, $prevCompid__74);
       _taroWeapp.propsManager.set({
         "name": "value",
-        "title": '\u5BB6\u957F\u7535\u8BDD:',
+        "title": "\u5BB6\u957F\u7535\u8BDD:",
         "type": "phone",
-        "placeholder": '\u8BF7\u8F93\u5165\u5BB6\u957F\u7535\u8BDD',
+        "placeholder": "\u8BF7\u8F93\u5165\u5BB6\u957F\u7535\u8BDD",
         "value": this.studentInfo.tel,
-        "onChange": this.onChange.bind(this, 'tel')
-      }, $compid__82, $prevCompid__82);
+        "onChange": this.onChange.bind(this, "tel")
+      }, $compid__75, $prevCompid__75);
       _taroWeapp.propsManager.set({
         "formType": "submit",
         "className": "btn"
-      }, $compid__83, $prevCompid__83);
+      }, $compid__76, $prevCompid__76);
       Object.assign(this.__state, {
-        $compid__76: $compid__76,
-        $compid__77: $compid__77,
-        $compid__78: $compid__78,
-        $compid__79: $compid__79,
-        $compid__80: $compid__80,
-        $compid__81: $compid__81,
-        $compid__82: $compid__82,
-        $compid__83: $compid__83
+        $compid__69: $compid__69,
+        $compid__70: $compid__70,
+        $compid__71: $compid__71,
+        $compid__72: $compid__72,
+        $compid__73: $compid__73,
+        $compid__74: $compid__74,
+        $compid__75: $compid__75,
+        $compid__76: $compid__76
       });
       return this.__state;
     }
@@ -389,10 +372,10 @@ Component(__webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/@tarojs/
 
 /***/ }),
 
-/***/ "./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:\\Users\\USER-PC\\Desktop\\code\\xueshang\\src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/index/index.tsx?taro&type=template&parse=PAGE&":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:/Users/USER-PC/Desktop/code/xueshang/src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./src/pages/index/index.tsx?taro&type=template&parse=PAGE& ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:\\Users\\Administrator\\Desktop\\my-projects\\xueshang\\src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/index/index.tsx?taro&type=template&parse=PAGE&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:/Users/Administrator/Desktop/my-projects/xueshang/src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./src/pages/index/index.tsx?taro&type=template&parse=PAGE& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -487,9 +470,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!file-loader?name=[path][name].wxml&context=C:/Users/USER-PC/Desktop/code/xueshang/src!../../../node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!../../../node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./index.tsx?taro&type=template&parse=PAGE& */ "./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:\\Users\\USER-PC\\Desktop\\code\\xueshang\\src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/index/index.tsx?taro&type=template&parse=PAGE&");
-/* harmony import */ var _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!file-loader?name=[path][name].wxml&context=C:/Users/Administrator/Desktop/my-projects/xueshang/src!../../../node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!../../../node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./index.tsx?taro&type=template&parse=PAGE& */ "./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:\\Users\\Administrator\\Desktop\\my-projects\\xueshang\\src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/index/index.tsx?taro&type=template&parse=PAGE&");
+/* harmony import */ var _file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _file_loader_name_path_name_wxml_context_C_Users_Administrator_Desktop_my_projects_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ })

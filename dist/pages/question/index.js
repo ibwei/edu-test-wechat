@@ -50,15 +50,11 @@ var _api = __webpack_require__(/*! ../../api/api */ "./src/api/api.ts");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var Question = function Question() {
-  _classCallCheck(this, Question);
-};
 
 var Index = (_temp2 = _class = function (_BaseComponent) {
   _inherits(Index, _BaseComponent);
@@ -74,7 +70,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray35", "$compid__201", "scrollLeft", "Threshold", "numberList", "buttonShow", "buttonTitle", "answerArray", "doneQuestion", "nowIndex", "chooesAnswer", "currentQuestionPartName", "currentQuestion", "currentAnswerList"], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray48", "$compid__243", "scrollLeft", "Threshold", "numberList", "nowIndex", "buttonShow", "answerArray", "doneQuestion", "chooesAnswer", "currentQuestionPartName", "currentQuestion", "currentAnswerList"], _this.config = {
       navigationBarTitleText: '测试界面'
     }, _this.customComponents = ["AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -106,7 +102,6 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
 
       this.state = {
         buttonShow: false,
-        buttonTitle: '下一题',
         answerArray: [],
         doneQuestion: [],
         nowIndex: 0,
@@ -369,15 +364,15 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var scrollLeft = this.scrollLeft,
           numberList = this.numberList;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__201"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__243"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__201 = _genCompid2[0],
-          $compid__201 = _genCompid2[1];
+          $prevCompid__243 = _genCompid2[0],
+          $compid__243 = _genCompid2[1];
 
       var nowIndex = this.__state.nowIndex;
 
       var Threshold = 20;
-      var loopArray35 = this.numberList.map(function (item, _anonIdx) {
+      var loopArray48 = this.numberList.map(function (item, _anonIdx) {
         item = {
           $original: (0, _taroWeapp.internal_get_original)(item)
         };
@@ -394,10 +389,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "onClick": this.addAnswer.bind(this),
         "circle": true,
         "type": "primary"
-      }, $compid__201, $prevCompid__201);
+      }, $compid__243, $prevCompid__243);
       Object.assign(this.__state, {
-        loopArray35: loopArray35,
-        $compid__201: $compid__201,
+        loopArray48: loopArray48,
+        $compid__243: $compid__243,
         scrollLeft: scrollLeft,
         Threshold: Threshold,
         numberList: numberList

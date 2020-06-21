@@ -25,6 +25,7 @@ type stateType = {
 };
 export default class Index extends Component {
   isLogin = false;
+  state: StateType;
   componentWillMount() {}
 
   componentDidMount() {}

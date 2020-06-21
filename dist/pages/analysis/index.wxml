@@ -7,6 +7,7 @@
             </view>
             <view class="score">得分：<text>{{score}}</text> 分</view>
         </view>
+<<<<<<< HEAD
         <at-divider compid="{{$compid__28}}"></at-divider>
         <view class="echarts">
             <ec-canvas id="mychart-dom-area" canvas-id="mychart-area" ec="{{ec}}"></ec-canvas>
@@ -17,6 +18,15 @@
                 <view class="forum-title">{{item.name}}</view>
                 <view class="forum-content">{{item.text}}</view>
             </view>
+=======
+        <at-divider compid="{{$compid__20}}"></at-divider>
+        <view class="echarts">
+            <ec-canvas id="mychart-dom-area" canvas-id="mychart-area" ec="{{ec}}"></ec-canvas>
+        </view>
+        <at-divider compid="{{$compid__21}}"></at-divider>
+        <view class="result">
+            <at-timeline compid="{{$compid__22}}"></at-timeline>
+>>>>>>> 9928cde7f0fc29edfa76aa119011f22d868c88b6
         </view>
     </view>
 </block>

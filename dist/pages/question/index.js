@@ -74,7 +74,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray310", "$compid__372", "scrollLeft", "Threshold", "numberList", "buttonShow", "buttonTitle", "answerArray", "doneQuestion", "nowIndex", "chooesAnswer", "currentQuestionPartName", "currentQuestion", "currentAnswerList"], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray35", "$compid__201", "scrollLeft", "Threshold", "numberList", "buttonShow", "buttonTitle", "answerArray", "doneQuestion", "nowIndex", "chooesAnswer", "currentQuestionPartName", "currentQuestion", "currentAnswerList"], _this.config = {
       navigationBarTitleText: '测试界面'
     }, _this.customComponents = ["AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -178,7 +178,6 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         doneQuestion: new Array(50).fill(false)
       });
       (0, _api.getList)().then(function (res) {
-        console.log('res :>> ', res);
         var _res$data = res.data,
             err_code = _res$data.err_code,
             data = _res$data.data;
@@ -195,12 +194,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
           });
           // 分数数组
           _this2.scoreArray = _this2.scoreArray.fill(-1);
-          console.log('this.questionArray :>> ', _this2.questionArray);
           _this2.setCurrentQuestion(0);
         }
       }).catch(function (err) {});
       this.forumList = JSON.parse(_taroWeapp2.default.getStorageSync('forumList'));
-      console.log('this.forumList :>> ', this.forumList);
     }
   }, {
     key: 'componentDidHide',
@@ -219,7 +216,6 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       // 判断是否为最后一题
       if (nowIndex < length) {
         nextQuestion = this.questionList[nowIndex];
-        console.log('nextQuestion :>> ', nextQuestion);
         // 设置题目
         this.setState({
           currentQuestion: nextQuestion.title
@@ -230,7 +226,6 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
             partName = item.name;
           }
         });
-        console.log('partName :>> ', partName);
         this.setState({
           currentQuestionPartName: partName
         });
@@ -294,9 +289,6 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       this.setState({
         doneQuestion: doneQ
       });
-      console.log('this.state.doneQuestion :>> ', this.state.doneQuestion);
-      console.log('this.state.answerArray :>> ', this.state.answerArray);
-      console.log('this.answerArray.includes(-1) :>> ', this.answerArray);
       if (!this.answerArray.includes(-1) && !this.scoreArray.includes(-1)) {
         this.setState({
           buttonShow: true
@@ -343,7 +335,6 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         title: '答案提交中...'
       });
       (0, _api.pushAnwser)(params).then(function (res) {
-        console.log('res :>> ', res);
         var _res$data2 = res.data,
             err_code = _res$data2.err_code,
             data = _res$data2.data,
@@ -352,19 +343,20 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         if (resultCode == '0') {
           _taroWeapp2.default.hideLoading();
           _taroWeapp2.default.showToast({
-            title: '提交成功!'
+            title: '提交成功!',
+            duration: 2000
           });
           setTimeout(function () {
-            _taroWeapp2.default.hideToast();
+            _taroWeapp2.default.redirectTo({
+              url: '/pages/analysis/index'
+            });
           }, 2000);
         }
       });
     }
   }, {
     key: 'onScroll',
-    value: function onScroll(e) {
-      console.log('e :>> ', e);
-    }
+    value: function onScroll(e) {}
   }, {
     key: '_createData',
     value: function _createData() {
@@ -377,15 +369,15 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var scrollLeft = this.scrollLeft,
           numberList = this.numberList;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__372"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__201"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__372 = _genCompid2[0],
-          $compid__372 = _genCompid2[1];
+          $prevCompid__201 = _genCompid2[0],
+          $compid__201 = _genCompid2[1];
 
       var nowIndex = this.__state.nowIndex;
 
       var Threshold = 20;
-      var loopArray310 = this.numberList.map(function (item, _anonIdx) {
+      var loopArray35 = this.numberList.map(function (item, _anonIdx) {
         item = {
           $original: (0, _taroWeapp.internal_get_original)(item)
         };
@@ -402,10 +394,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "onClick": this.addAnswer.bind(this),
         "circle": true,
         "type": "primary"
-      }, $compid__372, $prevCompid__372);
+      }, $compid__201, $prevCompid__201);
       Object.assign(this.__state, {
-        loopArray310: loopArray310,
-        $compid__372: $compid__372,
+        loopArray35: loopArray35,
+        $compid__201: $compid__201,
         scrollLeft: scrollLeft,
         Threshold: Threshold,
         numberList: numberList

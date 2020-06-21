@@ -1,1 +1,1 @@
-{"usingComponents":{"at-divider":"../../npm/taro-ui/dist/weapp/components/divider/index","at-timeline":"../../npm/taro-ui/dist/weapp/components/timeline/index","ec-canvas":"../../ec-canvas/ec-canvas"},"navigationBarTitleText":"测试结果"}
+{"usingComponents":{"at-divider":"../../npm/taro-ui/dist/weapp/components/divider/index","ec-canvas":"../../ec-canvas/ec-canvas"},"navigationBarTitleText":"测试结果"}

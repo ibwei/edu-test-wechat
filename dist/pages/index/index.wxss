@@ -27,6 +27,7 @@
 }
 .btn {
   background: #bae7ff;
+  margin-bottom: 50rpx;
 }
 .title {
   font-size: 1rem;

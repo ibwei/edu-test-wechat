@@ -75,13 +75,9 @@ export const getResult = async (): Promise<any> => {
     data: { token: Taro.getStorageSync('token'), id: userInfo.id },
   }).then((res) => {
     const { data, err_code, err_msg } = res;
-    console.log('res :>> ', res);
+    resData = res;
     if (err_code == 401) {
       console.log('err_msg :>> ', err_msg);
-      login();
-      getList();
-    } else {
-      resData = res;
     }
   });
   return Promise.resolve(resData);

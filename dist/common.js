@@ -169,13 +169,9 @@ var getResult = exports.getResult = function () {
                   err_code = res.err_code,
                   err_msg = res.err_msg;
 
-              console.log('res :>> ', res);
+              resData = res;
               if (err_code == 401) {
                 console.log('err_msg :>> ', err_msg);
-                login();
-                getList();
-              } else {
-                resData = res;
               }
             });
 

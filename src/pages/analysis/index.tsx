@@ -1,14 +1,16 @@
 import Taro, { Component, Config } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
 import { AtDivider, AtTimeline } from 'taro-ui';
-
+import { userInfo } from '../../class/userInfo';
 import echarts from '../../ec-canvas/echarts';
 
 import './index.less';
 import 'taro-ui/dist/style/components/divider.scss';
 import 'taro-ui/dist/style/components/timeline.scss';
 import 'taro-ui/dist/style/components/icon.scss';
+import { getResult } from '../../api/api';
 let chart;
+const indicatorArrya = JSON.parse(Taro.getStorageSync('forumList'));
 function initChart(canvas, width, height, dpr) {
   chart = echarts.init(canvas, null, {
     width: width,
@@ -16,12 +18,21 @@ function initChart(canvas, width, height, dpr) {
     devicePixelRatio: dpr, // 像素
   });
   canvas.setChart(chart);
-
   var option = {
     title: {
       text: '',
     },
-    tooltip: {},
+    tooltip: {
+      show: true,
+      formatter: function(param) {
+        let str = `${param.seriesName}`;
+        for (let i = 0; i < param.value.length; i++) {
+          str += i % 2 ? ' ' : '\n';
+          str += `${indicatorArrya[i].name}:${param.value[i]}`;
+        }
+        return str;
+      },
+    },
     radar: {
       // shape: 'circle',
       name: {
@@ -32,29 +43,23 @@ function initChart(canvas, width, height, dpr) {
           padding: [3, 5],
         },
       },
-      indicator: [
-        { name: '预习策略', max: 50 },
-        { name: '听课策略', max: 50 },
-        { name: '笔记策略', max: 50 },
-        { name: '复习策略', max: 50 },
-        { name: '作业策略', max: 50 },
-        { name: '时间管理', max: 50 },
-        { name: '学习计划', max: 50 },
-        { name: '错题管理', max: 50 },
-        { name: '考试策略', max: 50 },
-        { name: '阅读策略', max: 50 },
-      ],
+      indicator: indicatorArrya.map((item) => {
+        return {
+          name: item.name,
+          max: 25,
+        };
+      }),
       radius: 100,
     },
     series: [
       {
-        name: '学生能力图',
+        name: '成绩分布图',
         type: 'radar',
         // areaStyle: {normal: {}},
         data: [
           {
-            value: [48, 25, 30, 33, 20, 27, 40, 50, 38, 17],
-            name: '学生能力图',
+            value: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+            name: '成绩分布图',
             areaStyle: {
               opacity: 0.9,
               color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
@@ -76,7 +81,12 @@ function initChart(canvas, width, height, dpr) {
   chart.setOption(option);
   return chart;
 }
-
+type StateType = {
+  ec: Object;
+  userInfo: userInfo;
+  score: number;
+  scoreText: Array<any>;
+};
 export default class Index extends Component {
   componentWillMount() {}
 
@@ -84,7 +94,57 @@ export default class Index extends Component {
 
   componentWillUnmount() {}
 
-  componentDidShow() {}
+  componentDidShow() {
+    const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
+    console.log('userInfo :>> ', userInfo);
+    this.setState({
+      userInfo: userInfo,
+    });
+    getResult().then((res) => {
+      console.log('res :>> ', res);
+      const { err_code, err_msg, data } = res.data;
+      if (err_code == 0) {
+        this.setState({
+          score: (data.allScore / 2.5).toFixed(1), // 总分250分转换为百分制保留一位小数
+        });
+        const scoreArray = data.scoreArray.split('-');
+        const scoreText = scoreArray.map((item, index) => {
+          let key = '';
+          switch (Math.floor(item / 5.01)) {
+            case 0:
+              key = 'a_answer';
+              break;
+            case 1:
+              key = 'b_answer';
+              break;
+            case 2:
+              key = 'c_answer';
+              break;
+            case 3:
+              key = 'd_answer';
+              break;
+            default:
+              key = 'd_answer';
+              break;
+          }
+          return {
+            name: indicatorArrya[index].name,
+            text: indicatorArrya[index][key],
+          };
+        });
+        this.setState({
+          scoreText: scoreText,
+        });
+        this.setEcharts(scoreArray);
+      } else {
+        Taro.showToast({
+          title: err_msg,
+          icon: 'none',
+          duration: 2000,
+        });
+      }
+    });
+  }
 
   componentDidHide() {}
 
@@ -102,23 +162,32 @@ export default class Index extends Component {
       'ec-canvas': '../../ec-canvas/ec-canvas', // 书写第三方组件的相对路径
     },
   };
-  state = {
-    ec: {
-      onInit: initChart,
-    },
-    open: [true],
-    content: '考得很不错',
-  };
-  handleClick(value) {
-    this.setState({
-      open: [value],
-    });
+  state: StateType;
+  constructor(props) {
+    super(props);
+    this.state = {
+      ec: {
+        onInit: initChart,
+      },
+      score: 0,
+      scoreText: [],
+      userInfo: {
+        name: '', // 姓名
+        avatar: '', // 头像
+        parent_phone: '', // 家长电话
+        student_name: '', // 学生姓名
+        grade: '', // 年级
+        school_name: '', // 学校名
+      },
+    };
+  }
+  setEcharts(value) {
     chart.setOption({
       series: [
         {
           data: [
             {
-              value: [25, 25, 25, 25, 25, 25, 25, 25, 25, 17],
+              value: value,
               name: '学生能力图',
               areaStyle: {
                 opacity: 0.9,
@@ -141,17 +210,27 @@ export default class Index extends Component {
   }
 
   render() {
+    const forumDom = this.state.scoreText.map((item) => {
+      return (
+        <View className="result-item">
+          <View className="forum-title">{item.name}</View>
+          <View className="forum-content">{item.text}</View>
+        </View>
+      );
+    });
     return (
       <View className="index">
         <View className="introduce">
-          <View className="name" onClick={this.handleClick}>
-            <Text>张三</Text>
+          <View className="name">
+            <Text>{this.state.userInfo.student_name}</Text>
           </View>
           <View className="item">
-            <Text>重庆摸鱼小学/五年级</Text>
+            <Text>
+              {this.state.userInfo.school_name} / {this.state.userInfo.grade}
+            </Text>
           </View>
           <View className="score">
-            得分：<Text>80</Text> 分
+            得分：<Text>{this.state.score}</Text> 分
           </View>
         </View>
         <AtDivider content="成绩分布图" fontColor="#555" lineColor="#bebebe" />
@@ -163,33 +242,7 @@ export default class Index extends Component {
           ></ec-canvas>
         </View>
         <AtDivider content="成绩分析" fontColor="#555" lineColor="#bebebe" />
-        <View className="result">
-          <AtTimeline
-            pending
-            items={[
-              {
-                title: '刷牙洗脸',
-                content: [
-                  '大概8:00牛奶+面包，餐后记得吃药牛奶+面包，餐后记得吃药牛奶+面包，餐后记得吃药牛奶+面包，餐后记得吃药牛奶+面包，餐后记得吃药',
-                ],
-                icon: 'bookmark',
-              },
-              {
-                title: '吃早餐',
-                content: [
-                  '牛奶+面包，餐后记得吃药牛奶+面包，餐后记得吃药牛奶+面包，餐后记得吃药牛奶+面包，餐后记得吃药牛奶+面包，餐后记得吃药',
-                ],
-                icon: 'bookmark',
-              },
-              {
-                title: '上班',
-                content: ['查看邮件', '写PPT', '发送PPT给领导'],
-                icon: 'bookmark',
-              },
-              { title: '睡觉', content: ['不超过23:00'], icon: 'bookmark' },
-            ]}
-          ></AtTimeline>
-        </View>
+        <View className="result">{forumDom}</View>
       </View>
     );
   }

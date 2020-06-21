@@ -1,13 +1,6 @@
 import Taro, { Component, Config } from '@tarojs/taro';
-import { View, Image, Text, Button, ScrollView } from '@tarojs/components';
-import {
-  AtButton,
-  AtModal,
-  AtModalContent,
-  AtModalAction,
-  AtActivityIndicator,
-  AtToast,
-} from 'taro-ui';
+import { View, ScrollView } from '@tarojs/components';
+import { AtButton } from 'taro-ui';
 import classNames from 'classnames';
 
 import './index.less';
@@ -64,7 +57,6 @@ export default class Index extends Component {
     });
     getList()
       .then((res) => {
-        console.log('res :>> ', res);
         let { err_code, data } = res.data;
         if (err_code == '0') {
           this.questionList = data.flat(1);
@@ -78,13 +70,11 @@ export default class Index extends Component {
           });
           // 分数数组
           this.scoreArray = this.scoreArray.fill(-1);
-          console.log('this.questionArray :>> ', this.questionArray);
           this.setCurrentQuestion(0);
         }
       })
       .catch((err) => {});
     this.forumList = JSON.parse(Taro.getStorageSync('forumList'));
-    console.log('this.forumList :>> ', this.forumList);
   }
   componentDidHide() {}
   /** 设置当前题目 */
@@ -98,7 +88,6 @@ export default class Index extends Component {
     // 判断是否为最后一题
     if (nowIndex < length) {
       nextQuestion = this.questionList[nowIndex];
-      console.log('nextQuestion :>> ', nextQuestion);
       // 设置题目
       this.setState({
         currentQuestion: nextQuestion.title,
@@ -107,7 +96,6 @@ export default class Index extends Component {
       this.forumList.forEach((item) => {
         if (item.id == nextQuestion.part_id) partName = item.name;
       });
-      console.log('partName :>> ', partName);
       this.setState({
         currentQuestionPartName: partName,
       });
@@ -229,9 +217,6 @@ export default class Index extends Component {
     this.setState({
       doneQuestion: doneQ,
     });
-    console.log('this.state.doneQuestion :>> ', this.state.doneQuestion);
-    console.log('this.state.answerArray :>> ', this.state.answerArray);
-    console.log('this.answerArray.includes(-1) :>> ', this.answerArray);
     if (!this.answerArray.includes(-1) && !this.scoreArray.includes(-1)) {
       this.setState({
         buttonShow: true,
@@ -275,22 +260,22 @@ export default class Index extends Component {
       title: '答案提交中...',
     });
     pushAnwser(params).then((res) => {
-      console.log('res :>> ', res);
       let { err_code, data, resultCode } = res.data;
       if (resultCode == '0') {
         Taro.hideLoading();
         Taro.showToast({
           title: '提交成功!',
+          duration: 2000,
         });
         setTimeout(() => {
-          Taro.hideToast();
+          Taro.redirectTo({
+            url: '/pages/analysis/index',
+          });
         }, 2000);
       }
     });
   }
-  onScroll(e) {
-    console.log('e :>> ', e);
-  }
+  onScroll(e) {}
   /**
    * 指定config的类型声明为: Taro.Config
    *

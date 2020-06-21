@@ -6,11 +6,10 @@ import {
   AtForm,
   AtInput,
   AtModal,
-  AtModalHeader,
   AtModalContent,
   AtModalAction,
 } from 'taro-ui';
-import { login, getList, getResult, editStudet } from '../../api/api';
+import { login, editStudet } from '../../api/api';
 
 import './index.less';
 import 'taro-ui/dist/style/components/button.scss';
@@ -20,6 +19,10 @@ import 'taro-ui/dist/style/components/form.scss';
 import 'taro-ui/dist/style/components/input.scss';
 import 'taro-ui/dist/style/components/modal.scss';
 
+type stateType = {
+  shouquanBox: boolean;
+  infoShow: boolean;
+};
 export default class Index extends Component {
   isLogin = false;
   componentWillMount() {}
@@ -32,21 +35,7 @@ export default class Index extends Component {
 
   componentDidHide() {}
 
-  /* getUserInfo() {
-    Taro.authorize({
-      scope: 'scope.userInfo',
-      success() {
-        Taro.getUserInfo({
-          success(res) {
-            console.log('res :>> ', res);
-          },
-        });
-      },
-      fail(res) {
-        console.log('res :>> ', res);
-      },
-    });
-  } */
+  state: stateType;
   constructor(props) {
     super(props);
     this.state = {
@@ -70,13 +59,10 @@ export default class Index extends Component {
       this.setState({
         shouquanBox: false,
       });
-      console.log('res :>> ', res);
       const { userInfo } = res.detail;
-      console.log('userInfo :>> ', userInfo);
       Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
       login().then((res) => {
         Taro.setStorageSync('isLogin', JSON.stringify(true));
-        console.log('res :>> ', res);
         // const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
       });
     }
@@ -93,8 +79,6 @@ export default class Index extends Component {
     }
     if (isLogin == true) {
       const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
-      console.log('userInfo :>> ', userInfo);
-      console.log('userInfo.student_name :>> ', userInfo.student_name);
       if (userInfo.student_name == undefined || userInfo.student_name == '') {
         this.setState({
           infoShow: true,
@@ -108,15 +92,23 @@ export default class Index extends Component {
       login().then((res) => {
         Taro.setStorageSync('isLogin', JSON.stringify(true));
         const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
-        console.log('userInfo :>> ', userInfo);
-        if (userInfo.student_name == '') {
+        if (userInfo.student_name == undefined || userInfo.student_name == '') {
           this.setState({
             infoShow: true,
           });
+        } else {
+          Taro.navigateTo({
+            url: '/pages/question/index',
+          });
         }
-        // if(userInfo.student)
       });
     }
+  }
+  goResult() {
+    const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
+    Taro.navigateTo({
+      url: '/pages/analysis/index',
+    });
   }
   onClose() {
     this.setState({
@@ -174,9 +166,7 @@ export default class Index extends Component {
       student_name: this.studentInfo.name.trim(),
       grade: this.studentInfo.grade.trim(),
     };
-    console.log('params :>> ', params);
     editStudet(params).then((res) => {
-      console.log('res :>> ', res);
       if (res.data.err_code == 0) {
         this.onClose();
       }
@@ -194,10 +184,6 @@ export default class Index extends Component {
       this.studentInfo[field] = val.replace(/\D/g, '');
       return val.replace(/\D/g, '');
     }
-    return val;
-  }
-  onChangeName(val) {
-    console.log('this.studentInfo.name :>> ', this.studentInfo.name);
     return val;
   }
 
@@ -229,6 +215,9 @@ export default class Index extends Component {
         <View className="button">
           <Button className="btn" onClick={this.goTest.bind(this)}>
             开始测试
+          </Button>
+          <Button className="btn" onClick={this.goResult.bind(this)}>
+            查看结果
           </Button>
         </View>
         <AtModal isOpened={this.state.shouquanBox}>

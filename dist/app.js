@@ -1,6 +1,7 @@
 require("./runtime");
 require("./common");
 require("./vendors");
+require("./taro");
 
 (wx["webpackJsonp"] = wx["webpackJsonp"] || []).push([["app"],{
 
@@ -173,4 +174,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ })
 
-},[["./src/app.tsx","runtime","vendors","common"]]]);;
+},[["./src/app.tsx","runtime","taro","vendors","common"]]]);;

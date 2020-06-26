@@ -14,7 +14,7 @@
             </view>
             <view>
                 <block wx:if="{{buttonShow}}">
-                    <at-button compid="{{$compid__25}}">提交</at-button>
+                    <at-button compid="{{$compid__23}}">提交</at-button>
                 </block>
             </view>
         </view>

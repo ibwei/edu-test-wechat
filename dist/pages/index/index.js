@@ -64,7 +64,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__17", "$compid__18", "$compid__19", "$compid__20", "$compid__21", "$compid__22", "$compid__23", "$compid__24", "shouquanBox", "infoShow"], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__13", "$compid__14", "$compid__15", "$compid__16", "$compid__17", "$compid__18", "$compid__19", "$compid__20", "shouquanBox", "infoShow"], _this.config = {
       navigationBarTitleText: '学商系统'
     }, _this.customComponents = ["AtModal", "AtModalContent", "AtModalAction", "AtCurtain", "AtForm", "AtInput", "AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -261,56 +261,56 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __prefix = this.$prefix;
       ;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__17"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__13"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__17 = _genCompid2[0],
-          $compid__17 = _genCompid2[1];
+          $prevCompid__13 = _genCompid2[0],
+          $compid__13 = _genCompid2[1];
 
-      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__18"),
+      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__14"),
           _genCompid4 = _slicedToArray(_genCompid3, 2),
-          $prevCompid__18 = _genCompid4[0],
-          $compid__18 = _genCompid4[1];
+          $prevCompid__14 = _genCompid4[0],
+          $compid__14 = _genCompid4[1];
 
-      var _genCompid5 = (0, _taroWeapp.genCompid)(__prefix + "$compid__19"),
+      var _genCompid5 = (0, _taroWeapp.genCompid)(__prefix + "$compid__15"),
           _genCompid6 = _slicedToArray(_genCompid5, 2),
-          $prevCompid__19 = _genCompid6[0],
-          $compid__19 = _genCompid6[1];
+          $prevCompid__15 = _genCompid6[0],
+          $compid__15 = _genCompid6[1];
 
-      var _genCompid7 = (0, _taroWeapp.genCompid)(__prefix + "$compid__20"),
+      var _genCompid7 = (0, _taroWeapp.genCompid)(__prefix + "$compid__16"),
           _genCompid8 = _slicedToArray(_genCompid7, 2),
-          $prevCompid__20 = _genCompid8[0],
-          $compid__20 = _genCompid8[1];
+          $prevCompid__16 = _genCompid8[0],
+          $compid__16 = _genCompid8[1];
 
-      var _genCompid9 = (0, _taroWeapp.genCompid)(__prefix + "$compid__21"),
+      var _genCompid9 = (0, _taroWeapp.genCompid)(__prefix + "$compid__17"),
           _genCompid10 = _slicedToArray(_genCompid9, 2),
-          $prevCompid__21 = _genCompid10[0],
-          $compid__21 = _genCompid10[1];
+          $prevCompid__17 = _genCompid10[0],
+          $compid__17 = _genCompid10[1];
 
-      var _genCompid11 = (0, _taroWeapp.genCompid)(__prefix + "$compid__22"),
+      var _genCompid11 = (0, _taroWeapp.genCompid)(__prefix + "$compid__18"),
           _genCompid12 = _slicedToArray(_genCompid11, 2),
-          $prevCompid__22 = _genCompid12[0],
-          $compid__22 = _genCompid12[1];
+          $prevCompid__18 = _genCompid12[0],
+          $compid__18 = _genCompid12[1];
 
-      var _genCompid13 = (0, _taroWeapp.genCompid)(__prefix + "$compid__23"),
+      var _genCompid13 = (0, _taroWeapp.genCompid)(__prefix + "$compid__19"),
           _genCompid14 = _slicedToArray(_genCompid13, 2),
-          $prevCompid__23 = _genCompid14[0],
-          $compid__23 = _genCompid14[1];
+          $prevCompid__19 = _genCompid14[0],
+          $compid__19 = _genCompid14[1];
 
-      var _genCompid15 = (0, _taroWeapp.genCompid)(__prefix + "$compid__24"),
+      var _genCompid15 = (0, _taroWeapp.genCompid)(__prefix + "$compid__20"),
           _genCompid16 = _slicedToArray(_genCompid15, 2),
-          $prevCompid__24 = _genCompid16[0],
-          $compid__24 = _genCompid16[1];
+          $prevCompid__20 = _genCompid16[0],
+          $compid__20 = _genCompid16[1];
 
       _taroWeapp.propsManager.set({
         "isOpened": this.__state.shouquanBox
-      }, $compid__17, $prevCompid__17);
+      }, $compid__13, $prevCompid__13);
       _taroWeapp.propsManager.set({
         "isOpened": this.__state.infoShow,
         "onClose": this.onClose.bind(this)
-      }, $compid__18, $prevCompid__18);
+      }, $compid__14, $prevCompid__14);
       _taroWeapp.propsManager.set({
         "onSubmit": this.onSubmit.bind(this)
-      }, $compid__19, $prevCompid__19);
+      }, $compid__15, $prevCompid__15);
       _taroWeapp.propsManager.set({
         "name": "value",
         "title": '\u5B66\u751F\u59D3\u540D:',
@@ -318,7 +318,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "placeholder": '\u8BF7\u8F93\u5165\u5B66\u751F\u59D3\u540D',
         "value": this.studentInfo.name,
         "onChange": this.onChange.bind(this, 'name')
-      }, $compid__20, $prevCompid__20);
+      }, $compid__16, $prevCompid__16);
       _taroWeapp.propsManager.set({
         "name": "value",
         "title": '\u5B66\u3000\u3000\u6821:',
@@ -326,7 +326,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "placeholder": '\u8BF7\u8F93\u5165\u5C31\u8BFB\u5B66\u6821',
         "value": this.studentInfo.school,
         "onChange": this.onChange.bind(this, 'school')
-      }, $compid__21, $prevCompid__21);
+      }, $compid__17, $prevCompid__17);
       _taroWeapp.propsManager.set({
         "name": "value",
         "title": '\u5E74\u3000\u3000\u7EA7:',
@@ -334,7 +334,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "placeholder": '\u8BF7\u8F93\u5165\u5C31\u8BFB\u5E74\u7EA7',
         "value": this.studentInfo.grade,
         "onChange": this.onChange.bind(this, 'grade')
-      }, $compid__22, $prevCompid__22);
+      }, $compid__18, $prevCompid__18);
       _taroWeapp.propsManager.set({
         "name": "value",
         "title": '\u5BB6\u957F\u7535\u8BDD:',
@@ -342,20 +342,20 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "placeholder": '\u8BF7\u8F93\u5165\u5BB6\u957F\u7535\u8BDD',
         "value": this.studentInfo.tel,
         "onChange": this.onChange.bind(this, 'tel')
-      }, $compid__23, $prevCompid__23);
+      }, $compid__19, $prevCompid__19);
       _taroWeapp.propsManager.set({
         "formType": "submit",
         "className": "btn"
-      }, $compid__24, $prevCompid__24);
+      }, $compid__20, $prevCompid__20);
       Object.assign(this.__state, {
+        $compid__13: $compid__13,
+        $compid__14: $compid__14,
+        $compid__15: $compid__15,
+        $compid__16: $compid__16,
         $compid__17: $compid__17,
         $compid__18: $compid__18,
         $compid__19: $compid__19,
-        $compid__20: $compid__20,
-        $compid__21: $compid__21,
-        $compid__22: $compid__22,
-        $compid__23: $compid__23,
-        $compid__24: $compid__24
+        $compid__20: $compid__20
       });
       return this.__state;
     }
@@ -369,10 +369,10 @@ Component(__webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/@tarojs/
 
 /***/ }),
 
-/***/ "./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:\\Users\\USER-PC\\Desktop\\code\\xueshang\\src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/index/index.tsx?taro&type=template&parse=PAGE&":
-/*!******************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:/Users/USER-PC/Desktop/code/xueshang/src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./src/pages/index/index.tsx?taro&type=template&parse=PAGE& ***!
-  \******************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=/Users/ibaiwei/Desktop/xueshang/src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/index/index.tsx?taro&type=template&parse=PAGE&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=/Users/ibaiwei/Desktop/xueshang/src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./src/pages/index/index.tsx?taro&type=template&parse=PAGE& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -467,11 +467,11 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!file-loader?name=[path][name].wxml&context=C:/Users/USER-PC/Desktop/code/xueshang/src!../../../node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!../../../node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./index.tsx?taro&type=template&parse=PAGE& */ "./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=C:\\Users\\USER-PC\\Desktop\\code\\xueshang\\src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/index/index.tsx?taro&type=template&parse=PAGE&");
-/* harmony import */ var _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _file_loader_name_path_name_wxml_context_C_Users_USER_PC_Desktop_code_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _file_loader_name_path_name_wxml_context_Users_ibaiwei_Desktop_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!file-loader?name=[path][name].wxml&context=/Users/ibaiwei/Desktop/xueshang/src!../../../node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!../../../node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js??ref--6-0!./index.tsx?taro&type=template&parse=PAGE& */ "./node_modules/file-loader/dist/cjs.js?name=[path][name].wxml&context=/Users/ibaiwei/Desktop/xueshang/src!./node_modules/@tarojs/mini-runner/dist/loaders/miniTemplateLoader.js!./node_modules/@tarojs/mini-runner/dist/loaders/wxTransformerLoader.js?!./src/pages/index/index.tsx?taro&type=template&parse=PAGE&");
+/* harmony import */ var _file_loader_name_path_name_wxml_context_Users_ibaiwei_Desktop_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_file_loader_name_path_name_wxml_context_Users_ibaiwei_Desktop_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _file_loader_name_path_name_wxml_context_Users_ibaiwei_Desktop_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _file_loader_name_path_name_wxml_context_Users_ibaiwei_Desktop_xueshang_src_node_modules_tarojs_mini_runner_dist_loaders_miniTemplateLoader_js_node_modules_tarojs_mini_runner_dist_loaders_wxTransformerLoader_js_ref_6_0_index_tsx_taro_type_template_parse_PAGE___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
 
 
 /***/ })
 
-},[["./src/pages/index/index.tsx","runtime","vendors","common"]]]);
+},[["./src/pages/index/index.tsx","runtime","taro","vendors","common"]]]);

@@ -15,29 +15,28 @@ class App extends Component {
 
   componentDidShow() {
     try {
-      // Taro.getUserInfo({
-      //   success(res) {
-      //     const { userInfo } = res;
-      //     Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
-      //     Taro.setStorageSync('shouquan', JSON.stringify(true));
-      //     login().then((res) => {
-      //       if (res.err_code) {
-      //       } else {
-      //         Taro.setStorageSync('isLogin', true);
-      //       }
-      //       getPartList();
-      //     });
-      //   },
-      //   fail(res) {
-      //     Taro.showToast({
-      //       title: res.err_msg,
-      //       icon: 'none',
-      //       duration: 2000,
-      //     });
-      //     Taro.setStorageSync('shouquan', JSON.stringify(false));
-      //     Taro.setStorageSync('isLogin', JSON.stringify(false));
-      //   },
-      // });
+      Taro.getUserInfo({
+        success(res) {
+          const { userInfo } = res;
+          Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
+          Taro.setStorageSync('shouquan', true);
+          login().then((res) => {
+            if (res.data.err_code == 0) {
+              Taro.setStorageSync('isLogin', true);
+              getPartList();
+            }
+          });
+        },
+        fail(res) {
+          Taro.showToast({
+            title: res.err_msg,
+            icon: 'none',
+            duration: 2000,
+          });
+          Taro.setStorageSync('shouquan', false);
+          Taro.setStorageSync('isLogin', false);
+        },
+      });
     } catch (e) {
       console.log('e :>> ', e);
     }
@@ -56,9 +55,9 @@ class App extends Component {
    */
   config: Config = {
     pages: [
+      'pages/index/index',
       'pages/bar/index',
       'pages/analysis/index',
-      'pages/index/index',
       'pages/question/index',
     ],
     window: {

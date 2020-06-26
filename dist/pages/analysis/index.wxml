@@ -7,11 +7,11 @@
             </view>
             <view class="score">得分：<text>{{score}}</text> 分</view>
         </view>
-        <at-divider compid="{{$compid__13}}"></at-divider>
+        <at-divider compid="{{$compid__290}}"></at-divider>
         <view class="echarts">
             <ec-canvas id="mychart-dom-area" canvas-id="mychart-area" ec="{{ec}}"></ec-canvas>
         </view>
-        <at-divider compid="{{$compid__14}}"></at-divider>
+        <at-divider compid="{{$compid__291}}"></at-divider>
         <view class="result">
             <view class="result-item" wx:for="{{scoreText}}" wx:for-item="item" wx:for-index="_anonIdx2">
                 <view class="forum-title">{{item.name}}</view>

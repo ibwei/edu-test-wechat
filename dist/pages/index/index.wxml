@@ -21,7 +21,7 @@
             <button class="btn" bindtap="goTest" data-e-tap-so="this">开始测试</button>
             <button class="btn" bindtap="goResult" data-e-tap-so="this">查看结果</button>
         </view>
-        <at-modal compid="{{$compid__17}}">
+        <at-modal compid="{{$compid__272}}">
             <at-modal-content>
                 <view class="tishi-img">
                     <image src="../../assets/images/shijiashi.jpg"></image>
@@ -33,15 +33,15 @@
                 <button class="btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">微信授权</button>
             </at-modal-action>
         </at-modal>
-        <at-curtain compid="{{$compid__18}}">
+        <at-curtain compid="{{$compid__273}}">
             <view class="tishi">
-                <at-form compid="{{$compid__19}}">
-                    <at-input compid="{{$compid__20}}"></at-input>
-                    <at-input compid="{{$compid__21}}"></at-input>
-                    <at-input compid="{{$compid__22}}"></at-input>
-                    <at-input compid="{{$compid__23}}"></at-input>
+                <at-form compid="{{$compid__274}}">
+                    <at-input compid="{{$compid__275}}"></at-input>
+                    <at-input compid="{{$compid__276}}"></at-input>
+                    <at-input compid="{{$compid__277}}"></at-input>
+                    <at-input compid="{{$compid__278}}"></at-input>
                     <view class="btn-sub">
-                        <at-button compid="{{$compid__24}}">保存</at-button>
+                        <at-button compid="{{$compid__279}}">保存</at-button>
                     </view>
                 </at-form>
             </view>

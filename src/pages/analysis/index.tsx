@@ -10,7 +10,9 @@ import 'taro-ui/dist/style/components/timeline.scss';
 import 'taro-ui/dist/style/components/icon.scss';
 import { getResult } from '../../api/api';
 let chart;
-const indicatorArrya = JSON.parse(Taro.getStorageSync('forumList'));
+const indicatorArrya = Taro.getStorageSync('forumList')
+  ? JSON.parse(Taro.getStorageSync('forumList'))
+  : [];
 function initChart(canvas, width, height, dpr) {
   chart = echarts.init(canvas, null, {
     width: width,
@@ -96,13 +98,14 @@ export default class Index extends Component {
 
   componentDidShow() {
     const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
-    console.log('userInfo :>> ', userInfo);
     this.setState({
       userInfo: userInfo,
     });
-    getResult().then((res) => {
+
+    getResult({ id: this.$router.params.id }).then((res) => {
       console.log('res :>> ', res);
-      const { err_code, err_msg, data } = res.data;
+      let { err_code, err_msg, data } = res.data;
+      data = data[0];
       if (err_code == 0) {
         this.setState({
           score: (data.allScore / 2.5).toFixed(1), // 总分250分转换为百分制保留一位小数

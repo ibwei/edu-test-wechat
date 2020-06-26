@@ -49,7 +49,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var chart = void 0;
-var indicatorArrya = JSON.parse(_taroWeapp2.default.getStorageSync('forumList'));
+var indicatorArrya = _taroWeapp2.default.getStorageSync('forumList') ? JSON.parse(_taroWeapp2.default.getStorageSync('forumList')) : [];
 function initChart(canvas, width, height, dpr) {
   chart = _echarts2.default.init(canvas, null, {
     width: width,
@@ -128,7 +128,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__13", "$compid__14", "ec", "score", "scoreText", "userInfo"], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__290", "$compid__291", "ec", "score", "scoreText", "userInfo"], _this.config = {
       navigationBarTitleText: '测试结果',
       // 定义需要引入的第三方组件
       usingComponents: {
@@ -181,17 +181,17 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var _this2 = this;
 
       var userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
-      console.log('userInfo :>> ', userInfo);
       this.setState({
         userInfo: userInfo
       });
-      (0, _api.getResult)().then(function (res) {
+      (0, _api.getResult)({ id: this.$router.params.id }).then(function (res) {
         console.log('res :>> ', res);
         var _res$data = res.data,
             err_code = _res$data.err_code,
             err_msg = _res$data.err_msg,
             data = _res$data.data;
 
+        data = data[0];
         if (err_code == 0) {
           _this2.setState({
             score: (data.allScore / 2.5).toFixed(1)
@@ -268,29 +268,29 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __prefix = this.$prefix;
       ;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__13"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__290"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__13 = _genCompid2[0],
-          $compid__13 = _genCompid2[1];
+          $prevCompid__290 = _genCompid2[0],
+          $compid__290 = _genCompid2[1];
 
-      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__14"),
+      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__291"),
           _genCompid4 = _slicedToArray(_genCompid3, 2),
-          $prevCompid__14 = _genCompid4[0],
-          $compid__14 = _genCompid4[1];
+          $prevCompid__291 = _genCompid4[0],
+          $compid__291 = _genCompid4[1];
 
       _taroWeapp.propsManager.set({
         "content": '\u6210\u7EE9\u5206\u5E03\u56FE',
         "fontColor": "#555",
         "lineColor": "#bebebe"
-      }, $compid__13, $prevCompid__13);
+      }, $compid__290, $prevCompid__290);
       _taroWeapp.propsManager.set({
         "content": '\u6210\u7EE9\u5206\u6790',
         "fontColor": "#555",
         "lineColor": "#bebebe"
-      }, $compid__14, $prevCompid__14);
+      }, $compid__291, $prevCompid__291);
       Object.assign(this.__state, {
-        $compid__13: $compid__13,
-        $compid__14: $compid__14
+        $compid__290: $compid__290,
+        $compid__291: $compid__291
       });
       return this.__state;
     }

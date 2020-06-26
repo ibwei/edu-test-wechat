@@ -18,15 +18,13 @@ export const login = async (): Promise<any> => {
       ...userInfo,
     },
     success: function(res) {
-      const { data, err_code, err_msg } = res;
+      const { data } = res;
       resData = res;
-      if (err_code) {
-        console.log(err_msg);
-        Taro.hideLoading();
-      } else {
+      console.log('res :>> ', res);
+      if (data.err_code == 0) {
         Taro.setStorageSync('token', data.token);
         Taro.setStorageSync('userInfo', JSON.stringify(data.user));
-        console.log('data.user :>> ', data.user);
+
         Taro.hideLoading();
       }
     },
@@ -66,13 +64,13 @@ export const getList = async (): Promise<any> => {
   return Promise.resolve(resData);
 };
 // 获取结果
-export const getResult = async (): Promise<any> => {
+export const getResult = async (params): Promise<any> => {
   let resData: any;
   const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
   await Taro.request({
-    method: 'GET',
+    method: 'POST',
     url: url + 'test/result',
-    data: { token: Taro.getStorageSync('token'), id: userInfo.id },
+    data: { token: Taro.getStorageSync('token'), id: params.id },
   }).then((res) => {
     const { data, err_code, err_msg } = res;
     resData = res;
@@ -85,12 +83,12 @@ export const getResult = async (): Promise<any> => {
 // 提交答案
 export const pushAnwser = async (params): Promise<any> => {
   let resData: any;
-  const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
   await Taro.request({
     method: 'POST',
     url: url + 'test/add',
     data: { token: Taro.getStorageSync('token'), ...params },
   }).then((res) => {
+    console.log('提交答案返回 :>> ', res);
     const { data, err_code, err_msg } = res;
     resData = res;
     if (err_code == 401) {
@@ -100,7 +98,7 @@ export const pushAnwser = async (params): Promise<any> => {
   return Promise.resolve(resData);
 };
 
-// 提交答案
+// 编辑学生信息
 export const editStudet = async (params): Promise<any> => {
   Taro.showLoading({
     title: '保存中...',

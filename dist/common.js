@@ -59,18 +59,13 @@ var login = exports.login = function () {
                 token: _taroWeapp2.default.getStorageSync('token')
               }, userInfo),
               success: function success(res) {
-                var data = res.data,
-                    err_code = res.err_code,
-                    err_msg = res.err_msg;
+                var data = res.data;
 
                 resData = res;
-                if (err_code) {
-                  console.log(err_msg);
-                  _taroWeapp2.default.hideLoading();
-                } else {
+                console.log('res :>> ', res);
+                if (data.err_code == 0) {
                   _taroWeapp2.default.setStorageSync('token', data.token);
                   _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(data.user));
-                  console.log('data.user :>> ', data.user);
                   _taroWeapp2.default.hideLoading();
                 }
               },
@@ -151,7 +146,7 @@ var getList = exports.getList = function () {
 }();
 // 获取结果
 var getResult = exports.getResult = function () {
-  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee3() {
+  var _ref4 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee3(params) {
     var resData, userInfo;
     return _regenerator2.default.wrap(function _callee3$(_context3) {
       while (1) {
@@ -161,9 +156,9 @@ var getResult = exports.getResult = function () {
             userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
             _context3.next = 4;
             return _taroWeapp2.default.request({
-              method: 'GET',
+              method: 'POST',
               url: "http://edu.pinxianhs.com/api/wechat/test/result",
-              data: { token: _taroWeapp2.default.getStorageSync('token'), id: userInfo.id }
+              data: { token: _taroWeapp2.default.getStorageSync('token'), id: params.id }
             }).then(function (res) {
               var data = res.data,
                   err_code = res.err_code,
@@ -186,26 +181,26 @@ var getResult = exports.getResult = function () {
     }, _callee3, undefined);
   }));
 
-  return function getResult() {
+  return function getResult(_x) {
     return _ref4.apply(this, arguments);
   };
 }();
 // 提交答案
 var pushAnwser = exports.pushAnwser = function () {
   var _ref5 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee4(params) {
-    var resData, userInfo;
+    var resData;
     return _regenerator2.default.wrap(function _callee4$(_context4) {
       while (1) {
         switch (_context4.prev = _context4.next) {
           case 0:
             resData = void 0;
-            userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
-            _context4.next = 4;
+            _context4.next = 3;
             return _taroWeapp2.default.request({
               method: 'POST',
               url: "http://edu.pinxianhs.com/api/wechat/test/add",
               data: _extends({ token: _taroWeapp2.default.getStorageSync('token') }, params)
             }).then(function (res) {
+              console.log('提交答案返回 :>> ', res);
               var data = res.data,
                   err_code = res.err_code,
                   err_msg = res.err_msg;
@@ -216,10 +211,10 @@ var pushAnwser = exports.pushAnwser = function () {
               }
             });
 
-          case 4:
+          case 3:
             return _context4.abrupt('return', Promise.resolve(resData));
 
-          case 5:
+          case 4:
           case 'end':
             return _context4.stop();
         }
@@ -227,11 +222,11 @@ var pushAnwser = exports.pushAnwser = function () {
     }, _callee4, undefined);
   }));
 
-  return function pushAnwser(_x) {
+  return function pushAnwser(_x2) {
     return _ref5.apply(this, arguments);
   };
 }();
-// 提交答案
+// 编辑学生信息
 var editStudet = exports.editStudet = function () {
   var _ref6 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee5(params) {
     var resData, userInfo;
@@ -284,7 +279,7 @@ var editStudet = exports.editStudet = function () {
     }, _callee5, undefined);
   }));
 
-  return function editStudet(_x2) {
+  return function editStudet(_x3) {
     return _ref6.apply(this, arguments);
   };
 }();

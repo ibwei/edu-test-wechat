@@ -1,8 +1,8 @@
-import Taro, { Component, Config } from "@tarojs/taro";
-import Index from "./pages/index";
-import { login, getPartList } from "./api/api";
+import Taro, { Component, Config } from '@tarojs/taro';
+import Index from './pages/index/index';
+import { login, getPartList } from './api/api';
 
-import "./app.less";
+import './app.less';
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -14,46 +14,33 @@ class App extends Component {
   componentDidMount() {}
 
   componentDidShow() {
-    Taro.getUserInfo({
-      success(res) {
-        const { userInfo } = res;
-<<<<<<< HEAD
-        Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
-        Taro.setStorageSync('shouquan', JSON.stringify(true));
-        login().then((res) => {
-          if (res.err_code) {
-=======
-        console.log("userInfo :>> ", userInfo);
-        Taro.setStorageSync("userInfo", JSON.stringify(userInfo));
-        Taro.setStorageSync("shouquan", true);
-        login().then((res) => {
-          console.log("res :>> ", res);
-          if (res.err_code) {
-            console.log("res :>> ", res);
->>>>>>> 9928cde7f0fc29edfa76aa119011f22d868c88b6
-          } else {
-            Taro.setStorageSync("isLogin", true);
-          }
-
-          getPartList();
-        });
-      },
-      fail(res) {
-<<<<<<< HEAD
-        Taro.showToast({
-          title: res.err_msg,
-          icon: 'none',
-          duration: 2000,
-        });
-        Taro.setStorageSync('shouquan', JSON.stringify(false));
-        Taro.setStorageSync('isLogin', JSON.stringify(false));
-=======
-        console.log("res :>> ", res);
-        Taro.setStorageSync("shouquan", false);
-        Taro.setStorageSync("isLogin", false);
->>>>>>> 9928cde7f0fc29edfa76aa119011f22d868c88b6
-      },
-    });
+    try {
+      // Taro.getUserInfo({
+      //   success(res) {
+      //     const { userInfo } = res;
+      //     Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
+      //     Taro.setStorageSync('shouquan', JSON.stringify(true));
+      //     login().then((res) => {
+      //       if (res.err_code) {
+      //       } else {
+      //         Taro.setStorageSync('isLogin', true);
+      //       }
+      //       getPartList();
+      //     });
+      //   },
+      //   fail(res) {
+      //     Taro.showToast({
+      //       title: res.err_msg,
+      //       icon: 'none',
+      //       duration: 2000,
+      //     });
+      //     Taro.setStorageSync('shouquan', JSON.stringify(false));
+      //     Taro.setStorageSync('isLogin', JSON.stringify(false));
+      //   },
+      // });
+    } catch (e) {
+      console.log('e :>> ', e);
+    }
   }
 
   componentDidHide() {}
@@ -69,52 +56,17 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-<<<<<<< HEAD
-      'pages/index/index',
-      'pages/analysis/index',
       'pages/bar/index',
+      'pages/analysis/index',
+      'pages/index/index',
       'pages/question/index',
-=======
-      "pages/index/index",
-      "pages/analysis/index",
-      "pages/user/user",
-      "pages/bar/index",
-      "pages/question/index",
->>>>>>> 9928cde7f0fc29edfa76aa119011f22d868c88b6
     ],
     window: {
-      backgroundTextStyle: "light",
-      navigationBarBackgroundColor: "#fff",
-      navigationBarTitleText: "WeChat",
-      navigationBarTextStyle: "black",
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: '学商测试',
+      navigationBarTextStyle: 'black',
     },
-<<<<<<< HEAD
-=======
-    tabBar: {
-      color: "#bfbfbf",
-      selectedColor: "#4889f7",
-      list: [
-        {
-          pagePath: "pages/index/index",
-          text: "首页",
-          iconPath: "./assets/images/icon/home.png",
-          selectedIconPath: "./assets/images/icon/home-active.png",
-        },
-        {
-          pagePath: "pages/analysis/index",
-          text: "查看结果",
-          iconPath: "./assets/images/icon/home.png",
-          selectedIconPath: "./assets/images/icon/home-active.png",
-        },
-        {
-          pagePath: "pages/user/user",
-          text: "个人中心",
-          iconPath: "./assets/images/icon/me.png",
-          selectedIconPath: "./assets/images/icon/me-active.png",
-        },
-      ],
-    },
->>>>>>> 9928cde7f0fc29edfa76aa119011f22d868c88b6
   };
 
   // 在 App 类中的 render() 函数没有实际作用
@@ -124,4 +76,4 @@ class App extends Component {
   }
 }
 
-Taro.render(<App />, document.getElementById("app"));
+Taro.render(<App />, document.getElementById('app'));

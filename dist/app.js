@@ -24,8 +24,6 @@ var _taroWeapp = __webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/@
 
 var _taroWeapp2 = _interopRequireDefault(_taroWeapp);
 
-var _api = __webpack_require__(/*! ./api/api */ "./src/api/api.ts");
-
 __webpack_require__(/*! ./app.less */ "./src/app.less");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -58,58 +56,62 @@ var _App = function (_BaseComponent) {
     var _this = _possibleConstructorReturn(this, (_App.__proto__ || Object.getPrototypeOf(_App)).apply(this, arguments));
 
     _this.config = {
-      pages: ['pages/index/index', 'pages/analysis/index', 'pages/bar/index', 'pages/question/index'],
+      pages: ['pages/bar/index', 'pages/analysis/index', 'pages/index/index', 'pages/question/index'],
       window: {
-        backgroundTextStyle: "light",
-        navigationBarBackgroundColor: "#fff",
-        navigationBarTitleText: "WeChat",
-        navigationBarTextStyle: "black"
+        backgroundTextStyle: 'light',
+        navigationBarBackgroundColor: '#fff',
+        navigationBarTitleText: '学商测试',
+        navigationBarTextStyle: 'black'
       }
     };
     return _this;
   }
 
   _createClass(_App, [{
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {}
   }, {
-    key: "componentDidShow",
+    key: 'componentDidShow',
     value: function componentDidShow() {
-      _taroWeapp2.default.getUserInfo({
-        success: function success(res) {
-          var userInfo = res.userInfo;
-
-          _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(userInfo));
-          _taroWeapp2.default.setStorageSync('shouquan', JSON.stringify(true));
-          (0, _api.login)().then(function (res) {
-            if (!res.err_code) {
-              _taroWeapp2.default.setStorageSync("isLogin", true);
-            }
-            (0, _api.getPartList)();
-          });
-        },
-        fail: function fail(res) {
-          _taroWeapp2.default.showToast({
-            title: res.err_msg,
-            icon: 'none',
-            duration: 2000
-          });
-          _taroWeapp2.default.setStorageSync('shouquan', JSON.stringify(false));
-          _taroWeapp2.default.setStorageSync('isLogin', JSON.stringify(false));
-        }
-      });
+      try {
+        // Taro.getUserInfo({
+        //   success(res) {
+        //     const { userInfo } = res;
+        //     Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
+        //     Taro.setStorageSync('shouquan', JSON.stringify(true));
+        //     login().then((res) => {
+        //       if (res.err_code) {
+        //       } else {
+        //         Taro.setStorageSync('isLogin', true);
+        //       }
+        //       getPartList();
+        //     });
+        //   },
+        //   fail(res) {
+        //     Taro.showToast({
+        //       title: res.err_msg,
+        //       icon: 'none',
+        //       duration: 2000,
+        //     });
+        //     Taro.setStorageSync('shouquan', JSON.stringify(false));
+        //     Taro.setStorageSync('isLogin', JSON.stringify(false));
+        //   },
+        // });
+      } catch (e) {
+        console.log('e :>> ', e);
+      }
     }
   }, {
-    key: "componentDidHide",
+    key: 'componentDidHide',
     value: function componentDidHide() {}
   }, {
-    key: "componentDidCatchError",
+    key: 'componentDidCatchError',
     value: function componentDidCatchError() {}
     // 在 App 类中的 render() 函数没有实际作用
     // 请勿修改此函数
 
   }, {
-    key: "_createData",
+    key: '_createData',
     value: function _createData() {}
   }]);
 
@@ -173,4 +175,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ })
 
-},[["./src/app.tsx","runtime","vendors","common"]]]);;
+},[["./src/app.tsx","runtime","vendors"]]]);;

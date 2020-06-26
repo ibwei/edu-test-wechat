@@ -8,10 +8,10 @@
 		"enhance": false,
 		"postcss": false,
 		"preloadBackgroundData": false,
-		"minified": true,
+		"minified": false,
 		"newFeature": true,
 		"coverView": true,
-		"nodeModules": false,
+		"nodeModules": true,
 		"autoAudits": false,
 		"showShadowRootInWxmlPanel": true,
 		"scopeDataCheck": false,
@@ -25,6 +25,7 @@
 			"disablePlugins": [],
 			"outputPath": ""
 		},
+		"bundle": true,
 		"useIsolateContext": true,
 		"useCompilerModule": true,
 		"userConfirmedUseCompilerModuleSwitch": false

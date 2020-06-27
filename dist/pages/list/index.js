@@ -58,7 +58,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray41", "page", "size", "list"], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray43", "page", "size", "list"], _this.config = {
       navigationBarTitleText: '测试结果'
     }, _this.customComponents = ["AtListItem", "AtList"], _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -106,10 +106,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
           var list = res.data.data;
           var stateList = _this2.state.list;
           stateList.push.apply(stateList, _toConsumableArray(list));
-          stateList.push.apply(stateList, _toConsumableArray(list));
-          stateList.push.apply(stateList, _toConsumableArray(list));
-          stateList.push.apply(stateList, _toConsumableArray(list));
-          stateList.push.apply(stateList, _toConsumableArray(list));
+          // stateList.push(...list);
+          // stateList.push(...list);
+          // stateList.push(...list);
+          // stateList.push(...list);
           // stateList.push(...list);
           // stateList.push(...list);
           _this2.setState({
@@ -143,17 +143,17 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __prefix = this.$prefix;
       ;
 
-      var loopArray41 = this.__state.list.map(function (item, _anonIdx) {
+      var loopArray43 = this.__state.list.map(function (item, _anonIdx) {
         item = {
           $original: (0, _taroWeapp.internal_get_original)(item)
         };
         var $loopState__temp2 = item.$original.created_at.split(' ')[0];
         var $loopState__temp4 = { size: 25, color: '#78A4FA', value: 'file-generic' };
 
-        var _genCompid = (0, _taroWeapp.genCompid)(__prefix + 'cdzzzzzzzz' + _anonIdx, true),
+        var _genCompid = (0, _taroWeapp.genCompid)(__prefix + 'cfzzzzzzzz' + _anonIdx, true),
             _genCompid2 = _slicedToArray(_genCompid, 2),
-            $prevCompid__65 = _genCompid2[0],
-            $compid__65 = _genCompid2[1];
+            $prevCompid__67 = _genCompid2[0],
+            $compid__67 = _genCompid2[1];
 
         _taroWeapp.propsManager.set({
           "title": '\u5B66\u5546\u6D4B\u8BD5',
@@ -161,17 +161,17 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
           "arrow": "right",
           "iconInfo": $loopState__temp4,
           "onClick": _this3.goDetali.bind(_this3, item.$original.id)
-        }, $compid__65, $prevCompid__65);
+        }, $compid__67, $prevCompid__67);
         return {
           $loopState__temp2: $loopState__temp2,
           $loopState__temp4: $loopState__temp4,
-          $compid__65: $compid__65,
+          $compid__67: $compid__67,
           $original: item.$original
         };
       });
 
       Object.assign(this.__state, {
-        loopArray41: loopArray41
+        loopArray43: loopArray43
       });
       return this.__state;
     }

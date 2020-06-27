@@ -29,10 +29,10 @@ export default class Index extends Component {
           let list = res.data.data;
           let stateList = this.state.list;
           stateList.push(...list);
-          stateList.push(...list);
-          stateList.push(...list);
-          stateList.push(...list);
-          stateList.push(...list);
+          // stateList.push(...list);
+          // stateList.push(...list);
+          // stateList.push(...list);
+          // stateList.push(...list);
           // stateList.push(...list);
           // stateList.push(...list);
           this.setState({

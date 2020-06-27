@@ -64,7 +64,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__272", "$compid__273", "$compid__274", "$compid__275", "$compid__276", "$compid__277", "$compid__278", "$compid__279", "shouquanBox", "infoShow"], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__36", "$compid__37", "$compid__38", "$compid__39", "$compid__40", "$compid__41", "$compid__42", "$compid__43", "shouquanBox", "infoShow"], _this.config = {
       navigationBarTitleText: '学商系统'
     }, _this.customComponents = ["AtModal", "AtModalContent", "AtModalAction", "AtCurtain", "AtForm", "AtInput", "AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -121,7 +121,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
 
         _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(userInfo));
         (0, _api.login)().then(function (res) {
-          if (res.err_code == 0) {
+          if (res.data.err_code == 0) {
             _taroWeapp2.default.setStorageSync('isLogin', true);
             (0, _api.getPartList)();
           }
@@ -174,10 +174,19 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
   }, {
     key: 'goResult',
     value: function goResult() {
-      var userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
-      _taroWeapp2.default.navigateTo({
-        url: '/pages/analysis/index?id=15'
-      });
+      var shouquan = _taroWeapp2.default.getStorageSync('shouquan');
+      var isLogin = _taroWeapp2.default.getStorageSync('isLogin');
+      if (shouquan == false) {
+        this.setState({
+          shouquanBox: true
+        });
+        return false;
+      }
+      if (isLogin) {
+        _taroWeapp2.default.navigateTo({
+          url: '/pages/list/index'
+        });
+      }
     }
   }, {
     key: 'onClose',
@@ -264,56 +273,56 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __prefix = this.$prefix;
       ;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__272"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__36"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__272 = _genCompid2[0],
-          $compid__272 = _genCompid2[1];
+          $prevCompid__36 = _genCompid2[0],
+          $compid__36 = _genCompid2[1];
 
-      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__273"),
+      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__37"),
           _genCompid4 = _slicedToArray(_genCompid3, 2),
-          $prevCompid__273 = _genCompid4[0],
-          $compid__273 = _genCompid4[1];
+          $prevCompid__37 = _genCompid4[0],
+          $compid__37 = _genCompid4[1];
 
-      var _genCompid5 = (0, _taroWeapp.genCompid)(__prefix + "$compid__274"),
+      var _genCompid5 = (0, _taroWeapp.genCompid)(__prefix + "$compid__38"),
           _genCompid6 = _slicedToArray(_genCompid5, 2),
-          $prevCompid__274 = _genCompid6[0],
-          $compid__274 = _genCompid6[1];
+          $prevCompid__38 = _genCompid6[0],
+          $compid__38 = _genCompid6[1];
 
-      var _genCompid7 = (0, _taroWeapp.genCompid)(__prefix + "$compid__275"),
+      var _genCompid7 = (0, _taroWeapp.genCompid)(__prefix + "$compid__39"),
           _genCompid8 = _slicedToArray(_genCompid7, 2),
-          $prevCompid__275 = _genCompid8[0],
-          $compid__275 = _genCompid8[1];
+          $prevCompid__39 = _genCompid8[0],
+          $compid__39 = _genCompid8[1];
 
-      var _genCompid9 = (0, _taroWeapp.genCompid)(__prefix + "$compid__276"),
+      var _genCompid9 = (0, _taroWeapp.genCompid)(__prefix + "$compid__40"),
           _genCompid10 = _slicedToArray(_genCompid9, 2),
-          $prevCompid__276 = _genCompid10[0],
-          $compid__276 = _genCompid10[1];
+          $prevCompid__40 = _genCompid10[0],
+          $compid__40 = _genCompid10[1];
 
-      var _genCompid11 = (0, _taroWeapp.genCompid)(__prefix + "$compid__277"),
+      var _genCompid11 = (0, _taroWeapp.genCompid)(__prefix + "$compid__41"),
           _genCompid12 = _slicedToArray(_genCompid11, 2),
-          $prevCompid__277 = _genCompid12[0],
-          $compid__277 = _genCompid12[1];
+          $prevCompid__41 = _genCompid12[0],
+          $compid__41 = _genCompid12[1];
 
-      var _genCompid13 = (0, _taroWeapp.genCompid)(__prefix + "$compid__278"),
+      var _genCompid13 = (0, _taroWeapp.genCompid)(__prefix + "$compid__42"),
           _genCompid14 = _slicedToArray(_genCompid13, 2),
-          $prevCompid__278 = _genCompid14[0],
-          $compid__278 = _genCompid14[1];
+          $prevCompid__42 = _genCompid14[0],
+          $compid__42 = _genCompid14[1];
 
-      var _genCompid15 = (0, _taroWeapp.genCompid)(__prefix + "$compid__279"),
+      var _genCompid15 = (0, _taroWeapp.genCompid)(__prefix + "$compid__43"),
           _genCompid16 = _slicedToArray(_genCompid15, 2),
-          $prevCompid__279 = _genCompid16[0],
-          $compid__279 = _genCompid16[1];
+          $prevCompid__43 = _genCompid16[0],
+          $compid__43 = _genCompid16[1];
 
       _taroWeapp.propsManager.set({
         "isOpened": this.__state.shouquanBox
-      }, $compid__272, $prevCompid__272);
+      }, $compid__36, $prevCompid__36);
       _taroWeapp.propsManager.set({
         "isOpened": this.__state.infoShow,
         "onClose": this.onClose.bind(this)
-      }, $compid__273, $prevCompid__273);
+      }, $compid__37, $prevCompid__37);
       _taroWeapp.propsManager.set({
         "onSubmit": this.onSubmit.bind(this)
-      }, $compid__274, $prevCompid__274);
+      }, $compid__38, $prevCompid__38);
       _taroWeapp.propsManager.set({
         "name": "value",
         "title": '\u5B66\u751F\u59D3\u540D:',
@@ -321,7 +330,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "placeholder": '\u8BF7\u8F93\u5165\u5B66\u751F\u59D3\u540D',
         "value": this.studentInfo.name,
         "onChange": this.onChange.bind(this, 'name')
-      }, $compid__275, $prevCompid__275);
+      }, $compid__39, $prevCompid__39);
       _taroWeapp.propsManager.set({
         "name": "value",
         "title": '\u5B66\u3000\u3000\u6821:',
@@ -329,7 +338,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "placeholder": '\u8BF7\u8F93\u5165\u5C31\u8BFB\u5B66\u6821',
         "value": this.studentInfo.school,
         "onChange": this.onChange.bind(this, 'school')
-      }, $compid__276, $prevCompid__276);
+      }, $compid__40, $prevCompid__40);
       _taroWeapp.propsManager.set({
         "name": "value",
         "title": '\u5E74\u3000\u3000\u7EA7:',
@@ -337,7 +346,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "placeholder": '\u8BF7\u8F93\u5165\u5C31\u8BFB\u5E74\u7EA7',
         "value": this.studentInfo.grade,
         "onChange": this.onChange.bind(this, 'grade')
-      }, $compid__277, $prevCompid__277);
+      }, $compid__41, $prevCompid__41);
       _taroWeapp.propsManager.set({
         "name": "value",
         "title": '\u5BB6\u957F\u7535\u8BDD:',
@@ -345,20 +354,20 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "placeholder": '\u8BF7\u8F93\u5165\u5BB6\u957F\u7535\u8BDD',
         "value": this.studentInfo.tel,
         "onChange": this.onChange.bind(this, 'tel')
-      }, $compid__278, $prevCompid__278);
+      }, $compid__42, $prevCompid__42);
       _taroWeapp.propsManager.set({
         "formType": "submit",
         "className": "btn"
-      }, $compid__279, $prevCompid__279);
+      }, $compid__43, $prevCompid__43);
       Object.assign(this.__state, {
-        $compid__272: $compid__272,
-        $compid__273: $compid__273,
-        $compid__274: $compid__274,
-        $compid__275: $compid__275,
-        $compid__276: $compid__276,
-        $compid__277: $compid__277,
-        $compid__278: $compid__278,
-        $compid__279: $compid__279
+        $compid__36: $compid__36,
+        $compid__37: $compid__37,
+        $compid__38: $compid__38,
+        $compid__39: $compid__39,
+        $compid__40: $compid__40,
+        $compid__41: $compid__41,
+        $compid__42: $compid__42,
+        $compid__43: $compid__43
       });
       return this.__state;
     }

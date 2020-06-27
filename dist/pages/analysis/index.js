@@ -128,7 +128,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__290", "$compid__291", "ec", "score", "scoreText", "userInfo"], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__15", "$compid__16", "ec", "score", "scoreText", "userInfo"], _this.config = {
       navigationBarTitleText: '测试结果',
       // 定义需要引入的第三方组件
       usingComponents: {
@@ -268,29 +268,29 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __prefix = this.$prefix;
       ;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__290"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__15"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__290 = _genCompid2[0],
-          $compid__290 = _genCompid2[1];
+          $prevCompid__15 = _genCompid2[0],
+          $compid__15 = _genCompid2[1];
 
-      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__291"),
+      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__16"),
           _genCompid4 = _slicedToArray(_genCompid3, 2),
-          $prevCompid__291 = _genCompid4[0],
-          $compid__291 = _genCompid4[1];
+          $prevCompid__16 = _genCompid4[0],
+          $compid__16 = _genCompid4[1];
 
       _taroWeapp.propsManager.set({
         "content": '\u6210\u7EE9\u5206\u5E03\u56FE',
         "fontColor": "#555",
         "lineColor": "#bebebe"
-      }, $compid__290, $prevCompid__290);
+      }, $compid__15, $prevCompid__15);
       _taroWeapp.propsManager.set({
         "content": '\u6210\u7EE9\u5206\u6790',
         "fontColor": "#555",
         "lineColor": "#bebebe"
-      }, $compid__291, $prevCompid__291);
+      }, $compid__16, $prevCompid__16);
       Object.assign(this.__state, {
-        $compid__290: $compid__290,
-        $compid__291: $compid__291
+        $compid__15: $compid__15,
+        $compid__16: $compid__16
       });
       return this.__state;
     }

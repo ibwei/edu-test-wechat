@@ -13,7 +13,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getPartList = exports.editStudet = exports.pushAnwser = exports.getResult = exports.getList = exports.login = undefined;
+exports.getResutlList = exports.getPartList = exports.editStudet = exports.pushAnwser = exports.getResult = exports.getList = exports.login = undefined;
 
 var _regenerator = __webpack_require__(/*! babel-runtime/regenerator */ "./node_modules/babel-runtime/regenerator/index.js");
 
@@ -313,10 +313,6 @@ var getPartList = exports.getPartList = function () {
               },
               fail: function fail(res) {
                 _taroWeapp2.default.hideLoading();
-                console.log('list :>> ', res);
-                // if (res.err_code == 401) {
-                //   console.log('1 :>> ', 1);
-                // }
               }
             });
 
@@ -333,6 +329,47 @@ var getPartList = exports.getPartList = function () {
 
   return function getPartList() {
     return _ref7.apply(this, arguments);
+  };
+}();
+// 获取答题记录列表
+var getResutlList = exports.getResutlList = function () {
+  var _ref8 = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee7(params) {
+    var resData;
+    return _regenerator2.default.wrap(function _callee7$(_context7) {
+      while (1) {
+        switch (_context7.prev = _context7.next) {
+          case 0:
+            resData = void 0;
+            // await Taro.addInterceptor()
+
+            _context7.next = 3;
+            return _taroWeapp2.default.request({
+              method: 'POST',
+              url: "http://edu.pinxianhs.com/api/wechat/test/history",
+              data: _extends({ token: _taroWeapp2.default.getStorageSync('token') }, params),
+              success: function success(res) {
+                console.log('list :>> ', res);
+                resData = res;
+              },
+              fail: function fail(res) {
+                resData = res;
+                console.log('res :>> ', res);
+              }
+            });
+
+          case 3:
+            return _context7.abrupt('return', Promise.resolve(resData));
+
+          case 4:
+          case 'end':
+            return _context7.stop();
+        }
+      }
+    }, _callee7, undefined);
+  }));
+
+  return function getResutlList(_x4) {
+    return _ref8.apply(this, arguments);
   };
 }();
 

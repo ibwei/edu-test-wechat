@@ -62,7 +62,7 @@ export default class Index extends Component {
       const { userInfo } = res.detail;
       Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
       login().then((res) => {
-        if (res.err_code == 0) {
+        if (res.data.err_code == 0) {
           Taro.setStorageSync('isLogin', true);
           getPartList();
         }
@@ -108,10 +108,19 @@ export default class Index extends Component {
     }
   }
   goResult() {
-    const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
-    Taro.navigateTo({
-      url: '/pages/analysis/index?id=15',
-    });
+    const shouquan = Taro.getStorageSync('shouquan');
+    const isLogin = Taro.getStorageSync('isLogin');
+    if (shouquan == false) {
+      this.setState({
+        shouquanBox: true,
+      });
+      return false;
+    }
+    if (isLogin) {
+      Taro.navigateTo({
+        url: '/pages/list/index',
+      });
+    }
   }
   onClose() {
     this.setState({

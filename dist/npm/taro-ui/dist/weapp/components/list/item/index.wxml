@@ -1,0 +1,42 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="{{rootClass}}" bindtap="handleClick">
+        <view class="at-list__item-container">
+            <block wx:if="{{thumb}}">
+                <view class="at-list__item-thumb item-thumb">
+                    <image class="item-thumb__info" mode="scaleToFill" src="{{thumb}}"></image>
+                </view>
+            </block>
+            <block wx:if="{{iconInfo.value}}">
+                <view class="at-list__item-icon item-icon"><text class="{{iconClass}}" style="{{anonymousState__temp}}"></text>
+                </view>
+            </block>
+            <view class="at-list__item-content item-content">
+                <view class="item-content__info">
+                    <view class="item-content__info-title">{{title}}</view>
+                    <block wx:if="{{note}}">
+                        <view class="item-content__info-note">{{note}}</view>
+                    </block>
+                </view>
+            </view>
+            <view class="at-list__item-extra item-extra">
+                <block wx:if="{{extraText}}">
+                    <view class="item-extra__info">{{extraText}}</view>
+                </block>
+                <block wx:if="{{extraThumb && !extraText}}">
+                    <view class="item-extra__image">
+                        <image class="item-extra__image-info" mode="aspectFit" src="{{extraThumb}}"></image>
+                    </view>
+                </block>
+                <block wx:if="{{isSwitch && !extraThumb && !extraText}}">
+                    <view class="item-extra__switch" catchtap="handleSwitchClick">
+                        <switch color="{{switchColor}}" disabled="{{disabled}}" checked="{{switchIsCheck}}" bindchange="handleSwitchChange"></switch>
+                    </view>
+                </block>
+                <block wx:if="{{arrow}}">
+                    <view class="item-extra__icon"><text class="{{'at-icon item-extra__icon-arrow at-icon-chevron-' + arrow}}"></text>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+</block>

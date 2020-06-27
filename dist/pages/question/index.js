@@ -70,7 +70,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray35", "$compid__259", "scrollLeft", "Threshold", "numberList", "nowIndex", "buttonShow", "answerArray", "doneQuestion", "chooesAnswer", "currentQuestionPartName", "currentQuestion", "currentAnswerList"], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray7", "$compid__27", "scrollLeft", "Threshold", "numberList", "nowIndex", "buttonShow", "answerArray", "doneQuestion", "chooesAnswer", "currentQuestionPartName", "currentQuestion", "currentAnswerList"], _this.config = {
       navigationBarTitleText: '测试界面'
     }, _this.customComponents = ["AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -364,15 +364,15 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var scrollLeft = this.scrollLeft,
           numberList = this.numberList;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__259"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__27"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__259 = _genCompid2[0],
-          $compid__259 = _genCompid2[1];
+          $prevCompid__27 = _genCompid2[0],
+          $compid__27 = _genCompid2[1];
 
       var nowIndex = this.__state.nowIndex;
 
       var Threshold = 20;
-      var loopArray35 = this.numberList.map(function (item, _anonIdx) {
+      var loopArray7 = this.numberList.map(function (item, _anonIdx) {
         item = {
           $original: (0, _taroWeapp.internal_get_original)(item)
         };
@@ -389,10 +389,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "onClick": this.addAnswer.bind(this),
         "circle": true,
         "type": "primary"
-      }, $compid__259, $prevCompid__259);
+      }, $compid__27, $prevCompid__27);
       Object.assign(this.__state, {
-        loopArray35: loopArray35,
-        $compid__259: $compid__259,
+        loopArray7: loopArray7,
+        $compid__27: $compid__27,
         scrollLeft: scrollLeft,
         Threshold: Threshold,
         numberList: numberList

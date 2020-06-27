@@ -24,8 +24,6 @@ var _taroWeapp = __webpack_require__(/*! @tarojs/taro-weapp */ "./node_modules/@
 
 var _taroWeapp2 = _interopRequireDefault(_taroWeapp);
 
-var _api = __webpack_require__(/*! ./api/api */ "./src/api/api.ts");
-
 __webpack_require__(/*! ./app.less */ "./src/app.less");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -58,7 +56,7 @@ var _App = function (_BaseComponent) {
     var _this = _possibleConstructorReturn(this, (_App.__proto__ || Object.getPrototypeOf(_App)).apply(this, arguments));
 
     _this.config = {
-      pages: ['pages/index/index', 'pages/bar/index', 'pages/analysis/index', 'pages/question/index'],
+      pages: ['pages/index/index', 'pages/analysis/index', 'pages/list/index', 'pages/bar/index', 'pages/question/index'],
       window: {
         backgroundTextStyle: 'light',
         navigationBarBackgroundColor: '#fff',
@@ -76,29 +74,29 @@ var _App = function (_BaseComponent) {
     key: 'componentDidShow',
     value: function componentDidShow() {
       try {
-        _taroWeapp2.default.getUserInfo({
-          success: function success(res) {
-            var userInfo = res.userInfo;
-
-            _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(userInfo));
-            _taroWeapp2.default.setStorageSync('shouquan', true);
-            (0, _api.login)().then(function (res) {
-              if (res.data.err_code == 0) {
-                _taroWeapp2.default.setStorageSync('isLogin', true);
-                (0, _api.getPartList)();
-              }
-            });
-          },
-          fail: function fail(res) {
-            _taroWeapp2.default.showToast({
-              title: res.err_msg,
-              icon: 'none',
-              duration: 2000
-            });
-            _taroWeapp2.default.setStorageSync('shouquan', false);
-            _taroWeapp2.default.setStorageSync('isLogin', false);
-          }
-        });
+        // Taro.getUserInfo({
+        //   success(res) {
+        //     const { userInfo } = res;
+        //     Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
+        //     Taro.setStorageSync('shouquan', JSON.stringify(true));
+        //     login().then((res) => {
+        //       if (res.err_code) {
+        //       } else {
+        //         Taro.setStorageSync('isLogin', true);
+        //       }
+        //       getPartList();
+        //     });
+        //   },
+        //   fail(res) {
+        //     Taro.showToast({
+        //       title: res.err_msg,
+        //       icon: 'none',
+        //       duration: 2000,
+        //     });
+        //     Taro.setStorageSync('shouquan', JSON.stringify(false));
+        //     Taro.setStorageSync('isLogin', JSON.stringify(false));
+        //   },
+        // });
       } catch (e) {
         console.log('e :>> ', e);
       }
@@ -177,4 +175,4 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ })
 
-},[["./src/app.tsx","runtime","vendors","common"]]]);;
+},[["./src/app.tsx","runtime","vendors"]]]);;

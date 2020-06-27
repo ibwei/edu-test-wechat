@@ -3,7 +3,7 @@
         <view class="question">
             <view class="item-box">
                 <scroll-view class="scrollview" scroll-x="{{true}}" scroll-with-animation="{{true}}" scroll-left="{{scrollLeft}}" lower-threshold="{{Threshold}}" bindscroll="onScroll">
-                    <view class="{{item.$loopState__temp2}}" bindtap="setCurrentQuestion" wx:for="{{loopArray35}}" wx:for-item="item" wx:for-index="_anonIdx2" data-e-tap-so="this" data-e-tap-a-a="{{item.$original - 1}}">{{item.$original}}</view>
+                    <view class="{{item.$loopState__temp2}}" bindtap="setCurrentQuestion" wx:for="{{loopArray7}}" wx:for-item="item" wx:for-index="_anonIdx2" data-e-tap-so="this" data-e-tap-a-a="{{item.$original - 1}}">{{item.$original}}</view>
                 </scroll-view>
             </view>
             <view class="question-box">
@@ -14,7 +14,7 @@
             </view>
             <view>
                 <block wx:if="{{buttonShow}}">
-                    <at-button compid="{{$compid__259}}">提交</at-button>
+                    <at-button compid="{{$compid__27}}">提交</at-button>
                 </block>
             </view>
         </view>

@@ -149,10 +149,26 @@ export const getPartList = async (): Promise<any> => {
     },
     fail: function(res) {
       Taro.hideLoading();
+    },
+  });
+  return Promise.resolve(resData);
+};
+
+// 获取答题记录列表
+export const getResutlList = async (params): Promise<any> => {
+  let resData: any;
+  // await Taro.addInterceptor()
+  await Taro.request({
+    method: 'POST',
+    url: url + 'test/history',
+    data: { token: Taro.getStorageSync('token'), ...params },
+    success: function(res) {
       console.log('list :>> ', res);
-      // if (res.err_code == 401) {
-      //   console.log('1 :>> ', 1);
-      // }
+      resData = res;
+    },
+    fail: function(res) {
+      resData = res;
+      console.log('res :>> ', res);
     },
   });
   return Promise.resolve(resData);

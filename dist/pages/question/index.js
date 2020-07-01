@@ -38,6 +38,8 @@ __webpack_require__(/*! taro-ui/dist/style/components/loading.scss */ "./node_mo
 
 __webpack_require__(/*! taro-ui/dist/style/components/checkbox.scss */ "./node_modules/taro-ui/dist/style/components/checkbox.scss");
 
+__webpack_require__(/*! taro-ui/dist/style/components/progress.scss */ "./node_modules/taro-ui/dist/style/components/progress.scss");
+
 __webpack_require__(/*! taro-ui/dist/style/components/icon.scss */ "./node_modules/taro-ui/dist/style/components/icon.scss");
 
 __webpack_require__(/*! taro-ui/dist/style/components/modal.scss */ "./node_modules/taro-ui/dist/style/components/modal.scss");
@@ -70,9 +72,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray7", "$compid__27", "scrollLeft", "Threshold", "numberList", "nowIndex", "buttonShow", "answerArray", "doneQuestion", "chooesAnswer", "currentQuestionPartName", "currentQuestion", "currentAnswerList"], _this.config = {
-      navigationBarTitleText: '测试界面'
-    }, _this.customComponents = ["AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["anonymousState__temp", "loopArray147", "$compid__179", "$compid__180", "AnwserKey", "scrollLeft", "Threshold", "numberList", "nowIndex", "buttonShow", "answerArray", "doneQuestion", "chooesAnswer", "currentQuestionPartName", "currentQuestion", "currentAnswerList"], _this.config = {
+      navigationBarTitleText: '测试界面',
+      navigationBarBackgroundColor: '#bde8ff'
+    }, _this.customComponents = ["AtProgress", "AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
   }
 
   _createClass(Index, [{
@@ -91,6 +94,8 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       this.scoreArray = [];
       // 版块列表
       this.forumList = [];
+      // 答案key
+      this.AnwserKey = ['A', 'B', 'C', 'D', 'E'];
       this.scrollLeft = 0;
       /**
        * 指定config的类型声明为: Taro.Config
@@ -257,8 +262,8 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         this.setState({
           nowIndex: nowIndex
         });
-        if (nowIndex > 6 && nowIndex < length - 3) {
-          this.scrollLeft = Number(nowIndex - 6) * 33;
+        if (nowIndex > 3 && nowIndex < length - 2) {
+          this.scrollLeft = Number(nowIndex - 4) * 38;
         }
       }
     }
@@ -346,6 +351,30 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
               url: '/pages/analysis/index?id=' + data.id
             });
           }, 2000);
+        } else if (err_code == 401) {
+          (0, _api.login)().then(function (res) {
+            if (res.data.err_code == 0) {
+              (0, _api.pushAnwser)(params).then(function (res) {
+                var _res$data3 = res.data,
+                    err_code = _res$data3.err_code,
+                    data = _res$data3.data,
+                    resultCode = _res$data3.resultCode;
+
+                if (resultCode == '0') {
+                  _taroWeapp2.default.hideLoading();
+                  _taroWeapp2.default.showToast({
+                    title: '提交成功!',
+                    duration: 2000
+                  });
+                  setTimeout(function () {
+                    _taroWeapp2.default.redirectTo({
+                      url: '/pages/analysis/index?id=' + data.id
+                    });
+                  }, 2000);
+                }
+              });
+            }
+          });
         }
       });
     }
@@ -361,38 +390,53 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       this.__props = arguments[1] || this.props || {};
       var __isRunloopRef = arguments[2];
       var __prefix = this.$prefix;
-      var scrollLeft = this.scrollLeft,
+      var AnwserKey = this.AnwserKey,
+          scrollLeft = this.scrollLeft,
           numberList = this.numberList;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__27"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__179"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__27 = _genCompid2[0],
-          $compid__27 = _genCompid2[1];
+          $prevCompid__179 = _genCompid2[0],
+          $compid__179 = _genCompid2[1];
+
+      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__180"),
+          _genCompid4 = _slicedToArray(_genCompid3, 2),
+          $prevCompid__180 = _genCompid4[0],
+          $compid__180 = _genCompid4[1];
 
       var nowIndex = this.__state.nowIndex;
 
       var Threshold = 20;
-      var loopArray7 = this.numberList.map(function (item, _anonIdx) {
+      var anonymousState__temp = this.__state.nowIndex * 2 + 2;
+      var loopArray147 = this.numberList.map(function (item, _anonIdx) {
         item = {
           $original: (0, _taroWeapp.internal_get_original)(item)
         };
-        var $loopState__temp2 = (0, _classnames2.default)('question-item', {
+        var $loopState__temp3 = (0, _classnames2.default)('question-item', {
           done: _this3.__state.doneQuestion[item.$original - 1]
         });
         return {
-          $loopState__temp2: $loopState__temp2,
+          $loopState__temp3: $loopState__temp3,
           $original: item.$original
         };
       });
+      _taroWeapp.propsManager.set({
+        "percent": anonymousState__temp,
+        "isHidePercent": true,
+        "status": "progress"
+      }, $compid__179, $prevCompid__179);
       this.__state.buttonShow && _taroWeapp.propsManager.set({
         "className": "button",
         "onClick": this.addAnswer.bind(this),
         "circle": true,
         "type": "primary"
-      }, $compid__27, $prevCompid__27);
+      }, $compid__180, $prevCompid__180);
       Object.assign(this.__state, {
-        loopArray7: loopArray7,
-        $compid__27: $compid__27,
+        anonymousState__temp: anonymousState__temp,
+        loopArray147: loopArray147,
+        $compid__179: $compid__179,
+        $compid__180: $compid__180,
+        AnwserKey: AnwserKey,
         scrollLeft: scrollLeft,
         Threshold: Threshold,
         numberList: numberList
@@ -434,6 +478,17 @@ module.exports = __webpack_require__.p + "pages/question/index.wxml";
 /***/ "./node_modules/taro-ui/dist/style/components/checkbox.scss":
 /*!******************************************************************!*\
   !*** ./node_modules/taro-ui/dist/style/components/checkbox.scss ***!
+  \******************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+// extracted by mini-css-extract-plugin
+
+/***/ }),
+
+/***/ "./node_modules/taro-ui/dist/style/components/progress.scss":
+/*!******************************************************************!*\
+  !*** ./node_modules/taro-ui/dist/style/components/progress.scss ***!
   \******************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {

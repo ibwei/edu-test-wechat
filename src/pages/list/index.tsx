@@ -78,7 +78,7 @@ export default class Index extends Component {
         <AtListItem
           key={item.id}
           title="学商测试"
-          note={item.created_at.split(' ')[0]}
+          note={item.created_at}
           arrow="right"
           iconInfo={{ size: 25, color: '#78A4FA', value: 'file-generic' }}
           onClick={this.goDetali.bind(this, item.id)}

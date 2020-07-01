@@ -128,7 +128,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__15", "$compid__16", "ec", "score", "scoreText", "userInfo"], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["$compid__255", "$compid__256", "ec", "score", "scoreText", "userInfo"], _this.config = {
       navigationBarTitleText: '测试结果',
       // 定义需要引入的第三方组件
       usingComponents: {
@@ -154,7 +154,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
           onInit: initChart
         },
         score: 0,
-        scoreText: [],
+        scoreText: [{
+          name: '',
+          text: ''
+        }],
         userInfo: {
           name: '',
           avatar: '',
@@ -186,6 +189,9 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       });
       (0, _api.getResult)({ id: this.$router.params.id }).then(function (res) {
         console.log('res :>> ', res);
+        _taroWeapp2.default.showLoading({
+          title: '加载中...'
+        });
         var _res$data = res.data,
             err_code = _res$data.err_code,
             err_msg = _res$data.err_msg,
@@ -200,19 +206,16 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
           var scoreText = scoreArray.map(function (item, index) {
             var key = '';
             switch (Math.floor(item / 5.01)) {
-              case 0:
+              case 1:
                 key = 'a_answer';
                 break;
-              case 1:
+              case 2:
                 key = 'b_answer';
                 break;
-              case 2:
+              case 3:
                 key = 'c_answer';
                 break;
-              case 3:
-                key = 'd_answer';
-                break;
-              default:
+              case 4:
                 key = 'd_answer';
                 break;
             }
@@ -224,7 +227,9 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
           _this2.setState({
             scoreText: scoreText
           });
-          _this2.setEcharts(scoreArray);
+          setTimeout(function () {
+            _this2.setEcharts(scoreArray);
+          }, 1000);
         } else {
           _taroWeapp2.default.showToast({
             title: err_msg,
@@ -240,6 +245,8 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
   }, {
     key: 'setEcharts',
     value: function setEcharts(value) {
+      _taroWeapp2.default.hideLoading();
+      console.log('chart :>> ', chart);
       chart.setOption({
         series: [{
           data: [{
@@ -268,29 +275,29 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __prefix = this.$prefix;
       ;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__15"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__255"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__15 = _genCompid2[0],
-          $compid__15 = _genCompid2[1];
+          $prevCompid__255 = _genCompid2[0],
+          $compid__255 = _genCompid2[1];
 
-      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__16"),
+      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__256"),
           _genCompid4 = _slicedToArray(_genCompid3, 2),
-          $prevCompid__16 = _genCompid4[0],
-          $compid__16 = _genCompid4[1];
+          $prevCompid__256 = _genCompid4[0],
+          $compid__256 = _genCompid4[1];
 
       _taroWeapp.propsManager.set({
         "content": '\u6210\u7EE9\u5206\u5E03\u56FE',
         "fontColor": "#555",
         "lineColor": "#bebebe"
-      }, $compid__15, $prevCompid__15);
+      }, $compid__255, $prevCompid__255);
       _taroWeapp.propsManager.set({
         "content": '\u6210\u7EE9\u5206\u6790',
         "fontColor": "#555",
         "lineColor": "#bebebe"
-      }, $compid__16, $prevCompid__16);
+      }, $compid__256, $prevCompid__256);
       Object.assign(this.__state, {
-        $compid__15: $compid__15,
-        $compid__16: $compid__16
+        $compid__255: $compid__255,
+        $compid__256: $compid__256
       });
       return this.__state;
     }

@@ -104,6 +104,9 @@ export default class Index extends Component {
 
     getResult({ id: this.$router.params.id }).then((res) => {
       console.log('res :>> ', res);
+      Taro.showLoading({
+        title: '加载中...',
+      });
       let { err_code, err_msg, data } = res.data;
       data = data[0];
       if (err_code == 0) {
@@ -114,19 +117,16 @@ export default class Index extends Component {
         const scoreText = scoreArray.map((item, index) => {
           let key = '';
           switch (Math.floor(item / 5.01)) {
-            case 0:
+            case 1:
               key = 'a_answer';
               break;
-            case 1:
+            case 2:
               key = 'b_answer';
               break;
-            case 2:
+            case 3:
               key = 'c_answer';
               break;
-            case 3:
-              key = 'd_answer';
-              break;
-            default:
+            case 4:
               key = 'd_answer';
               break;
           }
@@ -138,7 +138,9 @@ export default class Index extends Component {
         this.setState({
           scoreText: scoreText,
         });
-        this.setEcharts(scoreArray);
+        setTimeout(() => {
+          this.setEcharts(scoreArray);
+        }, 1000);
       } else {
         Taro.showToast({
           title: err_msg,
@@ -173,7 +175,12 @@ export default class Index extends Component {
         onInit: initChart,
       },
       score: 0,
-      scoreText: [],
+      scoreText: [
+        {
+          name: '',
+          text: '',
+        },
+      ],
       userInfo: {
         name: '', // 姓名
         avatar: '', // 头像
@@ -185,6 +192,8 @@ export default class Index extends Component {
     };
   }
   setEcharts(value) {
+    Taro.hideLoading();
+    console.log('chart :>> ', chart);
     chart.setOption({
       series: [
         {

@@ -1,0 +1,18 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="{{rootClass}}">
+        <view class="at-progress__outer">
+            <view class="at-progress__outer-inner">
+                <view class="at-progress__outer-inner-background" style="{{anonymousState__temp}}"></view>
+            </view>
+        </view>
+        <block wx:if="{{!isHidePercent}}">
+            <view class="at-progress__content">
+                <block>
+                    <block wx:if="{{!status || status === 'progress'}}">{{percent + '%'}}</block>
+                    <block wx:else><text class="{{iconClass}}"></text>
+                    </block>
+                </block>
+            </view>
+        </block>
+    </view>
+</block>

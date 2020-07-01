@@ -14,13 +14,13 @@ type StateType = {
 export default class Index extends Component {
   componentWillMount() {}
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.getList();
+  }
 
   componentWillUnmount() {}
 
-  componentDidShow() {
-    this.getList();
-  }
+  componentDidShow() {}
 
   getList() {
     getResutlList({ pageSize: this.state.size, pageNum: this.state.page }).then(

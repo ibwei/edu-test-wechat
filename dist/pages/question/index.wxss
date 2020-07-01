@@ -16,13 +16,15 @@ Page {
 }
 .scrollview .question-item {
   display: inline-block;
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 75rpx;
+  height: 75rpx;
   border: 1rpx solid #000;
+  line-height: 75rpx;
+  font-size: 50rpx;
   border-radius: 50%;
   text-align: center;
   background: #bde8ff;
-  margin-right: 0.4rem;
+  margin-right: 0.5rem;
 }
 .scrollview .done {
   background: #92c6ef;

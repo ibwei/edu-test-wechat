@@ -58,7 +58,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray43", "page", "size", "list"], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["loopArray9", "page", "size", "list"], _this.config = {
       navigationBarTitleText: '测试结果'
     }, _this.customComponents = ["AtListItem", "AtList"], _temp), _possibleConstructorReturn(_this, _ret);
   }
@@ -87,15 +87,15 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
     value: function componentWillMount() {}
   }, {
     key: 'componentDidMount',
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      this.getList();
+    }
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {}
   }, {
     key: 'componentDidShow',
-    value: function componentDidShow() {
-      this.getList();
-    }
+    value: function componentDidShow() {}
   }, {
     key: 'getList',
     value: function getList() {
@@ -143,17 +143,17 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var __prefix = this.$prefix;
       ;
 
-      var loopArray43 = this.__state.list.map(function (item, _anonIdx) {
+      var loopArray9 = this.__state.list.map(function (item, _anonIdx) {
         item = {
           $original: (0, _taroWeapp.internal_get_original)(item)
         };
         var $loopState__temp2 = item.$original.created_at.split(' ')[0];
         var $loopState__temp4 = { size: 25, color: '#78A4FA', value: 'file-generic' };
 
-        var _genCompid = (0, _taroWeapp.genCompid)(__prefix + 'cfzzzzzzzz' + _anonIdx, true),
+        var _genCompid = (0, _taroWeapp.genCompid)(__prefix + 'dzzzzzzzzz' + _anonIdx, true),
             _genCompid2 = _slicedToArray(_genCompid, 2),
-            $prevCompid__67 = _genCompid2[0],
-            $compid__67 = _genCompid2[1];
+            $prevCompid__29 = _genCompid2[0],
+            $compid__29 = _genCompid2[1];
 
         _taroWeapp.propsManager.set({
           "title": '\u5B66\u5546\u6D4B\u8BD5',
@@ -161,17 +161,17 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
           "arrow": "right",
           "iconInfo": $loopState__temp4,
           "onClick": _this3.goDetali.bind(_this3, item.$original.id)
-        }, $compid__67, $prevCompid__67);
+        }, $compid__29, $prevCompid__29);
         return {
           $loopState__temp2: $loopState__temp2,
           $loopState__temp4: $loopState__temp4,
-          $compid__67: $compid__67,
+          $compid__29: $compid__29,
           $original: item.$original
         };
       });
 
       Object.assign(this.__state, {
-        loopArray43: loopArray43
+        loopArray9: loopArray9
       });
       return this.__state;
     }

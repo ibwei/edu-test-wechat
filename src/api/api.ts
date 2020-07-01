@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro';
-const url = 'http://edu.pinxianhs.com/api/wechat/';
+const url = 'https://xueshangcs.com/api/wechat/';
 
 // 登录
 export const login = async (): Promise<any> => {

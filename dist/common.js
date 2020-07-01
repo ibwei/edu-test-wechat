@@ -29,7 +29,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var url = 'http://edu.pinxianhs.com/api/wechat/';
+var url = 'https://xueshangcs.com/api/wechat/';
 // 登录
 var login = exports.login = function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regenerator2.default.mark(function _callee() {
@@ -53,7 +53,7 @@ var login = exports.login = function () {
             _context.next = 9;
             return _taroWeapp2.default.request({
               method: 'POST',
-              url: "http://edu.pinxianhs.com/api/wechat/user/login",
+              url: "https://xueshangcs.com/api/wechat/user/login",
               data: _extends({
                 code: code,
                 token: _taroWeapp2.default.getStorageSync('token')
@@ -106,7 +106,7 @@ var getList = exports.getList = function () {
             _context2.next = 4;
             return _taroWeapp2.default.request({
               method: 'GET',
-              url: "http://edu.pinxianhs.com/api/wechat/test/list",
+              url: "https://xueshangcs.com/api/wechat/test/list",
               data: { token: _taroWeapp2.default.getStorageSync('token') },
               success: function success(res) {
                 console.log('list :>> ', res);
@@ -157,7 +157,7 @@ var getResult = exports.getResult = function () {
             _context3.next = 4;
             return _taroWeapp2.default.request({
               method: 'POST',
-              url: "http://edu.pinxianhs.com/api/wechat/test/result",
+              url: "https://xueshangcs.com/api/wechat/test/result",
               data: { token: _taroWeapp2.default.getStorageSync('token'), id: params.id }
             }).then(function (res) {
               var data = res.data,
@@ -197,7 +197,7 @@ var pushAnwser = exports.pushAnwser = function () {
             _context4.next = 3;
             return _taroWeapp2.default.request({
               method: 'POST',
-              url: "http://edu.pinxianhs.com/api/wechat/test/add",
+              url: "https://xueshangcs.com/api/wechat/test/add",
               data: _extends({ token: _taroWeapp2.default.getStorageSync('token') }, params)
             }).then(function (res) {
               console.log('提交答案返回 :>> ', res);
@@ -242,7 +242,7 @@ var editStudet = exports.editStudet = function () {
             _context5.next = 5;
             return _taroWeapp2.default.request({
               method: 'POST',
-              url: "http://edu.pinxianhs.com/api/wechat/user/completedInfo",
+              url: "https://xueshangcs.com/api/wechat/user/completedInfo",
               data: _extends({ token: _taroWeapp2.default.getStorageSync('token') }, params),
               success: function success(res) {
                 console.log('res :>> ', res);
@@ -297,7 +297,7 @@ var getPartList = exports.getPartList = function () {
             _context6.next = 3;
             return _taroWeapp2.default.request({
               method: 'GET',
-              url: "http://edu.pinxianhs.com/api/wechat/part/list",
+              url: "https://xueshangcs.com/api/wechat/part/list",
               data: { token: _taroWeapp2.default.getStorageSync('token') },
               success: function success(res) {
                 console.log('list :>> ', res);
@@ -345,7 +345,7 @@ var getResutlList = exports.getResutlList = function () {
             _context7.next = 3;
             return _taroWeapp2.default.request({
               method: 'POST',
-              url: "http://edu.pinxianhs.com/api/wechat/test/history",
+              url: "https://xueshangcs.com/api/wechat/test/history",
               data: _extends({ token: _taroWeapp2.default.getStorageSync('token') }, params),
               success: function success(res) {
                 console.log('list :>> ', res);

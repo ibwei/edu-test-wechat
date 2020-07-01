@@ -59,58 +59,62 @@ var _App = function (_BaseComponent) {
     var _this = _possibleConstructorReturn(this, (_App.__proto__ || Object.getPrototypeOf(_App)).apply(this, arguments));
 
     _this.config = {
-      pages: ['pages/index/index', 'pages/analysis/index', 'pages/bar/index', 'pages/question/index'],
+      pages: ['pages/index/index', 'pages/bar/index', 'pages/analysis/index', 'pages/question/index'],
       window: {
-        backgroundTextStyle: "light",
-        navigationBarBackgroundColor: "#fff",
-        navigationBarTitleText: "WeChat",
-        navigationBarTextStyle: "black"
+        backgroundTextStyle: 'light',
+        navigationBarBackgroundColor: '#fff',
+        navigationBarTitleText: '学商测试',
+        navigationBarTextStyle: 'black'
       }
     };
     return _this;
   }
 
   _createClass(_App, [{
-    key: "componentDidMount",
+    key: 'componentDidMount',
     value: function componentDidMount() {}
   }, {
-    key: "componentDidShow",
+    key: 'componentDidShow',
     value: function componentDidShow() {
-      _taroWeapp2.default.getUserInfo({
-        success: function success(res) {
-          var userInfo = res.userInfo;
+      try {
+        _taroWeapp2.default.getUserInfo({
+          success: function success(res) {
+            var userInfo = res.userInfo;
 
-          _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(userInfo));
-          _taroWeapp2.default.setStorageSync('shouquan', JSON.stringify(true));
-          (0, _api.login)().then(function (res) {
-            if (!res.err_code) {
-              _taroWeapp2.default.setStorageSync("isLogin", true);
-            }
-            (0, _api.getPartList)();
-          });
-        },
-        fail: function fail(res) {
-          _taroWeapp2.default.showToast({
-            title: res.err_msg,
-            icon: 'none',
-            duration: 2000
-          });
-          _taroWeapp2.default.setStorageSync('shouquan', JSON.stringify(false));
-          _taroWeapp2.default.setStorageSync('isLogin', JSON.stringify(false));
-        }
-      });
+            _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(userInfo));
+            _taroWeapp2.default.setStorageSync('shouquan', true);
+            (0, _api.login)().then(function (res) {
+              if (res.data.err_code == 0) {
+                _taroWeapp2.default.setStorageSync('isLogin', true);
+                (0, _api.getPartList)();
+              }
+            });
+          },
+          fail: function fail(res) {
+            _taroWeapp2.default.showToast({
+              title: res.err_msg,
+              icon: 'none',
+              duration: 2000
+            });
+            _taroWeapp2.default.setStorageSync('shouquan', false);
+            _taroWeapp2.default.setStorageSync('isLogin', false);
+          }
+        });
+      } catch (e) {
+        console.log('e :>> ', e);
+      }
     }
   }, {
-    key: "componentDidHide",
+    key: 'componentDidHide',
     value: function componentDidHide() {}
   }, {
-    key: "componentDidCatchError",
+    key: 'componentDidCatchError',
     value: function componentDidCatchError() {}
     // 在 App 类中的 render() 函数没有实际作用
     // 请勿修改此函数
 
   }, {
-    key: "_createData",
+    key: '_createData',
     value: function _createData() {}
   }]);
 

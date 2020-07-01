@@ -343,7 +343,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
           });
           setTimeout(function () {
             _taroWeapp2.default.redirectTo({
-              url: '/pages/analysis/index'
+              url: '/pages/analysis/index?id=' + data.id
             });
           }, 2000);
         }

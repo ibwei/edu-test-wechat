@@ -113,7 +113,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
     key: 'getUserInfo',
     value: function getUserInfo(res) {
       if (res.detail.userInfo) {
-        _taroWeapp2.default.setStorageSync('shouquan', JSON.stringify(true));
+        _taroWeapp2.default.setStorageSync('shouquan', true);
         this.setState({
           shouquanBox: false
         });
@@ -121,7 +121,10 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
 
         _taroWeapp2.default.setStorageSync('userInfo', JSON.stringify(userInfo));
         (0, _api.login)().then(function (res) {
-          _taroWeapp2.default.setStorageSync('isLogin', JSON.stringify(true));
+          if (res.err_code == 0) {
+            _taroWeapp2.default.setStorageSync('isLogin', true);
+            (0, _api.getPartList)();
+          }
           // const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
         });
       }
@@ -133,8 +136,8 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
     value: function goTest() {
       var _this2 = this;
 
-      var shouquan = JSON.parse(_taroWeapp2.default.getStorageSync('shouquan'));
-      var isLogin = JSON.parse(_taroWeapp2.default.getStorageSync('isLogin'));
+      var shouquan = _taroWeapp2.default.getStorageSync('shouquan');
+      var isLogin = _taroWeapp2.default.getStorageSync('isLogin');
       if (shouquan == false) {
         this.setState({
           shouquanBox: true
@@ -154,7 +157,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         }
       } else {
         (0, _api.login)().then(function (res) {
-          _taroWeapp2.default.setStorageSync('isLogin', JSON.stringify(true));
+          _taroWeapp2.default.setStorageSync('isLogin', true);
           var userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
           if (userInfo.student_name == undefined || userInfo.student_name == '') {
             _this2.setState({
@@ -173,7 +176,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
     value: function goResult() {
       var userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
       _taroWeapp2.default.navigateTo({
-        url: '/pages/analysis/index'
+        url: '/pages/analysis/index?id=15'
       });
     }
   }, {

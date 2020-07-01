@@ -9,7 +9,7 @@ import {
   AtModalContent,
   AtModalAction,
 } from 'taro-ui';
-import { login, editStudet } from '../../api/api';
+import { login, editStudet, getPartList } from '../../api/api';
 
 import './index.less';
 import 'taro-ui/dist/style/components/button.scss';
@@ -25,7 +25,6 @@ type stateType = {
 };
 export default class Index extends Component {
   isLogin = false;
-  state: StateType;
   componentWillMount() {}
 
   componentDidMount() {}
@@ -56,22 +55,25 @@ export default class Index extends Component {
   };
   getUserInfo(res) {
     if (res.detail.userInfo) {
-      Taro.setStorageSync('shouquan', JSON.stringify(true));
+      Taro.setStorageSync('shouquan', true);
       this.setState({
         shouquanBox: false,
       });
       const { userInfo } = res.detail;
       Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
       login().then((res) => {
-        Taro.setStorageSync('isLogin', JSON.stringify(true));
+        if (res.err_code == 0) {
+          Taro.setStorageSync('isLogin', true);
+          getPartList();
+        }
         // const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
       });
     }
   }
   // 跳转测试页面
   goTest() {
-    const shouquan = JSON.parse(Taro.getStorageSync('shouquan'));
-    const isLogin = JSON.parse(Taro.getStorageSync('isLogin'));
+    const shouquan = Taro.getStorageSync('shouquan');
+    const isLogin = Taro.getStorageSync('isLogin');
     if (shouquan == false) {
       this.setState({
         shouquanBox: true,
@@ -91,7 +93,7 @@ export default class Index extends Component {
       }
     } else {
       login().then((res) => {
-        Taro.setStorageSync('isLogin', JSON.stringify(true));
+        Taro.setStorageSync('isLogin', true);
         const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
         if (userInfo.student_name == undefined || userInfo.student_name == '') {
           this.setState({
@@ -108,7 +110,7 @@ export default class Index extends Component {
   goResult() {
     const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
     Taro.navigateTo({
-      url: '/pages/analysis/index',
+      url: '/pages/analysis/index?id=15',
     });
   }
   onClose() {

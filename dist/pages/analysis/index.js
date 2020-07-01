@@ -49,7 +49,7 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var chart = void 0;
-var indicatorArrya = JSON.parse(_taroWeapp2.default.getStorageSync('forumList'));
+var indicatorArrya = _taroWeapp2.default.getStorageSync('forumList') ? JSON.parse(_taroWeapp2.default.getStorageSync('forumList')) : [];
 function initChart(canvas, width, height, dpr) {
   chart = _echarts2.default.init(canvas, null, {
     width: width,
@@ -181,17 +181,17 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       var _this2 = this;
 
       var userInfo = JSON.parse(_taroWeapp2.default.getStorageSync('userInfo'));
-      console.log('userInfo :>> ', userInfo);
       this.setState({
         userInfo: userInfo
       });
-      (0, _api.getResult)().then(function (res) {
+      (0, _api.getResult)({ id: this.$router.params.id }).then(function (res) {
         console.log('res :>> ', res);
         var _res$data = res.data,
             err_code = _res$data.err_code,
             err_msg = _res$data.err_msg,
             data = _res$data.data;
 
+        data = data[0];
         if (err_code == 0) {
           _this2.setState({
             score: (data.allScore / 2.5).toFixed(1)

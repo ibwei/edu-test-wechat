@@ -284,7 +284,7 @@ export default class Index extends Component {
         });
         setTimeout(() => {
           Taro.redirectTo({
-            url: '/pages/analysis/index',
+            url: '/pages/analysis/index?id=' + data.id,
           });
         }, 2000);
       }

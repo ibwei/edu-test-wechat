@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro';
-const url = 'http://edu.pinxianhs.com/api/wechat/';
+const url = 'https://xueshangcs.com/api/wechat/';
 
 // 登录
 export const login = async (): Promise<any> => {
@@ -17,7 +17,7 @@ export const login = async (): Promise<any> => {
       token: Taro.getStorageSync('token'),
       ...userInfo,
     },
-    success: function(res) {
+    success: function (res) {
       const { data } = res;
       resData = res;
       console.log('res :>> ', res);
@@ -28,7 +28,7 @@ export const login = async (): Promise<any> => {
         Taro.hideLoading();
       }
     },
-    fail: function(e) {
+    fail: function (e) {
       console.log('e :>> ', e);
       Taro.hideLoading();
     },
@@ -45,7 +45,7 @@ export const getList = async (): Promise<any> => {
     method: 'GET',
     url: url + 'test/list',
     data: { token: Taro.getStorageSync('token') },
-    success: function(res) {
+    success: function (res) {
       console.log('list :>> ', res);
       const { data, err_msg, err_code } = res.data;
       if (err_code == 0) {
@@ -53,7 +53,7 @@ export const getList = async (): Promise<any> => {
         resData = res;
       }
     },
-    fail: function(res) {
+    fail: function (res) {
       Taro.hideLoading();
       console.log('list :>> ', res);
       // if (res.err_code == 401) {
@@ -109,7 +109,7 @@ export const editStudet = async (params): Promise<any> => {
     method: 'POST',
     url: url + 'user/completedInfo',
     data: { token: Taro.getStorageSync('token'), ...params },
-    success: function(res) {
+    success: function (res) {
       console.log('res :>> ', res);
       resData = res;
       const { data, err_code, err_msg } = res.data;
@@ -123,7 +123,7 @@ export const editStudet = async (params): Promise<any> => {
         });
       }
     },
-    fail: function(res) {
+    fail: function (res) {
       Taro.hideLoading();
       console.log('res :>> ', res);
     },
@@ -139,7 +139,7 @@ export const getPartList = async (): Promise<any> => {
     method: 'GET',
     url: url + 'part/list',
     data: { token: Taro.getStorageSync('token') },
-    success: function(res) {
+    success: function (res) {
       console.log('list :>> ', res);
       const { data, err_msg, err_code } = res.data;
       if (err_code == 0) {
@@ -147,12 +147,28 @@ export const getPartList = async (): Promise<any> => {
         Taro.setStorageSync('forumList', JSON.stringify(data));
       }
     },
-    fail: function(res) {
+    fail: function (res) {
       Taro.hideLoading();
+    },
+  });
+  return Promise.resolve(resData);
+};
+
+// 获取答题记录列表
+export const getResutlList = async (params): Promise<any> => {
+  let resData: any;
+  // await Taro.addInterceptor()
+  await Taro.request({
+    method: 'POST',
+    url: url + 'test/history',
+    data: { token: Taro.getStorageSync('token'), ...params },
+    success: function (res) {
       console.log('list :>> ', res);
-      // if (res.err_code == 401) {
-      //   console.log('1 :>> ', 1);
-      // }
+      resData = res;
+    },
+    fail: function (res) {
+      resData = res;
+      console.log('res :>> ', res);
     },
   });
   return Promise.resolve(resData);

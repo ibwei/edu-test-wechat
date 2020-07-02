@@ -1,7 +1,0 @@
-<block wx:if="{{$taroCompReady}}">
-    <view class="index">
-        <at-list>
-            <at-list-item wx:key="id" wx:for="{{loopArray5}}" wx:for-item="item" wx:for-index="_anonIdx2" compid="{{item.$compid__25}}"></at-list-item>
-        </at-list>
-    </view>
-</block>

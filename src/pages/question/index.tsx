@@ -361,9 +361,10 @@ export default class Index extends Component {
               lowerThreshold={Threshold}
               onScroll={this.onScroll}
             >
-              {this.numberList.map((item) => {
+              {this.numberList.map((item, key) => {
                 return (
                   <View
+                    key={Math.random() * key}
                     className={classNames('question-item', {
                       done: this.state.doneQuestion[item - 1],
                     })}

@@ -222,9 +222,9 @@ export default class Index extends Component {
   }
 
   render() {
-    const forumDom = this.state.scoreText.map((item) => {
+    const forumDom = this.state.scoreText.map((item, key) => {
       return (
-        <View className="result-item">
+        <View className="result-item" key={key}>
           <View className="forum-title">{item.name}</View>
           <View className="forum-content">{item.text}</View>
         </View>

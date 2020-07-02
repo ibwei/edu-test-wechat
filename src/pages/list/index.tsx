@@ -5,48 +5,31 @@ import { AtList, AtListItem } from 'taro-ui';
 import './index.less';
 import 'taro-ui/dist/style/components/list.scss';
 import 'taro-ui/dist/style/components/icon.scss';
-import { getResutlList, login } from '../../api/api';
+import { getResutlList } from '../../api/api';
 type StateType = {
   list: Array<any>;
   page: number;
   size: number;
 };
 export default class Index extends Component {
-  componentWillMount() {}
-
-  componentDidMount() {
+  componentWillMount() {
     this.getList();
   }
 
-  componentWillUnmount() {}
-
-  componentDidShow() {}
-
-  getList() {
-    getResutlList({ pageSize: this.state.size, pageNum: this.state.page }).then(
-      (res) => {
-        if (res.data.resultCode == 0) {
-          let list = res.data.data;
-          let stateList = this.state.list;
-          stateList.push(...list);
-          // stateList.push(...list);
-          // stateList.push(...list);
-          // stateList.push(...list);
-          // stateList.push(...list);
-          // stateList.push(...list);
-          // stateList.push(...list);
-          this.setState({
-            list: stateList,
-          });
-        } else if (res.data.err_code == 401) {
-          login().then(() => {
-            this.getList();
-          });
-        }
-      }
-    );
+  async getList() {
+    getResutlList({
+      pageSize: this.state.size,
+      pageNum: this.state.page,
+    }).then((res) => {
+      console.log(res);
+      let list = res.data;
+      let stateList = this.state.list;
+      stateList.push(...list);
+      this.setState({
+        list: stateList,
+      });
+    });
   }
-  componentDidHide() {}
 
   /**
    * 指定config的类型声明为: Taro.Config

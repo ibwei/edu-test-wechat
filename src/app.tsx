@@ -15,29 +15,29 @@ class App extends Component {
 
   componentDidShow() {
     try {
-      // Taro.getUserInfo({
-      //   success(res) {
-      //     const { userInfo } = res;
-      //     Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
-      //     Taro.setStorageSync('shouquan', JSON.stringify(true));
-      //     login().then((res) => {
-      //       if (res.err_code) {
-      //       } else {
-      //         Taro.setStorageSync('isLogin', true);
-      //       }
-      //       getPartList();
-      //     });
-      //   },
-      //   fail(res) {
-      //     Taro.showToast({
-      //       title: res.err_msg,
-      //       icon: 'none',
-      //       duration: 2000,
-      //     });
-      //     Taro.setStorageSync('shouquan', JSON.stringify(false));
-      //     Taro.setStorageSync('isLogin', JSON.stringify(false));
-      //   },
-      // });
+      Taro.getUserInfo({
+        success(res) {
+          const { userInfo } = res;
+          Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
+          Taro.setStorageSync('shouquan', JSON.stringify(true));
+          login().then((res) => {
+            if (res.err_code) {
+            } else {
+              Taro.setStorageSync('isLogin', true);
+            }
+            getPartList();
+          });
+        },
+        fail(res) {
+          Taro.showToast({
+            title: res.err_msg,
+            icon: 'none',
+            duration: 2000,
+          });
+          Taro.setStorageSync('shouquan', false);
+          Taro.setStorageSync('isLogin', false);
+        },
+      });
     } catch (e) {
       console.log('e :>> ', e);
     }

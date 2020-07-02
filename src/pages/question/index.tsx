@@ -1,18 +1,19 @@
 import Taro, { Component, Config } from '@tarojs/taro';
 import { View, ScrollView } from '@tarojs/components';
-import { AtButton } from 'taro-ui';
+import { AtButton, AtProgress } from 'taro-ui';
 import classNames from 'classnames';
 
 import './index.less';
 import 'taro-ui/dist/style/components/button.scss';
 import 'taro-ui/dist/style/components/loading.scss';
 import 'taro-ui/dist/style/components/checkbox.scss';
+import 'taro-ui/dist/style/components/progress.scss';
 import 'taro-ui/dist/style/components/icon.scss';
 import 'taro-ui/dist/style/components/modal.scss';
 import 'taro-ui/dist/style/components/activity-indicator.scss';
 import 'taro-ui/dist/style/components/toast.scss';
 
-import { getList, pushAnwser } from '../../api/api';
+import { getList, pushAnwser, login } from '../../api/api';
 
 type Question = {
   title: string;
@@ -197,8 +198,8 @@ export default class Index extends Component {
       this.setState({
         nowIndex: nowIndex,
       });
-      if (nowIndex > 6 && nowIndex < length - 3) {
-        this.scrollLeft = Number(nowIndex - 6) * 33;
+      if (nowIndex > 3 && nowIndex < length - 2) {
+        this.scrollLeft = Number(nowIndex - 4) * 38;
       }
     }
   }
@@ -212,6 +213,8 @@ export default class Index extends Component {
   scoreArray: Array<any> = [];
   // 版块列表
   forumList: Array<any> = [];
+  // 答案key
+  AnwserKey = ['A', 'B', 'C', 'D', 'E'];
   scrollLeft = 0;
   // 选择选项
   chooesAnswer(value, key) {
@@ -287,6 +290,26 @@ export default class Index extends Component {
             url: '/pages/analysis/index?id=' + data.id,
           });
         }, 2000);
+      } else if (err_code == 401) {
+        login().then((res) => {
+          if (res.data.err_code == 0) {
+            pushAnwser(params).then((res) => {
+              let { err_code, data, resultCode } = res.data;
+              if (resultCode == '0') {
+                Taro.hideLoading();
+                Taro.showToast({
+                  title: '提交成功!',
+                  duration: 2000,
+                });
+                setTimeout(() => {
+                  Taro.redirectTo({
+                    url: '/pages/analysis/index?id=' + data.id,
+                  });
+                }, 2000);
+              }
+            });
+          }
+        });
       }
     });
   }
@@ -300,6 +323,7 @@ export default class Index extends Component {
    */
   config: Config = {
     navigationBarTitleText: '测试界面',
+    navigationBarBackgroundColor: '#bde8ff',
   };
 
   render() {
@@ -315,13 +339,18 @@ export default class Index extends Component {
           key={index}
           onClick={this.chooesAnswer.bind(this, item.value, item.key)}
         >
-          {item.value}.{item.label}
+          {this.AnwserKey[item.value]}.{item.label}
         </View>
       );
     });
     const Threshold = 20;
     return (
       <View className="">
+        <AtProgress
+          percent={this.state.nowIndex * 2 + 2}
+          isHidePercent
+          status="progress"
+        />
         <View className="question">
           <View className="item-box">
             <ScrollView
@@ -348,7 +377,7 @@ export default class Index extends Component {
           </View>
           <View className="question-box">
             <View className="question-title">
-              {`${nowIndex + 1}【${this.state.currentQuestionPartName}】.${
+              {`${nowIndex + 1}【${this.state.currentQuestionPartName}】${
                 this.state.currentQuestion
               }`}
             </View>

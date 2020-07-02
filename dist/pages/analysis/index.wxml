@@ -1,0 +1,22 @@
+<block wx:if="{{$taroCompReady}}">
+    <view class="index">
+        <view class="introduce">
+            <view class="name"><text>{{userInfo.student_name}}</text>
+            </view>
+            <view class="item"><text>{{userInfo.school_name}} / {{userInfo.grade}}</text>
+            </view>
+            <view class="score">得分：<text>{{score}}</text> 分</view>
+        </view>
+        <at-divider compid="{{$compid__103}}"></at-divider>
+        <view class="echarts">
+            <ec-canvas id="mychart-dom-area" canvas-id="mychart-area" ec="{{ec}}"></ec-canvas>
+        </view>
+        <at-divider compid="{{$compid__104}}"></at-divider>
+        <view class="result">
+            <view class="result-item" wx:key="key" wx:for="{{scoreText}}" wx:for-item="item" wx:for-index="key">
+                <view class="forum-title">{{item.name}}</view>
+                <view class="forum-content">{{item.text}}</view>
+            </view>
+        </view>
+    </view>
+</block>

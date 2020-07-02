@@ -24,7 +24,6 @@ export const login = async (): Promise<any> => {
       if (data.err_code == 0) {
         Taro.setStorageSync('token', data.token);
         Taro.setStorageSync('userInfo', JSON.stringify(data.user));
-
         Taro.hideLoading();
       }
     },

@@ -20,7 +20,7 @@ const Interceptor = function (chain) {
       // 错误处理
       if (err_code) {
         Taro.showToast({
-          title: err_msg.length > 8 ? '请求错误' : err_code,
+          title: err_msg.length > 8 ? '请求错误' : err_msg,
           icon: 'none',
           duration: 2000
         });

@@ -16,21 +16,16 @@ class App extends Component {
   componentDidShow() {
     try {
       Taro.getUserInfo({
-        success(res) {
+        async success(res) {
           const { userInfo } = res;
           Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
           Taro.setStorageSync('shouquan', JSON.stringify(true));
-          login().then((res) => {
-            if (res.err_code) {
-            } else {
-              Taro.setStorageSync('isLogin', true);
-            }
-            getPartList();
-          });
+          await login();
+          getPartList();
         },
-        fail(res) {
+        fail() {
           Taro.showToast({
-            title: res.err_msg,
+            title: '登录失败',
             icon: 'none',
             duration: 2000,
           });

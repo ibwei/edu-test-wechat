@@ -72,7 +72,7 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
       args[_key] = arguments[_key];
     }
 
-    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["anonymousState__temp", "loopArray147", "$compid__179", "$compid__180", "AnwserKey", "scrollLeft", "Threshold", "numberList", "nowIndex", "buttonShow", "answerArray", "doneQuestion", "chooesAnswer", "currentQuestionPartName", "currentQuestion", "currentAnswerList"], _this.config = {
+    return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$usedState = ["anonymousState__temp", "loopArray7", "$compid__28", "$compid__29", "AnwserKey", "scrollLeft", "Threshold", "numberList", "nowIndex", "buttonShow", "answerArray", "doneQuestion", "chooesAnswer", "currentQuestionPartName", "currentQuestion", "currentAnswerList"], _this.config = {
       navigationBarTitleText: '测试界面',
       navigationBarBackgroundColor: '#bde8ff'
     }, _this.customComponents = ["AtProgress", "AtButton"], _temp), _possibleConstructorReturn(_this, _ret);
@@ -394,21 +394,21 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
           scrollLeft = this.scrollLeft,
           numberList = this.numberList;
 
-      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__179"),
+      var _genCompid = (0, _taroWeapp.genCompid)(__prefix + "$compid__28"),
           _genCompid2 = _slicedToArray(_genCompid, 2),
-          $prevCompid__179 = _genCompid2[0],
-          $compid__179 = _genCompid2[1];
+          $prevCompid__28 = _genCompid2[0],
+          $compid__28 = _genCompid2[1];
 
-      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__180"),
+      var _genCompid3 = (0, _taroWeapp.genCompid)(__prefix + "$compid__29"),
           _genCompid4 = _slicedToArray(_genCompid3, 2),
-          $prevCompid__180 = _genCompid4[0],
-          $compid__180 = _genCompid4[1];
+          $prevCompid__29 = _genCompid4[0],
+          $compid__29 = _genCompid4[1];
 
       var nowIndex = this.__state.nowIndex;
 
       var Threshold = 20;
       var anonymousState__temp = this.__state.nowIndex * 2 + 2;
-      var loopArray147 = this.numberList.map(function (item, _anonIdx) {
+      var loopArray7 = this.numberList.map(function (item, _anonIdx) {
         item = {
           $original: (0, _taroWeapp.internal_get_original)(item)
         };
@@ -424,18 +424,18 @@ var Index = (_temp2 = _class = function (_BaseComponent) {
         "percent": anonymousState__temp,
         "isHidePercent": true,
         "status": "progress"
-      }, $compid__179, $prevCompid__179);
+      }, $compid__28, $prevCompid__28);
       this.__state.buttonShow && _taroWeapp.propsManager.set({
         "className": "button",
         "onClick": this.addAnswer.bind(this),
         "circle": true,
         "type": "primary"
-      }, $compid__180, $prevCompid__180);
+      }, $compid__29, $prevCompid__29);
       Object.assign(this.__state, {
         anonymousState__temp: anonymousState__temp,
-        loopArray147: loopArray147,
-        $compid__179: $compid__179,
-        $compid__180: $compid__180,
+        loopArray7: loopArray7,
+        $compid__28: $compid__28,
+        $compid__29: $compid__29,
         AnwserKey: AnwserKey,
         scrollLeft: scrollLeft,
         Threshold: Threshold,

@@ -135,20 +135,6 @@ export default class Index extends Component {
             text: indicatorArrya[index][key],
           };
         });
-<<<<<<< HEAD
-        this.setState({
-          scoreText: scoreText,
-        });
-        setTimeout(() => {
-          this.setEcharts(scoreArray);
-        }, 2000);
-      } else {
-        Taro.showToast({
-          title: err_msg,
-          icon: 'none',
-          duration: 2000,
-        });
-=======
         this.setState(
           {
             scoreText: scoreText,
@@ -157,7 +143,6 @@ export default class Index extends Component {
             this.setEcharts(scoreArray);
           }
         );
->>>>>>> 5a6bf4b7007c3bbc3bfe9dd58443d19773ee3337
       }
     });
   }

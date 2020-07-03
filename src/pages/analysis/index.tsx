@@ -109,7 +109,7 @@ export default class Index extends Component {
       });
       let { err_code, err_msg, data } = res.data;
       data = data[0];
-      if (err_code == 0) {
+      if (err_code === 0) {
         this.setState({
           score: (data.allScore / 2.5).toFixed(1), // 总分250分转换为百分制保留一位小数
         });
@@ -135,6 +135,7 @@ export default class Index extends Component {
             text: indicatorArrya[index][key],
           };
         });
+<<<<<<< HEAD
         this.setState({
           scoreText: scoreText,
         });
@@ -147,6 +148,16 @@ export default class Index extends Component {
           icon: 'none',
           duration: 2000,
         });
+=======
+        this.setState(
+          {
+            scoreText: scoreText,
+          },
+          () => {
+            this.setEcharts(scoreArray);
+          }
+        );
+>>>>>>> 5a6bf4b7007c3bbc3bfe9dd58443d19773ee3337
       }
     });
   }

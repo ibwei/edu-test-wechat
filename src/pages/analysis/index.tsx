@@ -109,7 +109,7 @@ export default class Index extends Component {
       });
       let { err_code, err_msg, data } = res.data;
       data = data[0];
-      if (err_code == 0) {
+      if (err_code === 0) {
         this.setState({
           score: (data.allScore / 2.5).toFixed(1), // 总分250分转换为百分制保留一位小数
         });
@@ -135,18 +135,14 @@ export default class Index extends Component {
             text: indicatorArrya[index][key],
           };
         });
-        this.setState({
-          scoreText: scoreText,
-        });
-        setTimeout(() => {
-          this.setEcharts(scoreArray);
-        }, 1000);
-      } else {
-        Taro.showToast({
-          title: err_msg,
-          icon: 'none',
-          duration: 2000,
-        });
+        this.setState(
+          {
+            scoreText: scoreText,
+          },
+          () => {
+            this.setEcharts(scoreArray);
+          }
+        );
       }
     });
   }

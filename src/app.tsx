@@ -15,22 +15,23 @@ class App extends Component {
 
   componentDidShow() {
     try {
-      Taro.getUserInfo({
-        async success(res) {
-          const { userInfo } = res;
-          Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
-          Taro.setStorageSync('shouquan', JSON.stringify(true));
-          await login();
-          getPartList();
-        },
-        fail() {
-          Taro.showToast({
-            title: '登录失败',
-            icon: 'none',
-            duration: 2000,
-          });
-          Taro.setStorageSync('shouquan', false);
-          Taro.setStorageSync('isLogin', false);
+      Taro.getSetting({
+        success(res) {
+          console.log('res :>> ', res);
+          if (res.authSetting['scope.userInfo']) {
+            Taro.getUserInfo({
+              async success(res) {
+                const { userInfo } = res;
+                Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
+                Taro.setStorageSync('shouquan', true);
+                await login();
+                getPartList();
+              },
+            });
+          } else {
+            Taro.setStorageSync('shouquan', false);
+            Taro.setStorageSync('isLogin', false);
+          }
         },
       });
     } catch (e) {

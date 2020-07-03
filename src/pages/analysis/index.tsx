@@ -140,7 +140,7 @@ export default class Index extends Component {
         });
         setTimeout(() => {
           this.setEcharts(scoreArray);
-        }, 1000);
+        }, 2000);
       } else {
         Taro.showToast({
           title: err_msg,

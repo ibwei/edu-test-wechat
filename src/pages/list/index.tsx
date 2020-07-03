@@ -71,6 +71,9 @@ export default class Index extends Component {
     return (
       <View className="index">
         <AtList>{listItem}</AtList>
+        {this.state.list.length == 0 && (
+          <View className="noList">暂无测试结果</View>
+        )}
       </View>
     );
   }

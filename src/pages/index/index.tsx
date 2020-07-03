@@ -22,6 +22,7 @@ import 'taro-ui/dist/style/components/modal.scss';
 type stateType = {
   shouquanBox: boolean;
   infoShow: boolean;
+  disabled?: boolean;
 };
 export default class Index extends Component {
   isLogin = false;
@@ -56,13 +57,11 @@ export default class Index extends Component {
   getUserInfo(res) {
     if (res.detail.userInfo) {
       Taro.setStorageSync('shouquan', true);
-      this.setState({
-        shouquanBox: false,
-      });
+      this.closeShouquan();
       const { userInfo } = res.detail;
       Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
       login().then((res) => {
-        if (res.data.err_code == 0) {
+        if (res.err_code == 0) {
           Taro.setStorageSync('isLogin', true);
           getPartList();
         }
@@ -181,6 +180,9 @@ export default class Index extends Component {
     editStudet(params).then((res) => {
       if (res.data.err_code == 0) {
         this.onClose();
+        Taro.navigateTo({
+          url: '/pages/question/index',
+        });
       }
     });
   }
@@ -198,7 +200,11 @@ export default class Index extends Component {
     }
     return val;
   }
-
+  closeShouquan() {
+    this.setState({
+      shouquanBox: false,
+    });
+  }
   render() {
     return (
       <View>
@@ -239,63 +245,59 @@ export default class Index extends Component {
             </View>
             <View className="quanxian-content">学商测试申请获得以下权限：</View>
             <View className="quanxian">获得你的公开信息(昵称、头像等)</View>
+            <View className=""></View>
           </AtModalContent>
           <AtModalAction>
-            <Button
-              className="btn"
-              openType="getUserInfo"
-              onGetUserInfo={this.getUserInfo}
-            >
+            <Button onClick={this.closeShouquan}>取消</Button>
+            <Button openType="getUserInfo" onGetUserInfo={this.getUserInfo}>
               微信授权
             </Button>
           </AtModalAction>
         </AtModal>
-        <AtCurtain
-          isOpened={this.state.infoShow}
-          onClose={this.onClose.bind(this)}
-        >
-          <View className="tishi">
-            <AtForm onSubmit={this.onSubmit.bind(this)}>
-              <AtInput
-                name="value"
-                title="学生姓名:"
-                type="text"
-                placeholder="请输入学生姓名"
-                value={this.studentInfo.name}
-                onChange={this.onChange.bind(this, 'name')}
-              />
-              <AtInput
-                name="value"
-                title="学　　校:"
-                type="text"
-                placeholder="请输入就读学校"
-                value={this.studentInfo.school}
-                onChange={this.onChange.bind(this, 'school')}
-              />
-              <AtInput
-                name="value"
-                title="年　　级:"
-                type="text"
-                placeholder="请输入就读年级"
-                value={this.studentInfo.grade}
-                onChange={this.onChange.bind(this, 'grade')}
-              />
-              <AtInput
-                name="value"
-                title="家长电话:"
-                type="phone"
-                placeholder="请输入家长电话"
-                value={this.studentInfo.tel}
-                onChange={this.onChange.bind(this, 'tel')}
-              />
-              <View className="btn-sub">
-                <AtButton formType="submit" className="btn">
-                  保存
-                </AtButton>
-              </View>
-            </AtForm>
-          </View>
-        </AtCurtain>
+        <AtModal isOpened={this.state.infoShow}>
+          <AtModalContent>
+            <View className="tishi">
+              <AtForm onSubmit={this.onSubmit.bind(this)}>
+                <AtInput
+                  name="value"
+                  title="学生姓名:"
+                  type="text"
+                  placeholder="请输入学生姓名"
+                  value={this.studentInfo.name}
+                  onChange={this.onChange.bind(this, 'name')}
+                />
+                <AtInput
+                  name="value"
+                  title="学　　校:"
+                  type="text"
+                  placeholder="请输入就读学校"
+                  value={this.studentInfo.school}
+                  onChange={this.onChange.bind(this, 'school')}
+                />
+                <AtInput
+                  name="value"
+                  title="年　　级:"
+                  type="text"
+                  placeholder="请输入就读年级"
+                  value={this.studentInfo.grade}
+                  onChange={this.onChange.bind(this, 'grade')}
+                />
+                <AtInput
+                  name="value"
+                  title="家长电话:"
+                  type="phone"
+                  placeholder="请输入家长电话"
+                  value={this.studentInfo.tel}
+                  onChange={this.onChange.bind(this, 'tel')}
+                />
+              </AtForm>
+            </View>
+          </AtModalContent>
+          <AtModalAction>
+            <Button onClick={this.onClose.bind(this)}>取消</Button>
+            <Button onClick={this.onSubmit.bind(this)}>确认</Button>
+          </AtModalAction>
+        </AtModal>
       </View>
     );
   }

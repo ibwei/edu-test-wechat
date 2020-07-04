@@ -1,8 +1,7 @@
-import Taro, { Component, Config, base64ToArrayBuffer } from '@tarojs/taro';
+import Taro, { Component, Config } from '@tarojs/taro';
 import { View, Image, Text, Button } from '@tarojs/components';
 import {
-  AtButton,
-  AtCurtain,
+  AtModalHeader,
   AtForm,
   AtInput,
   AtModal,
@@ -22,7 +21,7 @@ import 'taro-ui/dist/style/components/modal.scss';
 type stateType = {
   shouquanBox: boolean;
   infoShow: boolean;
-  disabled?: boolean;
+  prompt: boolean;
 };
 export default class Index extends Component {
   isLogin = false;
@@ -42,6 +41,7 @@ export default class Index extends Component {
     this.state = {
       shouquanBox: false,
       infoShow: false,
+      prompt: false,
     };
   }
   /**
@@ -86,24 +86,15 @@ export default class Index extends Component {
           infoShow: true,
         });
       } else {
-        Taro.navigateTo({
-          url: '/pages/question/index',
-        });
-      }
-    } else {
-      login().then((res) => {
-        Taro.setStorageSync('isLogin', true);
-        const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
-        if (userInfo.student_name == undefined || userInfo.student_name == '') {
-          this.setState({
-            infoShow: true,
-          });
+        const cacheState = Taro.getStorageSync('questionState');
+        if (cacheState == false) {
+          this.goQuestion();
         } else {
-          Taro.navigateTo({
-            url: '/pages/question/index',
+          this.setState({
+            prompt: true,
           });
         }
-      });
+      }
     }
   }
   goResult() {
@@ -180,9 +171,7 @@ export default class Index extends Component {
     editStudet(params).then((res) => {
       if (res.data.err_code == 0) {
         this.onClose();
-        Taro.navigateTo({
-          url: '/pages/question/index',
-        });
+        this.goQuestion();
       }
     });
   }
@@ -203,6 +192,24 @@ export default class Index extends Component {
   closeShouquan() {
     this.setState({
       shouquanBox: false,
+    });
+  }
+  clearCache() {
+    Taro.setStorageSync('questionState', false);
+    this.setState({
+      prompt: false,
+    });
+    this.goQuestion();
+  }
+  continue() {
+    this.setState({
+      prompt: false,
+    });
+    this.goQuestion();
+  }
+  goQuestion() {
+    Taro.navigateTo({
+      url: '/pages/question/index',
     });
   }
   render() {
@@ -296,6 +303,19 @@ export default class Index extends Component {
           <AtModalAction>
             <Button onClick={this.onClose.bind(this)}>取消</Button>
             <Button onClick={this.onSubmit.bind(this)}>确认</Button>
+          </AtModalAction>
+        </AtModal>
+        <AtModal isOpened={this.state.prompt}>
+          <AtModalHeader>提示</AtModalHeader>
+          <AtModalContent>
+            <View className="prompt">
+              检测到你上次有未完成的测试，是否继续上次未完成的测试？
+            </View>
+          </AtModalContent>
+          <AtModalAction>
+            {' '}
+            <Button onClick={this.clearCache}>否</Button>{' '}
+            <Button onClick={this.continue}>是</Button>{' '}
           </AtModalAction>
         </AtModal>
       </View>

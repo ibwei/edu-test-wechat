@@ -5,24 +5,29 @@ import Taro from '@tarojs/taro';
 const BaseUrl = 'https://xueshangcs.com/api/wechat/';
 
 // 定义请求拦截拦截器
-const Interceptor = function (chain) {
+const Interceptor = function(chain) {
   //  请求前统一添加 token
-  const { method, data, url } = chain.requestParams
-  const requestParams = { ...chain.requestParams, data: { ...data, token: Taro.getStorageSync('token') }, url: BaseUrl + url }
+  const { method, data, url } = chain.requestParams;
+  const requestParams = {
+    ...chain.requestParams,
+    data: { ...data, token: Taro.getStorageSync('token') },
+    url: BaseUrl + url,
+  };
 
   // 添加统一打印日志
-  console.log(`http ${method || 'GET'} --> ${requestParams.url} data: `, data)
+  console.log(`http ${method || 'GET'} --> ${requestParams.url} data: `, data);
   // 添加响应拦截处理
-  return chain.proceed(requestParams)
-    .then(res => {
-      console.log(`http <-- ${url} result:`, res)
-      const { err_code, err_msg } = res.data
+  return chain
+    .proceed(requestParams)
+    .then((res) => {
+      console.log(`http <-- ${url} result:`, res);
+      const { err_code, err_msg } = res.data;
       // 错误处理
       if (err_code) {
         Taro.showToast({
           title: err_msg.length > 8 ? '请求错误' : err_msg,
           icon: 'none',
-          duration: 2000
+          duration: 2000,
         });
         // 如果token 过期,重新登录
         if (err_code === 401) {
@@ -30,22 +35,23 @@ const Interceptor = function (chain) {
           Taro.setStorageSync('token', '');
           login();
         }
-        return Promise.reject('请求错误')
+        return Promise.reject('请求错误');
       } else {
-        return res
+        return res;
       }
-    }).catch(err => {
-      Taro.showToast({
-        'title': '网络错误,请稍后再试',
-        'icon': 'success',
-        duration: 2000
-      })
-      console.log(err)
-      throw new Error('网络错误')
     })
-}
+    .catch((err) => {
+      Taro.showToast({
+        title: '网络错误,请稍后再试',
+        icon: 'success',
+        duration: 2000,
+      });
+      console.log(err);
+      throw new Error('网络错误');
+    });
+};
 
-Taro.addInterceptor(Interceptor)
+Taro.addInterceptor(Interceptor);
 
 // 登录
 export const login = async (): Promise<any> => {
@@ -64,14 +70,18 @@ export const login = async (): Promise<any> => {
     },
     success(res) {
       resData = res.data;
-      Taro.setStorageSync('token', resData.token);
-      Taro.setStorageSync('isLogin', true);
-      Taro.setStorageSync('userInfo', JSON.stringify(resData.user));
+      if (resData.err_code == 0) {
+        Taro.setStorageSync('token', resData.token);
+        Taro.setStorageSync('isLogin', true);
+        Taro.setStorageSync('userInfo', JSON.stringify(resData.user));
+      } else {
+        Taro.setStorageSync('isLogin', false);
+      }
       Taro.hideLoading();
     },
     fail() {
       Taro.hideLoading();
-      return Promise.reject('登录失败')
+      return Promise.reject('登录失败');
     },
   });
   return Promise.resolve(resData);
@@ -112,7 +122,7 @@ export const getResult = async (params): Promise<any> => {
 };
 // 提交答案
 export const pushAnwser = async (params): Promise<any> => {
-  let resData = null
+  let resData = null;
   await Taro.request({
     method: 'POST',
     url: 'test/add',
@@ -142,8 +152,8 @@ export const editStudet = async (params): Promise<any> => {
     },
     fail() {
       Taro.hideLoading();
-    }
-  })
+    },
+  });
   return Promise.resolve(resData);
 };
 
@@ -155,7 +165,7 @@ export const getPartList = async (): Promise<any> => {
     method: 'GET',
     url: 'part/list',
     success(res) {
-      const { data, } = res.data;
+      const { data } = res.data;
       Taro.setStorageSync('forumList', JSON.stringify(data));
       return Promise.resolve(resData);
     },
@@ -169,15 +179,15 @@ export const getPartList = async (): Promise<any> => {
 // 获取答题记录列表
 export const getResutlList = async (params): Promise<any> => {
   // await Taro.addInterceptor()
-  let resData = null
+  let resData = null;
   await Taro.request({
     method: 'POST',
     url: 'test/history',
     data: { ...params },
     success(res) {
-      resData = res.data
+      resData = res.data;
       return Promise.resolve(resData);
-    }
+    },
   });
   return Promise.resolve(resData);
 };

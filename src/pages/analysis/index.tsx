@@ -9,80 +9,9 @@ import 'taro-ui/dist/style/components/divider.scss';
 import 'taro-ui/dist/style/components/timeline.scss';
 import 'taro-ui/dist/style/components/icon.scss';
 import { getResult } from '../../api/api';
-let chart;
 const indicatorArrya = Taro.getStorageSync('forumList')
   ? JSON.parse(Taro.getStorageSync('forumList'))
   : [];
-function initChart(canvas, width, height, dpr) {
-  chart = echarts.init(canvas, null, {
-    width: width,
-    height: height,
-    devicePixelRatio: dpr, // 像素
-  });
-  canvas.setChart(chart);
-  var option = {
-    title: {
-      text: '',
-    },
-    tooltip: {
-      show: true,
-      formatter: function(param) {
-        let str = `${param.seriesName}`;
-        for (let i = 0; i < param.value.length; i++) {
-          str += i % 2 ? ' ' : '\n';
-          str += `${indicatorArrya[i].name}:${param.value[i]}`;
-        }
-        return str;
-      },
-    },
-    radar: {
-      // shape: 'circle',
-      name: {
-        textStyle: {
-          color: '#fff',
-          backgroundColor: '#999',
-          borderRadius: 3,
-          padding: [3, 5],
-        },
-      },
-      indicator: indicatorArrya.map((item) => {
-        return {
-          name: item.name,
-          max: 25,
-        };
-      }),
-      radius: 100,
-    },
-    series: [
-      {
-        name: '成绩分布图',
-        type: 'radar',
-        // areaStyle: {normal: {}},
-        data: [
-          {
-            value: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-            name: '成绩分布图',
-            areaStyle: {
-              opacity: 0.9,
-              color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
-                {
-                  color: '#B8D3E4',
-                  offset: 0,
-                },
-                {
-                  color: '#72ACD1',
-                  offset: 1,
-                },
-              ]),
-            },
-          },
-        ],
-      },
-    ],
-  };
-  chart.setOption(option);
-  return chart;
-}
 type StateType = {
   ec: Object;
   userInfo: userInfo;
@@ -135,14 +64,10 @@ export default class Index extends Component {
             text: indicatorArrya[index][key],
           };
         });
-        this.setState(
-          {
-            scoreText: scoreText,
-          },
-          () => {
-            this.setEcharts(scoreArray);
-          }
-        );
+        this.setState({
+          scoreText: scoreText,
+        });
+        this.setEcharts(scoreArray);
       }
     });
   }
@@ -168,7 +93,7 @@ export default class Index extends Component {
     super(props);
     this.state = {
       ec: {
-        onInit: initChart,
+        lazyLoad: true,
       },
       score: 0,
       scoreText: [
@@ -187,34 +112,80 @@ export default class Index extends Component {
       },
     };
   }
+  chartNode: any;
+  refCharts = (node) => {
+    this.chartNode = node;
+  };
   setEcharts(value) {
-    Taro.hideLoading();
-    console.log('chart :>> ', chart);
-    chart.setOption({
-      series: [
-        {
-          data: [
-            {
-              value: value,
-              name: '学生能力图',
-              areaStyle: {
-                opacity: 0.9,
-                color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
-                  {
-                    color: '#B8D3E4',
-                    offset: 0,
-                  },
-                  {
-                    color: '#72ACD1',
-                    offset: 1,
-                  },
-                ]),
-              },
-            },
-          ],
+    this.chartNode.init((canvas, width, height) => {
+      const chart = echarts.init(canvas, null, {
+        width,
+        height,
+      });
+      canvas.setChart(chart);
+      var option = {
+        title: {
+          text: '',
         },
-      ],
+        tooltip: {
+          show: true,
+          formatter: function(param) {
+            let str = `${param.seriesName}`;
+            for (let i = 0; i < param.value.length; i++) {
+              str += i % 2 ? ' ' : '\n';
+              str += `${indicatorArrya[i].name}:${param.value[i]}`;
+            }
+            return str;
+          },
+        },
+        radar: {
+          // shape: 'circle',
+          name: {
+            textStyle: {
+              color: '#fff',
+              backgroundColor: '#999',
+              borderRadius: 3,
+              padding: [3, 5],
+            },
+          },
+          indicator: indicatorArrya.map((item) => {
+            return {
+              name: item.name,
+              max: 25,
+            };
+          }),
+          radius: 100,
+        },
+        series: [
+          {
+            name: '成绩分布图',
+            type: 'radar',
+            data: [
+              {
+                value: value,
+                name: '学生能力图',
+                areaStyle: {
+                  opacity: 0.9,
+                  color: new echarts.graphic.RadialGradient(0.5, 0.5, 1, [
+                    {
+                      color: '#B8D3E4',
+                      offset: 0,
+                    },
+                    {
+                      color: '#72ACD1',
+                      offset: 1,
+                    },
+                  ]),
+                },
+              },
+            ],
+          },
+        ],
+      };
+      chart.setOption(option);
+      return chart;
     });
+    Taro.hideLoading();
   }
 
   render() {
@@ -245,6 +216,7 @@ export default class Index extends Component {
         <View className="echarts">
           <ec-canvas
             id="mychart-dom-area"
+            ref={this.refCharts}
             canvas-id="mychart-area"
             ec={this.state.ec}
           ></ec-canvas>

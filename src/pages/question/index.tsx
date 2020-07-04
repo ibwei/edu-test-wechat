@@ -93,30 +93,52 @@ export default class Index extends Component {
 
   componentDidMount() {}
 
-  componentWillUnmount() {}
+  componentWillUnmount() {
+    if (
+      this.isPushAnswer == false &&
+      this.state.doneQuestion.includes(true) == true
+    ) {
+      Taro.setStorageSync('questionState', JSON.stringify(this.state));
+      Taro.setStorageSync('questionList', JSON.stringify(this.questionList));
+      Taro.setStorageSync(
+        'questionScoreArray',
+        JSON.stringify(this.scoreArray)
+      );
+    } else {
+      Taro.setStorageSync('questionState', false);
+      Taro.setStorageSync('questionList', false);
+      Taro.setStorageSync('questionScoreArray', false);
+    }
+  }
 
   componentDidShow() {
     this.initList();
   }
   // 初始化获取数组
   initList() {
-    this.setState({
-      nowIndex: 0,
-    });
-    this.setState({
-      chooesAnswer: {
-        value: -1,
-        key: 0,
-      },
-    });
-    this.setState({
-      currentQuestion: '',
-    });
-    this.setState({
-      doneQuestion: new Array(50).fill(false),
-    });
-    getList()
-      .then((res) => {
+    const cacheState = Taro.getStorageSync('questionState')
+      ? JSON.parse(Taro.getStorageSync('questionState'))
+      : null;
+    if (cacheState) {
+      this.setState(
+        {
+          ...this.state,
+          ...cacheState,
+        },
+        () => {
+          this.answerArray = this.state.answerArray;
+          this.questionList = JSON.parse(Taro.getStorageSync('questionList'));
+          this.questionArray = this.questionList.map((item) => {
+            return item.id;
+          });
+          this.scoreArray = JSON.parse(
+            Taro.getStorageSync('questionScoreArray')
+          );
+          this.setCurrentQuestion(this.state.nowIndex);
+        }
+      );
+    } else {
+      getList().then((res) => {
         let { err_code, data } = res.data;
         if (err_code == '0') {
           this.questionList = data.flat(1);
@@ -126,14 +148,23 @@ export default class Index extends Component {
           // 答案数组
           this.answerArray = this.answerArray.fill(-1);
           this.setState({
+            ...this.state,
+            nowIndex: 0,
+            chooesAnswer: {
+              value: -1,
+              key: 0,
+            },
+            currentQuestion: '',
+            doneQuestion: new Array(50).fill(false),
             answerArray: this.answerArray,
           });
           // 分数数组
           this.scoreArray = this.scoreArray.fill(-1);
           this.setCurrentQuestion(0);
         }
-      })
-      .catch((err) => {});
+      });
+    }
+
     this.forumList = JSON.parse(Taro.getStorageSync('forumList'));
   }
   componentDidHide() {}
@@ -199,7 +230,7 @@ export default class Index extends Component {
         nowIndex: nowIndex,
       });
       if (nowIndex > 3 && nowIndex < length - 2) {
-        this.scrollLeft = Number(nowIndex - 4) * 38;
+        this.scrollLeft = Number(nowIndex - 4) * 43;
       }
     }
   }
@@ -215,7 +246,10 @@ export default class Index extends Component {
   forumList: Array<any> = [];
   // 答案key
   AnwserKey = ['A', 'B', 'C', 'D', 'E'];
+  // 滚动条左边距离
   scrollLeft = 0;
+  // 是否提交答案
+  isPushAnswer = false;
   // 选择选项
   chooesAnswer(value, key) {
     const index = this.state.nowIndex;
@@ -245,7 +279,9 @@ export default class Index extends Component {
       return false;
     }
     if (index < this.questionList.length - 1) {
-      this.setCurrentQuestion(index + 1);
+      setTimeout(() => {
+        this.setCurrentQuestion(index + 1);
+      }, 100);
     } else {
       Taro.showToast({
         title: '前面是不是还有题目忘记做了呢？快回去做吧！',
@@ -281,6 +317,7 @@ export default class Index extends Component {
       let { err_code, data, resultCode } = res.data;
       if (resultCode == '0') {
         Taro.hideLoading();
+        this.isPushAnswer = true;
         Taro.showToast({
           title: '提交成功!',
           duration: 2000,
@@ -292,20 +329,21 @@ export default class Index extends Component {
         });
       } else if (err_code == 401) {
         login().then((res) => {
-          if (res.data.err_code == 0) {
+          if (res.err_code == 0) {
             pushAnwser(params).then((res) => {
-              let { err_code, data, resultCode } = res.data;
+              let { data, resultCode } = res.data;
               if (resultCode == '0') {
+                this.isPushAnswer = true;
                 Taro.hideLoading();
                 Taro.showToast({
                   title: '提交成功!',
                   duration: 2000,
+                  success() {
+                    Taro.redirectTo({
+                      url: '/pages/analysis/index?id=' + data.id,
+                    });
+                  },
                 });
-                setTimeout(() => {
-                  Taro.redirectTo({
-                    url: '/pages/analysis/index?id=' + data.id,
-                  });
-                }, 2000);
               }
             });
           }

@@ -52,7 +52,7 @@ export default class Index extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: '学商系统',
+    navigationBarTitleText: '学商测试',
   };
   getUserInfo(res) {
     if (res.detail.userInfo) {
@@ -256,7 +256,7 @@ export default class Index extends Component {
         </AtModal>
         <AtModal isOpened={this.state.infoShow}>
           <AtModalContent>
-            <View className="tishi">
+            <View className={this.state.infoShow ? 'tishi' : 'hide-all'}>
               <AtForm onSubmit={this.onSubmit.bind(this)}>
                 <AtInput
                   name="value"

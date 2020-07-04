@@ -9,23 +9,30 @@ import 'taro-ui/dist/style/components/divider.scss';
 import 'taro-ui/dist/style/components/timeline.scss';
 import 'taro-ui/dist/style/components/icon.scss';
 import { getResult } from '../../api/api';
-const indicatorArrya = Taro.getStorageSync('forumList')
-  ? JSON.parse(Taro.getStorageSync('forumList'))
-  : [];
 type StateType = {
   ec: Object;
   userInfo: userInfo;
   score: number;
   scoreText: Array<any>;
 };
+let indicatorArray = Taro.getStorageSync('forumList')
+  ? JSON.parse(Taro.getStorageSync('forumList'))
+  : [{ name: '', key: 0 }];
 export default class Index extends Component {
-  componentWillMount() {}
+  componentWillMount() {
+    indicatorArray = Taro.getStorageSync('forumList')
+      ? JSON.parse(Taro.getStorageSync('forumList'))
+      : [{ name: '', key: 0 }];
+  }
 
   componentDidMount() {}
 
   componentWillUnmount() {}
 
   componentDidShow() {
+    indicatorArray = Taro.getStorageSync('forumList')
+      ? JSON.parse(Taro.getStorageSync('forumList'))
+      : [{ name: '', key: 0 }];
     const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
     this.setState({
       userInfo: userInfo,
@@ -60,8 +67,8 @@ export default class Index extends Component {
               break;
           }
           return {
-            name: indicatorArrya[index].name,
-            text: indicatorArrya[index][key],
+            name: indicatorArray[index].name,
+            text: indicatorArray[index][key],
           };
         });
         this.setState({
@@ -133,7 +140,7 @@ export default class Index extends Component {
             let str = `${param.seriesName}`;
             for (let i = 0; i < param.value.length; i++) {
               str += i % 2 ? ' ' : '\n';
-              str += `${indicatorArrya[i].name}:${param.value[i]}`;
+              str += `${indicatorArray[i].name}:${param.value[i]}`;
             }
             return str;
           },
@@ -148,7 +155,7 @@ export default class Index extends Component {
               padding: [3, 5],
             },
           },
-          indicator: indicatorArrya.map((item) => {
+          indicator: indicatorArray.map((item) => {
             return {
               name: item.name,
               max: 25,

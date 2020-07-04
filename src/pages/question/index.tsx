@@ -284,12 +284,12 @@ export default class Index extends Component {
         Taro.showToast({
           title: '提交成功!',
           duration: 2000,
+          success() {
+            Taro.redirectTo({
+              url: '/pages/analysis/index?id=' + data.id,
+            });
+          },
         });
-        setTimeout(() => {
-          Taro.redirectTo({
-            url: '/pages/analysis/index?id=' + data.id,
-          });
-        }, 2000);
       } else if (err_code == 401) {
         login().then((res) => {
           if (res.data.err_code == 0) {

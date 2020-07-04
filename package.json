@@ -31,7 +31,7 @@
   "dependencies": {
     "@tarojs/components": "2.2.6",
     "@tarojs/components-qa": "2.2.6",
-    "@tarojs/plugin-less": "^2.2.9",
+    "@tarojs/plugin-less": "^2.2.10",
     "@tarojs/plugin-sass": "^2.2.8",
     "@tarojs/plugin-uglify": "^2.2.9",
     "@tarojs/redux": "^2.2.10",

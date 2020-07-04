@@ -292,7 +292,6 @@ export default class Index extends Component {
   }
   // 保存答案
   addAnswer() {
-    let state = this.state;
     let scoreArray: Array<number> = [];
     let sum = 0;
     let scoreSum = 0;
@@ -314,8 +313,8 @@ export default class Index extends Component {
       title: '答案提交中...',
     });
     pushAnwser(params).then((res) => {
-      let { err_code, data, resultCode } = res.data;
-      if (resultCode == '0') {
+      let { err_code, data, err_msg } = res.data;
+      if (err_code === 0) {
         Taro.hideLoading();
         this.isPushAnswer = true;
         Taro.showToast({
@@ -327,26 +326,12 @@ export default class Index extends Component {
             });
           },
         });
-      } else if (err_code == 401) {
-        login().then((res) => {
-          if (res.err_code == 0) {
-            pushAnwser(params).then((res) => {
-              let { data, resultCode } = res.data;
-              if (resultCode == '0') {
-                this.isPushAnswer = true;
-                Taro.hideLoading();
-                Taro.showToast({
-                  title: '提交成功!',
-                  duration: 2000,
-                  success() {
-                    Taro.redirectTo({
-                      url: '/pages/analysis/index?id=' + data.id,
-                    });
-                  },
-                });
-              }
-            });
-          }
+      } else {
+        Taro.hideLoading();
+        Taro.showToast({
+          title: err_msg,
+          duration: 2000,
+          icon: 'none',
         });
       }
     });
@@ -360,8 +345,9 @@ export default class Index extends Component {
    * 提示和声明 navigationBarTextStyle: 'black' | 'white' 类型冲突, 需要显示声明类型
    */
   config: Config = {
-    navigationBarTitleText: '测试界面',
-    navigationBarBackgroundColor: '#bde8ff',
+    navigationBarTitleText: '正在答题',
+    navigationBarBackgroundColor: '#708fe4',
+    navigationBarTextStyle: 'white',
   };
 
   render() {
@@ -405,6 +391,7 @@ export default class Index extends Component {
                     key={Math.random() * key}
                     className={classNames('question-item', {
                       done: this.state.doneQuestion[item - 1],
+                      current: this.state.nowIndex === key,
                     })}
                     onClick={this.setCurrentQuestion.bind(this, item - 1)}
                   >
@@ -423,18 +410,15 @@ export default class Index extends Component {
             <View className="answer-box">{anwserList}</View>
           </View>
           <View>
-            {this.state.buttonShow ? (
-              <AtButton
-                className="button"
-                onClick={this.addAnswer.bind(this)}
-                circle
-                type="primary"
-              >
-                提交
-              </AtButton>
-            ) : (
-              ''
-            )}
+            <AtButton
+              className="button"
+              disabled={!this.state.buttonShow}
+              onClick={this.addAnswer.bind(this)}
+              circle
+              type="secondary"
+            >
+              提交
+            </AtButton>
           </View>
         </View>
       </View>

@@ -25,7 +25,7 @@ const Interceptor = function (chain) {
       // 错误处理
       if (err_code) {
         Taro.showToast({
-          title: err_msg.length > 8 ? '请求错误' : err_msg,
+          title: err_msg,
           icon: 'none',
           duration: 2000,
         });
@@ -45,12 +45,12 @@ const Interceptor = function (chain) {
             }
           })
         }
-        return Promise.reject('请求错误');
       } else {
         return res;
       }
     })
     .catch((err) => {
+      console.log(err)
       Taro.showToast({
         title: '网络错误,请稍后再试',
         icon: 'success',

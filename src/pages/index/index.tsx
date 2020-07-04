@@ -54,7 +54,7 @@ export default class Index extends Component {
    */
   config: Config = {
     navigationBarTitleText: '学商测试',
-    navigationBarBackgroundColor: '#bae7ff',
+    navigationBarBackgroundColor: '#708fe4',
     navigationBarTextStyle: 'white',
   };
   getUserInfo(res) {
@@ -227,28 +227,28 @@ export default class Index extends Component {
               <Text>拾加拾教育：学商测试</Text>
             </View>
             <View className="content">
-              <AtIcon value="bookmark" size="15" color="#333"></AtIcon>
+              <AtIcon value="bookmark" size="15" color="#fff"></AtIcon>
               <Text>测试内容：考察学生各方面能力</Text>
             </View>
             <View className="content">
-              <AtIcon value="clock" size="15" color="#333"></AtIcon>
+              <AtIcon value="clock" size="15" color="#fff"></AtIcon>
               <Text>测试时间：不限</Text>
             </View>
             <View className="content">
-              <AtIcon value="lock" size="15" color="#333"></AtIcon>
+              <AtIcon value="lock" size="15" color="#fff"></AtIcon>
               <Text>提交条件：题目全部完成后方可提交</Text>
             </View>
             <View className="content">
-              <AtIcon value="edit" size="15" color="#333"></AtIcon>
+              <AtIcon value="edit" size="15" color="#fff"></AtIcon>
               <Text>测试形式：选择题</Text>
             </View>
           </View>
         </View>
         <View className="button">
-          <Button className="btn" onClick={this.goTest.bind(this)}>
+          <Button className="start-btn" onClick={this.goTest.bind(this)}>
             开始测试
           </Button>
-          <Button className="btn" onClick={this.goResult.bind(this)}>
+          <Button className="btn1" onClick={this.goResult.bind(this)}>
             查看结果
           </Button>
         </View>

@@ -1,13 +1,14 @@
+@import url('../../app.less');
 .index {
-  background: #bae7ff;
+  background: #708fe4;
   padding: 30px 30px 150px 30px;
   border-bottom-right-radius: 17em 5em;
   border-bottom-left-radius: 17em 5em;
 }
 
 .icon {
-  width: 400px;
-  height: 400px;
+  width: 300rpx;
+  height: 300rpx;
   background: #fff;
   margin: 0 auto;
   border-radius: 50%;
@@ -28,9 +29,16 @@
   margin: 80px 20px 0px 20px;
 }
 
-.btn {
-  background: #bae7ff;
+.start-btn {
+  background: @primary-color;
   margin-bottom: 50px;
+  color: #fff;
+}
+.btn1 {
+  background: #fff;
+  border: 1px solid @primary-color;
+  margin-bottom: 50px;
+  color: #708fe4;
 }
 
 .title {
@@ -38,11 +46,11 @@
   padding: 8px 8px 15px 20px;
   border-bottom: 1px solid #fff;
   margin-bottom: 15px;
-  color: #111;
+  color: #fff;
 }
 
 .disabel {
-  color: #ccc !important;
+  color: #fff !important;
 }
 
 .btn-sub {
@@ -51,8 +59,8 @@
 
 .content {
   font-size: 1rem;
-  padding: 8px;
-  color: #333;
+  color: #fff;
+  line-height: 2.5;
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
@@ -60,6 +68,7 @@
 
   Text {
     margin-left: 16px;
+    color: #fff;
   }
 }
 
@@ -68,8 +77,8 @@
 }
 
 .at-button--primary {
-  background: #bae7ff !important;
-  border: 1px solid #bae7ff !important;
+  background: @primary-color !important;
+  border: 1px solid @primary-color !important;
   color: #555 !important;
 }
 

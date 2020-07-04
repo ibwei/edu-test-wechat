@@ -1,6 +1,6 @@
 import Taro, { Component, Config } from '@tarojs/taro';
 import { View, Text } from '@tarojs/components';
-import { AtDivider } from 'taro-ui';
+import { AtDivider, AtTag } from 'taro-ui';
 import { userInfo } from '../../class/userInfo';
 import echarts from '../../ec-canvas/echarts';
 
@@ -8,6 +8,7 @@ import './index.less';
 import 'taro-ui/dist/style/components/divider.scss';
 import 'taro-ui/dist/style/components/timeline.scss';
 import 'taro-ui/dist/style/components/icon.scss';
+import 'taro-ui/dist/style/components/tag.scss';
 import { getResult } from '../../api/api';
 type StateType = {
   ec: Object;
@@ -198,14 +199,18 @@ export default class Index extends Component {
   render() {
     const forumDom = this.state.scoreText.map((item, key) => {
       return (
-        <View className="result-item" key={key}>
-          <View className="forum-title">{item.name}</View>
+        <View className="result-item" key={Math.random() + key}>
+          <View className="forum-title">
+            <AtTag type="primary" circle active={true} disabled={true}>
+              {item.name}
+            </AtTag>
+          </View>
           <View className="forum-content">{item.text}</View>
         </View>
       );
     });
     return (
-      <View className="index">
+      <View className="analysis-index">
         <View className="introduce">
           <View className="name">
             <Text>{this.state.userInfo.student_name}</Text>
@@ -230,6 +235,12 @@ export default class Index extends Component {
         </View>
         <AtDivider content="成绩分析" fontColor="#555" lineColor="#bebebe" />
         <View className="result">{forumDom}</View>
+        <AtDivider
+          content="没有更多了"
+          fontColor="#999"
+          fontSize="10px"
+          lineColor="#999"
+        />
       </View>
     );
   }

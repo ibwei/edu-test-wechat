@@ -56,14 +56,15 @@ export default class Index extends Component {
     });
   }
   render() {
-    const listItem = this.state.list.map((item) => {
+    const len = this.state.list.length;
+    const listItem = this.state.list.map((item, index) => {
       return (
         <AtListItem
           key={item.id}
-          title="学商测试"
+          title={`第${len - index}次学商测试`}
           note={item.created_at}
           arrow="right"
-          iconInfo={{ size: 25, color: '#78A4FA', value: 'file-generic' }}
+          iconInfo={{ size: 25, color: '#708fe4', value: 'bookmark' }}
           onClick={this.goDetali.bind(this, item.id)}
         />
       );

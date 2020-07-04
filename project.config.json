@@ -4,25 +4,28 @@
   "description": "一个测试学生学商的小程序",
   "appid": "wx2f79035936826093",
   "setting": {
-    "urlCheck": true,
-    "es6": false,
-    "postcss": false,
+    "postcss": true,
+    "es6": true,
+    "minified": true,
+    "urlCheck": false,
+    "checkSiteMap": true,
+    "enhance": true,
+    "babelSetting": {
+      "ignore": [
+        "utils/something_not_to_process.js",
+        "miniprogram_npm/*",
+        "utils/already_handle/*"
+      ]
+    },
     "preloadBackgroundData": false,
-    "minified": false,
     "newFeature": true,
     "coverView": true,
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
     "checkInvalidKey": true,
-    "checkSiteMap": true,
     "uploadWithSourceMap": true,
     "compileHotReLoad": false,
-    "babelSetting": {
-      "ignore": [],
-      "disablePlugins": [],
-      "outputPath": ""
-    },
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false

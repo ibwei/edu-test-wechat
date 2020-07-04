@@ -1,10 +1,9 @@
-import Taro, { Component, Config, base64ToArrayBuffer } from '@tarojs/taro';
+import Taro, { Component, Config } from '@tarojs/taro';
 import { View, Image, Text, Button } from '@tarojs/components';
 import {
-  AtButton,
-  AtCurtain,
   AtForm,
   AtInput,
+  AtIcon,
   AtModal,
   AtModalContent,
   AtModalAction,
@@ -53,6 +52,8 @@ export default class Index extends Component {
    */
   config: Config = {
     navigationBarTitleText: '学商测试',
+    navigationBarBackgroundColor: '#bae7ff',
+    navigationBarTextStyle: 'white',
   };
   getUserInfo(res) {
     if (res.detail.userInfo) {
@@ -207,7 +208,7 @@ export default class Index extends Component {
   }
   render() {
     return (
-      <View>
+      <View className="app">
         <View className="index">
           <View className="icon">
             <Image src="../../assets/images/shijiashi.jpg" />
@@ -217,16 +218,20 @@ export default class Index extends Component {
               <Text>拾加拾教育：学商测试</Text>
             </View>
             <View className="content">
+              <AtIcon value="bookmark" size="15" color="#333"></AtIcon>
               <Text>测试内容：考察学生各方面能力</Text>
             </View>
             <View className="content">
+              <AtIcon value="clock" size="15" color="#333"></AtIcon>
               <Text>测试时间：不限</Text>
             </View>
             <View className="content">
+              <AtIcon value="lock" size="15" color="#333"></AtIcon>
               <Text>提交条件：题目全部完成后方可提交</Text>
             </View>
             <View className="content">
-              <Text>测试形式：自主测试</Text>
+              <AtIcon value="edit" size="15" color="#333"></AtIcon>
+              <Text>测试形式：选择题</Text>
             </View>
           </View>
         </View>

@@ -14,7 +14,7 @@ const Interceptor = function (chain) {
   console.log(`http ${method || 'GET'} --> ${requestParams.url} data: `, data)
   // 添加响应拦截处理
   return chain.proceed(requestParams)
-    .then(res => {
+    .then(async (res) => {
       console.log(`http <-- ${url} result:`, res)
       const { err_code, err_msg } = res.data
       // 错误处理
@@ -28,7 +28,17 @@ const Interceptor = function (chain) {
         if (err_code === 401) {
           Taro.setStorageSync('isLogin', false);
           Taro.setStorageSync('token', '');
-          login();
+          await login();
+          Taro.navigateTo({
+            url: '/pages/index/index',
+            success() {
+              Taro.showToast({
+                title: '验证身份中',
+                duration: 2000,
+                icon: 'none'
+              })
+            }
+          })
         }
         return Promise.reject('请求错误')
       } else {

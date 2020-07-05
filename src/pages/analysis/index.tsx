@@ -14,7 +14,9 @@ type StateType = {
   ec: Object;
   userInfo: userInfo;
   score: number;
+  isChart: boolean;
   scoreText: Array<any>;
+  scoreArray: Array<any>;
 };
 let indicatorArray = Taro.getStorageSync('forumList')
   ? JSON.parse(Taro.getStorageSync('forumList'))
@@ -75,7 +77,21 @@ export default class Index extends Component {
         this.setState({
           scoreText: scoreText,
         });
-        this.setEcharts(scoreArray);
+        this.setState(
+          {
+            scoreArray: scoreArray,
+          },
+          () => {
+            console.log('this.chartNode :>> ', this.chartNode);
+            if (this.chartNode) {
+              console.log('1111 :>> ', 1111);
+              this.setEcharts(this.state.scoreArray);
+              this.setState({
+                isChart: true,
+              });
+            }
+          }
+        );
       }
     });
   }
@@ -103,6 +119,7 @@ export default class Index extends Component {
       ec: {
         lazyLoad: true,
       },
+      isChart: false,
       score: 0,
       scoreText: [
         {
@@ -110,6 +127,7 @@ export default class Index extends Component {
           text: '',
         },
       ],
+      scoreArray: [],
       userInfo: {
         name: '', // 姓名
         avatar: '', // 头像
@@ -123,8 +141,22 @@ export default class Index extends Component {
   chartNode: any;
   refCharts = (node) => {
     this.chartNode = node;
+    console.log('2222 :>> ', 2222);
+    console.log(
+      'this.state.scoreArray.length :>> ',
+      this.state.scoreArray.length
+    );
+    console.log('this.state.isChart :>> ', this.state.isChart);
+    console.log('2222 :>> ', 2222);
+    if (this.state.scoreArray.length > 0 && this.state.isChart == false) {
+      this.setEcharts(this.state.scoreArray);
+      this.setState({
+        isChart: true,
+      });
+    }
   };
   setEcharts(value) {
+    console.log('this.chartNode :>> ', this.chartNode);
     this.chartNode.init((canvas, width, height) => {
       const chart = echarts.init(canvas, null, {
         width,

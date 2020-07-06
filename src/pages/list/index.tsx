@@ -46,7 +46,7 @@ export default class Index extends Component {
     super(props);
     this.state = {
       page: 1,
-      size: 20,
+      size: 30,
       list: [],
     };
   }

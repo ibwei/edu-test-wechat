@@ -28,18 +28,10 @@ export default class Index extends Component {
       : [{ name: '', key: 0 }];
   }
 
-  componentDidMount() {}
-
-  componentWillUnmount() {}
-
-  componentDidShow() {
+  componentDidMount() {
     indicatorArray = Taro.getStorageSync('forumList')
       ? JSON.parse(Taro.getStorageSync('forumList'))
       : [{ name: '', key: 0 }];
-    const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
-    this.setState({
-      userInfo: userInfo,
-    });
 
     getResult({ id: this.$router.params.id }).then((res) => {
       console.log('res :>> ', res);
@@ -48,6 +40,14 @@ export default class Index extends Component {
       });
       let { err_code, err_msg, data } = res.data;
       data = data[0];
+      const userInfo = {
+        student_name: data.student_name ? data.student_name : '未知名字',
+        school_name: data.school_name ? data.school_name : '未知学校',
+        grade: data.grade ? data.school_name : '未知年级',
+      };
+      this.setState({
+        userInfo: userInfo,
+      });
       if (err_code === 0) {
         this.setState({
           score: (data.allScore / 2.5).toFixed(1), // 总分250分转换为百分制保留一位小数
@@ -82,9 +82,7 @@ export default class Index extends Component {
             scoreArray: scoreArray,
           },
           () => {
-            console.log('this.chartNode :>> ', this.chartNode);
             if (this.chartNode) {
-              console.log('1111 :>> ', 1111);
               this.setEcharts(this.state.scoreArray);
               this.setState({
                 isChart: true,
@@ -95,6 +93,10 @@ export default class Index extends Component {
       }
     });
   }
+
+  componentWillUnmount() {}
+
+  componentDidShow() {}
 
   componentDidHide() {}
 
@@ -141,13 +143,6 @@ export default class Index extends Component {
   chartNode: any;
   refCharts = (node) => {
     this.chartNode = node;
-    console.log('2222 :>> ', 2222);
-    console.log(
-      'this.state.scoreArray.length :>> ',
-      this.state.scoreArray.length
-    );
-    console.log('this.state.isChart :>> ', this.state.isChart);
-    console.log('2222 :>> ', 2222);
     if (this.state.scoreArray.length > 0 && this.state.isChart == false) {
       this.setEcharts(this.state.scoreArray);
       this.setState({
@@ -155,8 +150,14 @@ export default class Index extends Component {
       });
     }
   };
+  onShareAppMessage() {
+    return {
+      title: '分享测试',
+      path: 'pages/analysis/index?id=' + this.$router.params.id,
+      imageUrl: '',
+    };
+  }
   setEcharts(value) {
-    console.log('this.chartNode :>> ', this.chartNode);
     this.chartNode.init((canvas, width, height) => {
       const chart = echarts.init(canvas, null, {
         width,
@@ -268,7 +269,7 @@ export default class Index extends Component {
         <AtDivider content="成绩分析" fontColor="#555" lineColor="#bebebe" />
         <View className="result">{forumDom}</View>
         <AtDivider
-          content="没有更多了"
+          content="暂无更多内容"
           fontColor="#999"
           fontSize="10px"
           lineColor="#999"

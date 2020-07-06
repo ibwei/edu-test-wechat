@@ -9,7 +9,7 @@ import 'taro-ui/dist/style/components/divider.scss';
 import 'taro-ui/dist/style/components/timeline.scss';
 import 'taro-ui/dist/style/components/icon.scss';
 import 'taro-ui/dist/style/components/tag.scss';
-import { getResult } from '../../api/api';
+import { getResult, getPartList } from '../../api/api';
 type StateType = {
   ec: Object;
   userInfo: userInfo;
@@ -25,7 +25,12 @@ export default class Index extends Component {
   componentWillMount() {
     indicatorArray = Taro.getStorageSync('forumList')
       ? JSON.parse(Taro.getStorageSync('forumList'))
-      : [{ name: '', key: 0 }];
+      : [];
+    if (indicatorArray.length == 0) {
+      getPartList().then(() => {
+        indicatorArray = JSON.parse(Taro.getStorageSync('forumList'));
+      });
+    }
   }
 
   componentDidMount() {

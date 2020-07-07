@@ -1,8 +1,8 @@
-import Taro, { Component, Config } from '@tarojs/taro';
-import Index from './pages/index/index';
-import { login, getPartList } from './api/api';
+import Taro, { Component, Config } from '@tarojs/taro'
+import Index from './pages/index/index'
+import { login, getPartList } from './api/api'
 
-import './app.less';
+import './app.less'
 
 // 如果需要在 h5 环境中开启 React Devtools
 // 取消以下注释：
@@ -17,25 +17,24 @@ class App extends Component {
     try {
       Taro.getSetting({
         success(res) {
-          console.log('res :>> ', res);
           if (res.authSetting['scope.userInfo']) {
             Taro.getUserInfo({
               async success(res) {
-                const { userInfo } = res;
-                Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
-                Taro.setStorageSync('shouquan', true);
-                await login();
-                getPartList();
-              },
-            });
+                const { userInfo } = res
+                Taro.setStorageSync('userInfo', JSON.stringify(userInfo))
+                Taro.setStorageSync('shouquan', true)
+                await login()
+                getPartList()
+              }
+            })
           } else {
-            Taro.setStorageSync('shouquan', false);
-            Taro.setStorageSync('isLogin', false);
+            Taro.setStorageSync('shouquan', false)
+            Taro.setStorageSync('isLogin', false)
           }
-        },
-      });
+        }
+      })
     } catch (e) {
-      console.log('e :>> ', e);
+      console.log('e :>> ', e)
     }
   }
 
@@ -56,21 +55,21 @@ class App extends Component {
       'pages/analysis/index',
       'pages/list/index',
       'pages/bar/index',
-      'pages/question/index',
+      'pages/question/index'
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: '学商测试',
-      navigationBarTextStyle: 'black',
-    },
-  };
+      navigationBarTextStyle: 'black'
+    }
+  }
 
   // 在 App 类中的 render() 函数没有实际作用
   // 请勿修改此函数
   render() {
-    return <Index />;
+    return <Index />
   }
 }
 
-Taro.render(<App />, document.getElementById('app'));
+Taro.render(<App />, document.getElementById('app'))

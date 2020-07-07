@@ -13,7 +13,7 @@
 - [Taro 多端框架](https://taro.aotu.io/)
 - [Taro-UI](https://taro-ui.jd.com/#/)
 - [echarts 小程序版](https://github.com/ecomfe/echarts-for-weixin)
-- 后端采用的是 php 的 laravel 框架,[后端仓库地址](https://github.com/ibwei/edu-test)
+- 后端采用的是 php 的 laravel 框架,[后端仓库地址](https://github.com/ibwei/edu-test-api)
 
 ## 界面截图
 

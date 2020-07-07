@@ -63,12 +63,9 @@ export default class Index extends Component {
       this.closeShouquan();
       const { userInfo } = res.detail;
       Taro.setStorageSync('userInfo', JSON.stringify(userInfo));
-      login().then((res) => {
-        if (res.err_code == 0) {
-          Taro.setStorageSync('isLogin', true);
-          getPartList();
-        }
-        // const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
+      login().then(() => {
+        Taro.setStorageSync('isLogin', true);
+        getPartList();
       });
     }
   }
@@ -82,15 +79,20 @@ export default class Index extends Component {
       });
       return false;
     }
-    if (isLogin == true) {
+    if (isLogin) {
       const userInfo = JSON.parse(Taro.getStorageSync('userInfo'));
-      if (userInfo.student_name == undefined || userInfo.student_name == '') {
+      if (
+        !userInfo.student_name ||
+        !userInfo.school_name ||
+        !userInfo.parent_phone ||
+        !userInfo.grade
+      ) {
         this.setState({
           infoShow: true,
         });
       } else {
         const cacheState = Taro.getStorageSync('questionState');
-        if (cacheState == false) {
+        if (!cacheState) {
           this.goQuestion();
         } else {
           this.setState({
@@ -121,7 +123,7 @@ export default class Index extends Component {
     });
   }
   onSubmit() {
-    if (this.studentInfo.name.trim() == '') {
+    if (!this.studentInfo.name.trim()) {
       Taro.showToast({
         title: '学生姓名不能为空',
         icon: 'none',
@@ -129,7 +131,7 @@ export default class Index extends Component {
       });
       return false;
     }
-    if (this.studentInfo.school.trim() == '') {
+    if (!this.studentInfo.school.trim()) {
       Taro.showToast({
         title: '学校不能为空',
         icon: 'none',
@@ -138,7 +140,7 @@ export default class Index extends Component {
       return false;
     }
 
-    if (this.studentInfo.grade.trim() == '') {
+    if (!this.studentInfo.grade.trim()) {
       Taro.showToast({
         title: '年级不能为空',
         icon: 'none',
@@ -146,7 +148,7 @@ export default class Index extends Component {
       });
       return false;
     }
-    if (this.studentInfo.tel == '') {
+    if (!this.studentInfo.tel) {
       Taro.showToast({
         title: '家长电话不能为空',
         icon: 'none',
@@ -154,7 +156,7 @@ export default class Index extends Component {
       });
       return false;
     } else {
-      var regPhones = /^(\d{3,4}\-\d{3,8}$)|(\d{3}\-\d{4}\-\d{3}$)|(^\d{7}$)|(^\d{8}$)|(^\d{11}$)|(^\d{12}$)|(^1\d{10}$)/; //手机号和座机正则
+      const regPhones = /^(\d{3,4}\-\d{3,8}$)|(\d{3}\-\d{4}\-\d{3}$)|(^\d{7}$)|(^\d{8}$)|(^\d{11}$)|(^\d{12}$)|(^1\d{10}$)/; //手机号和座机正则
       if (!regPhones.test(this.studentInfo.tel)) {
         Taro.showToast({
           title: '请输入正确的家长联系方式',
@@ -165,14 +167,15 @@ export default class Index extends Component {
       }
     }
 
-    let params = {
+    const params = {
       parent_phone: this.studentInfo.tel.trim(),
       school_name: this.studentInfo.school.trim(),
       student_name: this.studentInfo.name.trim(),
       grade: this.studentInfo.grade.trim(),
     };
+
     editStudet(params).then((res) => {
-      if (res.data.err_code == 0) {
+      if (res.data.err_code === 0) {
         this.onClose();
         this.goQuestion();
       }
@@ -186,7 +189,7 @@ export default class Index extends Component {
   };
   onChange(field, val) {
     this.studentInfo[field] = val;
-    if (field == 'tel') {
+    if (field === 'tel') {
       this.studentInfo[field] = val.replace(/\D/g, '');
       return val.replace(/\D/g, '');
     }

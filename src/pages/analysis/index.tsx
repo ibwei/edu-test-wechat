@@ -47,7 +47,7 @@ export default class Index extends Component {
       const userInfo = {
         student_name: data.student_name ? data.student_name : '未知名字',
         school_name: data.school_name ? data.school_name : '未知学校',
-        grade: data.grade ? data.school_name : '未知年级'
+        grade: data.grade ? data.grade : '未知年级'
       }
       this.setState({
         userInfo: userInfo
